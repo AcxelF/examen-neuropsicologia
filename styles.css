@@ -1,23 +1,49 @@
 /* ================================================= */
-/* PALETA DE COLORES DARK MODE (Variables CSS) */
+/* VARIABLES DE COLOR BASE Y TEMAS (CLARO / OSCURO) */
 /* ================================================= */
-/* Aplicamos la paleta de colores del usuario */
+
+/* Modo Oscuro (DARK MODE - DEFAULT CSS) */
 :root {
-    --bg-body: #1d1d20; /* Fondo principal */
-    --bg-container: #3a3c45; /* Fondo del Contenedor principal */
-    --bg-card: #4e4e5f; /* Fondo de elementos destacados/cartas */
-    --text-primary: #9fa5b2; /* Texto principal (Claro) */
-    --text-secondary: #7d7c92; /* Texto secundario y acento suave */
-    --border-color: #4e4e5f; /* Bordes y separadores */
+    --bg-body: #1a1a1a;
+    --bg-container: #2c2c2c;
+    --text-primary: #f0f0f0;
+    --text-secondary: #aaaaaa;
+    --border-color: #555555;
+    --bg-card: #3c3c3c;
     
-    /* Colores funcionales */
-    --color-success-bg: #2e7d32; /* Verde Oscuro para fondo */
-    --color-success-text: #a5d6a7; /* Verde Claro para texto */
-    --color-error-bg: #b71c1c; /* Rojo Oscuro para fondo */
-    --color-error-text: #ffcdd2; /* Rojo Claro para texto */
-    --color-action: #42a5f5; /* Azul brillante para botones */
-    --color-action-hover: #1e88e5; 
+    /* Colores de acción y acento */
+    --color-action-primary: #66bb6a; /* Verde brillante (Éxito y Botón Principal) */
+    --color-action-secondary: #2196f3; /* Azul para acento (Headers) */
+    --color-action-danger: #ef5350; /* Rojo para borrar */
+    
+    /* Retroalimentación */
+    --color-success-bg: #2e7d32;
+    --color-success-text: #a5d6a7; 
+    --color-error-bg: #b71c1c; 
+    --color-error-text: #ffcdd2; 
 }
+
+/* Modo Claro (LIGHT MODE - Clase .light-mode en <body>) */
+.light-mode {
+    --bg-body: #f7f7f7;
+    --bg-container: #ffffff;
+    --text-primary: #343434;
+    --text-secondary: #666666;
+    --border-color: #e0e0e0;
+    --bg-card: #f0f4f7;
+
+    /* Colores de acción */
+    --color-action-primary: #4CAF50; /* Verde clásico */
+    --color-action-secondary: #007bff; /* Azul clásico */
+    --color-action-danger: #f44336; /* Rojo clásico */
+
+    /* Retroalimentación */
+    --color-success-bg: #d4edda;
+    --color-success-text: #155724; 
+    --color-error-bg: #f8d7da; 
+    --color-error-text: #721c24; 
+}
+
 
 /* ================================================= */
 /* BASE GENERAL Y TIPOGRAFÍA */
@@ -36,10 +62,10 @@ body {
     background: var(--bg-container);
     padding: 40px;
     border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 h1 {
-    color: var(--text-primary); 
+    color: var(--color-action-primary); 
     text-align: center;
     font-weight: 700;
     letter-spacing: -0.5px;
@@ -55,9 +81,55 @@ h2 {
     border-bottom: 1px solid var(--border-color);
     padding-bottom: 8px; 
     margin-top: 40px; 
-    color: var(--text-primary); 
+    color: var(--color-action-secondary); 
     font-weight: 600;
 }
+
+/* ================================================= */
+/* SWITCH DE TEMA */
+/* ================================================= */
+.theme-switch-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-bottom: 15px;
+    gap: 10px;
+}
+.mode-label {
+    font-size: 0.85em;
+    color: var(--text-secondary);
+    font-weight: 600;
+    user-select: none;
+    transition: color 0.3s;
+}
+.light-mode-label { color: var(--text-primary); }
+.dark-mode-label { color: var(--text-secondary); }
+
+.dark-mode .light-mode-label { color: var(--text-secondary); }
+.dark-mode .dark-mode-label { color: var(--text-primary); }
+
+.theme-switch {
+    display: inline-block;
+    height: 26px;
+    position: relative;
+    width: 50px;
+}
+.theme-switch input { display: none; }
+.slider {
+    background-color: var(--border-color);
+    bottom: 0; cursor: pointer; left: 0; position: absolute; right: 0; top: 0;
+    transition: 0.4s; border-radius: 34px;
+}
+.slider:before {
+    background-color: var(--text-primary);
+    bottom: 4px; content: ""; height: 18px; left: 4px; position: absolute;
+    transition: 0.4s; width: 18px; border-radius: 50%;
+}
+input:checked + .slider { background-color: var(--color-action-primary); }
+input:checked + .slider:before { transform: translateX(24px); background-color: var(--bg-container); }
+.slider.round { border-radius: 34px; }
+.slider.round:before { border-radius: 50%; }
+
 
 /* ================================================= */
 /* ESTILOS DE PREGUNTAS Y OPCIONES */
@@ -68,13 +140,10 @@ h2 {
     border: 1px solid var(--border-color); 
     border-radius: 8px;
     background-color: var(--bg-container); 
-    transition: border 0.2s;
 }
 .question p {
     font-weight: 600;
-    margin-top: 0;
     color: var(--text-primary);
-    font-size: 1em;
     text-align: left;
     margin-bottom: 15px;
 }
@@ -90,7 +159,7 @@ h2 {
 }
 .option label:hover {
     background-color: var(--bg-card); 
-    border: 1px solid var(--text-secondary);
+    border: 1px solid var(--border-color);
 }
 input[type="radio"] { margin-right: 10px; }
 
@@ -108,34 +177,58 @@ input[type="radio"] { margin-right: 10px; }
     font-size: 1.1em;
 }
 .category-card:hover {
-    background-color: var(--color-action); /* Resaltado de acción */
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-    color: white;
+    background-color: var(--border-color); 
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
-.category-card:hover strong {
-    color: white;
-}
-
 
 /* ================================================= */
 /* BOTONES Y LEADERBOARD */
 /* ================================================= */
 button {
-    background-color: var(--color-action); 
-    color: white; 
+    background-color: var(--color-action-secondary); 
+    color: var(--bg-body); 
     font-weight: 700;
     padding: 10px 15px;
 }
-button:hover:not(:disabled) { background-color: var(--color-action-hover); }
+button:hover:not(:disabled) { background-color: var(--color-action-primary); color: white; }
 
 .start-button {
+    background-color: var(--color-action-primary);
+    color: white;
+}
+.start-button:hover { background-color: var(--color-action-primary); }
+
+
+/* Leaderboard */
+#leaderboard-section {
+    border: 1px solid var(--border-color);
     background-color: var(--bg-card);
+    border-radius: 8px;
+}
+#leaderboard-table th { 
+    background-color: var(--border-color); 
+    font-weight: 700;
     color: var(--text-primary);
 }
-.start-button:hover { background-color: var(--color-3); }
+#leaderboard-table td {
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-primary);
+}
+
+/* Botón de Limpiar Historial */
+#leaderboard-section .clear-button { 
+    background-color: var(--color-action-danger); 
+    color: white;
+    width: auto;
+    font-size: 13px;
+    margin-bottom: 0;
+}
+#leaderboard-section .clear-button:hover { background-color: #d32f2f; }
 
 
-/* Retroalimentación */
+/* ================================================= */
+/* RETROALIMENTACIÓN */
+/* ================================================= */
 .highlight-correct label { 
     background-color: var(--color-success-bg) !important; 
     color: var(--color-success-text) !important; 
@@ -151,37 +244,12 @@ button:hover:not(:disabled) { background-color: var(--color-action-hover); }
 .explanation {
     margin-top: 15px; 
     padding: 12px; 
-    border-left: 5px solid var(--color-action);
+    border-left: 5px solid var(--color-action-secondary);
     background-color: var(--bg-card); 
     font-style: normal;
     color: var(--text-primary);
     border-radius: 0 4px 4px 0;
 }
-
-/* Leaderboard Table */
-#leaderboard-section {
-    border: 1px solid var(--border-color);
-    background-color: var(--bg-card);
-    border-radius: 8px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-}
-#leaderboard-table th { 
-    background-color: var(--bg-container); 
-    font-weight: 700;
-    color: var(--text-primary);
-}
-#leaderboard-table td {
-    border-bottom: 1px solid var(--border-color);
-    color: var(--text-primary);
-}
-
-#leaderboard-section .clear-button { 
-    background-color: #f44336; 
-    color: white;
-    width: auto;
-    font-size: 13px;
-}
-#leaderboard-section .clear-button:hover { background-color: #d32f2f; }
 
 /* Ocultar secciones dinámicas al inicio */
 #results, #leaderboard-section, #quiz-content { display: none; }
