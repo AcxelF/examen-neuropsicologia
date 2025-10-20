@@ -87,7 +87,7 @@
     
     <div id="results">
         🎉 ¡Examen Finalizado! 🎉<br>
-        Tu puntaje es: <span id="score">0</span> de <span id="total-q-count">82</span> aciertos.
+        Tu puntaje es: <span id="score">0</span> de <span id="total-q-count">0</span> aciertos.
     </div>
 
     <div id="leaderboard-section">
@@ -105,7 +105,7 @@
             <tbody>
                 </tbody>
         </table>
-        <button type="button" class="start-button" onclick="showCategoryMenu()">Volver al Menú Principal</button>
+        <button type="button" class="start-button" onclick="showCategoryMenu()">Volver al Menú de Categorías</button>
     </div>
     
     <div id="category-menu">
@@ -121,7 +121,7 @@
             <div id="questions-container">
                 </div>
             
-            <button type="button" onclick="calculateScore()">Finalizar Examen y Ver Resultados</button>
+            <button type="button" id="finish-button" onclick="calculateScore()">Finalizar Examen y Ver Resultados</button>
         </form>
     </div>
 </div>
@@ -142,10 +142,10 @@
             }
             allQuestionsData = await response.json();
             showCategoryMenu();
-            displayLeaderboard();
+            displayLeaderboard(); // Carga el leaderboard al inicio
         } catch (error) {
             console.error('Fallo en la carga del examen:', error);
-            document.getElementById('card-grid').innerHTML = '<p style="color:red; text-align:center;">Error: No se pudieron cargar las preguntas. Revisa la consola y el archivo JSON.</p>';
+            document.getElementById('category-menu').innerHTML = '<p style="color:red; text-align:center;">Error: No se pudieron cargar las preguntas. Revisa la consola y el archivo JSON.</p>';
         }
     }
 
@@ -156,7 +156,7 @@
         document.getElementById('quiz-content').style.display = 'none';
         document.getElementById('results').style.display = 'none';
         document.getElementById('category-menu').style.display = 'block';
-        document.getElementById('leaderboard-section').style.display = 'none'; // Oculta el leaderboard en el menú principal (solo lo muestra en resultados)
+        document.getElementById('leaderboard-section').style.display = 'block'; // Mostrar Leaderboard en el menú principal
 
         const menuContainer = document.getElementById('card-grid');
         let menuHtml = '';
@@ -185,7 +185,7 @@
         });
         
         menuContainer.innerHTML = menuHtml;
-        displayLeaderboard(); // Asegura que el leaderboard se actualice si hay un botón de volver al menú
+        displayLeaderboard();
     }
 
     // =======================================================
@@ -202,6 +202,7 @@
         
         // 2. Actualizar el título y el contador
         document.getElementById('current-category-title').textContent = `Categoría: ${category} (${activeQuestions.length} preguntas)`;
+        document.getElementById('total-q-count').textContent = activeQuestions.length;
         
         // 3. Renderizar las preguntas filtradas
         const container = document.getElementById('questions-container');
@@ -234,17 +235,20 @@
         });
 
         container.innerHTML = html;
-        document.querySelector('#quiz-content button').disabled = false;
+        document.getElementById('finish-button').disabled = false;
         window.scrollTo(0, 0);
     }
 
     // =======================================================
-    // FUNCIÓN PRINCIPAL: CALCULAR PUNTAJE (Retrolimentación)
+    // FUNCIÓN PRINCIPAL: CALCULAR PUNTAJE (Retrolimentación y Persistencia)
     // =======================================================
     function calculateScore() {
         const questions = document.querySelectorAll('#questions-container .question');
         const totalQuestions = activeQuestions.length;
         let score = 0;
+        
+        // Oculta el botón de finalizar para que no se pueda calcular dos veces
+        document.getElementById('finish-button').disabled = true; 
 
         // 1. Recorre y califica las preguntas
         questions.forEach((question, index) => {
@@ -260,12 +264,16 @@
             question.classList.remove('not-answered');
             if (explanationDiv) explanationDiv.style.display = 'none';
 
+            // Limpia los estilos de feedback anteriores
             options.forEach(opt => {
                 opt.classList.remove('highlight-correct', 'highlight-incorrect');
                 const feedbackSpan = opt.querySelector('.feedback');
                 if (feedbackSpan) { feedbackSpan.remove(); }
                 opt.querySelector('label').style.backgroundColor = ''; 
                 opt.querySelector('label').style.color = '';
+                
+                // Deshabilita los radio buttons después de finalizar
+                opt.querySelector('input[type="radio"]').disabled = true;
             });
 
             let isAnswered = false;
@@ -313,18 +321,31 @@
             });
         });
 
-        // 4. Ocultar contenido del examen y mostrar resultados
+        // 4. Muestra resultados finales EN LA MISMA VISTA
         document.getElementById('score').textContent = score;
         document.getElementById('total-q-count').textContent = totalQuestions;
-        document.getElementById('quiz-content').style.display = 'none';
-
-        document.getElementById('results').style.display = 'block';
-        document.getElementById('leaderboard-section').style.display = 'block';
         
+        // Mueve la vista de resultados al inicio del contenido del quiz
+        const quizContentElement = document.getElementById('quiz-content');
+        const resultsElement = document.getElementById('results');
+        const leaderboardElement = document.getElementById('leaderboard-section');
+        
+        // Muestra la caja de resultados y leaderboard al inicio del examen
+        resultsElement.style.display = 'block';
+        leaderboardElement.style.display = 'block';
+
+        // Reubica los elementos (si no están ya al inicio del contenedor principal)
+        const container = document.querySelector('.container');
+        if (container.firstChild !== resultsElement) {
+             container.insertBefore(leaderboardElement, container.firstChild);
+             container.insertBefore(resultsElement, container.firstChild);
+        }
+
+        // Gestión del Leaderboard (Local)
         saveScore(score, totalQuestions);
         displayLeaderboard();
         
-        window.scrollTo(0, 0);
+        window.scrollTo(0, 0); // Vuelve al inicio para ver los resultados
     }
 
     // =======================================================
@@ -379,10 +400,17 @@
         scores.forEach((item, index) => {
             const row = tbody.insertRow();
             
-            row.insertCell().textContent = index + 1;
-            row.insertCell().textContent = `${item.score} / ${item.total}`;
-            row.insertCell().textContent = item.category || 'Completo';
-            row.insertCell().textContent = item.date;
+            const cellRank = row.insertCell();
+            cellRank.textContent = index + 1;
+            
+            const cellScore = row.insertCell();
+            cellScore.textContent = `${item.score} / ${item.total}`;
+            
+            const cellCategory = row.insertCell();
+            cellCategory.textContent = item.category || 'Completo';
+            
+            const cellDate = row.insertCell();
+            cellDate.textContent = item.date;
         });
     }
 
