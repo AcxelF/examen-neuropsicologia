@@ -17,6 +17,11 @@
             gap: 20px;
             padding: 20px 0;
         }
+        #card-grid {
+             display: grid;
+             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+             gap: 20px;
+        }
         .category-card {
             background-color: #e8f5e9; /* Fondo claro para las tarjetas */
             border: 1px solid #c8e6c9;
@@ -59,7 +64,13 @@
         
         .highlight-correct label { background-color: #d4edda; color: #155724; padding: 2px 5px; border-radius: 3px; }
         .highlight-incorrect label { background-color: #f8d7da; color: #721c24; padding: 2px 5px; border-radius: 3px; }
-        .explanation { margin-top: 10px; padding: 10px; border-left: 5px solid #2196F3; background-color: #e3f2fd; font-style: italic; font-size: 0.95em; color: #0d47a1; display: none; }
+        .not-answered { border: 2px solid orange !important; }
+        .explanation {
+            margin-top: 10px; padding: 10px; border-left: 5px solid #2196F3;
+            background-color: #e3f2fd; font-style: italic; font-size: 0.95em; color: #0d47a1;
+            display: none;
+        }
+        /* Estilos del Leaderboard */
         #leaderboard-table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 0.95em; }
         #leaderboard-table th, #leaderboard-table td { padding: 10px; text-align: left; border-bottom: 1px solid #eee; }
         #leaderboard-table th { background-color: #f0f0f0; font-weight: bold; color: #333; }
@@ -87,6 +98,7 @@
                 <tr>
                     <th>#</th>
                     <th>Aciertos</th>
+                    <th>Categoría</th>
                     <th>Fecha</th>
                 </tr>
             </thead>
@@ -98,16 +110,20 @@
     
     <div id="category-menu">
         <h2>Seleccionar Categoría de Estudio</h2>
-        <p>Cargando categorías...</p>
+        <div id="card-grid">
+            <p>Cargando categorías...</p>
+        </div>
     </div>
 
-    <form id="quiz-content">
-        <h2 id="current-category-title"></h2>
-        <div id="questions-container">
-            </div>
-        
-        <button type="button" onclick="calculateScore()">Finalizar Examen y Ver Resultados</button>
-    </form>
+    <div id="quiz-content">
+        <form id="quiz-form-content">
+            <h2 id="current-category-title"></h2>
+            <div id="questions-container">
+                </div>
+            
+            <button type="button" onclick="calculateScore()">Finalizar Examen y Ver Resultados</button>
+        </form>
+    </div>
 </div>
 
 <script>
@@ -122,14 +138,14 @@
         try {
             const response = await fetch('preguntas.json');
             if (!response.ok) {
-                throw new Error('Error al cargar preguntas.json. Asegúrate de que el archivo exista.');
+                throw new Error('Error al cargar preguntas.json. Asegúrate de que el archivo exista en la misma carpeta.');
             }
             allQuestionsData = await response.json();
             showCategoryMenu();
-            displayLeaderboard(); // Carga el leaderboard al inicio
+            displayLeaderboard();
         } catch (error) {
             console.error('Fallo en la carga del examen:', error);
-            document.getElementById('category-menu').innerHTML = '<p style="color:red; text-align:center;">Error: No se pudieron cargar las preguntas. Revisa la consola y el archivo JSON.</p>';
+            document.getElementById('card-grid').innerHTML = '<p style="color:red; text-align:center;">Error: No se pudieron cargar las preguntas. Revisa la consola y el archivo JSON.</p>';
         }
     }
 
@@ -140,10 +156,10 @@
         document.getElementById('quiz-content').style.display = 'none';
         document.getElementById('results').style.display = 'none';
         document.getElementById('category-menu').style.display = 'block';
-        document.getElementById('leaderboard-section').style.display = 'block'; // Muestra Leaderboard en el menú
+        document.getElementById('leaderboard-section').style.display = 'none'; // Oculta el leaderboard en el menú principal (solo lo muestra en resultados)
 
-        const menuContainer = document.getElementById('category-menu');
-        let menuHtml = '<h2>Seleccionar Categoría de Estudio</h2><div id="card-grid">';
+        const menuContainer = document.getElementById('card-grid');
+        let menuHtml = '';
 
         // Agrupa las preguntas por categoría para contarlas
         const categories = allQuestionsData.reduce((acc, q) => {
@@ -157,8 +173,10 @@
 
         // Crea una tarjeta por cada categoría
         Object.keys(categories).forEach(categoryName => {
+            // Escapa comillas simples para la función JS
+            const escapedCategoryName = categoryName.replace(/'/g, "\\'");
             menuHtml += `
-                <div class="category-card" onclick="startQuiz('${categoryName.replace(/'/g, "\\'")}')">
+                <div class="category-card" onclick="startQuiz('${escapedCategoryName}')">
                     <strong>${categoryName}</strong>
                     <span>(${categories[categoryName]} preguntas)</span>
                     <button type="button" class="start-button">Iniciar Práctica</button>
@@ -166,8 +184,8 @@
             `;
         });
         
-        menuHtml += '</div>';
         menuContainer.innerHTML = menuHtml;
+        displayLeaderboard(); // Asegura que el leaderboard se actualice si hay un botón de volver al menú
     }
 
     // =======================================================
@@ -184,17 +202,17 @@
         
         // 2. Actualizar el título y el contador
         document.getElementById('current-category-title').textContent = `Categoría: ${category} (${activeQuestions.length} preguntas)`;
-        document.getElementById('total-q-count').textContent = activeQuestions.length;
         
         // 3. Renderizar las preguntas filtradas
         const container = document.getElementById('questions-container');
+        container.innerHTML = '';
         let html = '';
         
         activeQuestions.forEach((qData, index) => {
-            const qNum = index + 1; // La numeración comienza en 1 para la vista
+            const qNum = index + 1; // La numeración comienza en 1 para la vista de la categoría
 
             html += `
-                <div class="question" data-correct-answer="${qData.respuestaCorrecta}" data-explanation="${qData.explicacion}">
+                <div class="question" data-correct-answer="${qData.respuestaCorrecta}" data-explanation="${qData.explicacion.replace(/"/g, "'")}">
                     <p>${qNum}. ${qData.pregunta}</p>
             `;
 
@@ -295,12 +313,11 @@
             });
         });
 
-        // 4. Mostrar resultados finales
+        // 4. Ocultar contenido del examen y mostrar resultados
         document.getElementById('score').textContent = score;
         document.getElementById('total-q-count').textContent = totalQuestions;
         document.getElementById('quiz-content').style.display = 'none';
 
-        // Muestra los resultados, guarda el score y vuelve a mostrar el menú de opciones
         document.getElementById('results').style.display = 'block';
         document.getElementById('leaderboard-section').style.display = 'block';
         
@@ -316,7 +333,6 @@
     function saveScore(score, total) {
         const scores = getScores();
         const now = new Date();
-        // Muestra la categoría en el leaderboard para saber qué se practicó
         const currentCategory = document.getElementById('current-category-title').textContent.replace('Categoría: ', '').split(' (')[0]; 
         
         const dateString = now.toLocaleDateString('es-ES', { 
@@ -328,11 +344,11 @@
             score: score,
             total: total,
             date: dateString,
-            category: currentCategory, // Guarda la categoría
+            category: currentCategory || 'Completo',
             timestamp: now.getTime()
         });
 
-        scores.sort((a, b) => b.score - a.score);
+        scores.sort((a, b) => b.score - a.score || a.timestamp - b.timestamp);
         const topScores = scores.slice(0, 10);
 
         localStorage.setItem(STORAGE_KEY, JSON.stringify(topScores));
@@ -360,16 +376,12 @@
         
         scores.sort((a, b) => b.score - a.score || a.timestamp - b.timestamp); 
 
-        // Actualiza el encabezado de la tabla para incluir Categoría
-        document.getElementById('leaderboard-table').querySelector('thead tr').innerHTML = 
-            '<th>#</th><th>Aciertos</th><th>Categoría</th><th>Fecha</th>';
-
         scores.forEach((item, index) => {
             const row = tbody.insertRow();
             
             row.insertCell().textContent = index + 1;
             row.insertCell().textContent = `${item.score} / ${item.total}`;
-            row.insertCell().textContent = item.category || 'Completo'; // Muestra la categoría
+            row.insertCell().textContent = item.category || 'Completo';
             row.insertCell().textContent = item.date;
         });
     }
