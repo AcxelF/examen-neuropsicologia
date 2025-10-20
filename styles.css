@@ -1,30 +1,9 @@
 /* ================================================= */
-/* VARIABLES DE COLOR BASE Y TEMAS (CLARO / OSCURO) */
+/* VARIABLES DE COLOR BASE Y TEMAS */
 /* ================================================= */
 
-/* Modo Oscuro (DARK MODE - DEFAULT CSS) */
+/* Modo Claro (BASE - Sin clase en body) */
 :root {
-    --bg-body: #1a1a1a;
-    --bg-container: #2c2c2c;
-    --text-primary: #f0f0f0;
-    --text-secondary: #aaaaaa;
-    --border-color: #555555;
-    --bg-card: #3c3c3c;
-    
-    /* Colores de acción y acento */
-    --color-action-primary: #66bb6a; /* Verde brillante (Éxito y Botón Principal) */
-    --color-action-secondary: #2196f3; /* Azul para acento (Headers) */
-    --color-action-danger: #ef5350; /* Rojo para borrar */
-    
-    /* Retroalimentación */
-    --color-success-bg: #2e7d32;
-    --color-success-text: #a5d6a7; 
-    --color-error-bg: #b71c1c; 
-    --color-error-text: #ffcdd2; 
-}
-
-/* Modo Claro (LIGHT MODE - Clase .light-mode en <body>) */
-.light-mode {
     --bg-body: #f7f7f7;
     --bg-container: #ffffff;
     --text-primary: #343434;
@@ -32,16 +11,37 @@
     --border-color: #e0e0e0;
     --bg-card: #f0f4f7;
 
-    /* Colores de acción */
-    --color-action-primary: #4CAF50; /* Verde clásico */
-    --color-action-secondary: #007bff; /* Azul clásico */
-    --color-action-danger: #f44336; /* Rojo clásico */
+    /* Colores de acción (Resaltan en modo claro) */
+    --color-action-primary: #4CAF50; /* Verde principal */
+    --color-action-secondary: #007bff; /* Azul acento */
+    --color-action-danger: #f44336; /* Rojo peligro */
 
     /* Retroalimentación */
     --color-success-bg: #d4edda;
     --color-success-text: #155724; 
-    --color-error-bg: #f8d7da; 
+    --color-error-bg: #f8d7da;
     --color-error-text: #721c24; 
+}
+
+/* Modo Oscuro (Aplicado con la clase .dark-mode en el body) */
+.dark-mode {
+    --bg-body: #1a1a1a;
+    --bg-container: #2c2c2c;
+    --text-primary: #f0f0f0;
+    --text-secondary: #aaaaaa;
+    --border-color: #555555;
+    --bg-card: #3c3c3c;
+    
+    /* Colores de acción (Resaltan en modo oscuro) */
+    --color-action-primary: #66bb6a; /* Verde brillante */
+    --color-action-secondary: #2196f3; /* Azul brillante */
+    --color-action-danger: #ef5350;
+
+    /* Retroalimentación (Alto contraste) */
+    --color-success-bg: #2e7d32;
+    --color-success-text: #a5d6a7; 
+    --color-error-bg: #b71c1c; 
+    --color-error-text: #ffcdd2; 
 }
 
 
@@ -71,12 +71,6 @@ h1 {
     letter-spacing: -0.5px;
     margin-bottom: 5px;
 }
-p {
-    color: var(--text-secondary);
-    text-align: center;
-    margin-bottom: 30px;
-    font-size: 0.95em;
-}
 h2 { 
     border-bottom: 1px solid var(--border-color);
     padding-bottom: 8px; 
@@ -86,7 +80,7 @@ h2 {
 }
 
 /* ================================================= */
-/* SWITCH DE TEMA */
+/* SWITCH DE TEMA (Estilos para el interruptor) */
 /* ================================================= */
 .theme-switch-wrapper {
     display: flex;
@@ -97,17 +91,11 @@ h2 {
 }
 .mode-label {
     font-size: 0.85em;
-    color: var(--text-secondary);
     font-weight: 600;
     user-select: none;
     transition: color 0.3s;
+    color: var(--text-secondary);
 }
-.light-mode-label { color: var(--text-primary); }
-.dark-mode-label { color: var(--text-secondary); }
-
-.dark-mode .light-mode-label { color: var(--text-secondary); }
-.dark-mode .dark-mode-label { color: var(--text-primary); }
-
 .theme-switch {
     display: inline-block;
     height: 26px;
@@ -121,15 +109,20 @@ h2 {
     transition: 0.4s; border-radius: 34px;
 }
 .slider:before {
-    background-color: var(--text-primary);
+    background-color: var(--bg-container);
     bottom: 4px; content: ""; height: 18px; left: 4px; position: absolute;
     transition: 0.4s; width: 18px; border-radius: 50%;
 }
-input:checked + .slider { background-color: var(--color-action-primary); }
-input:checked + .slider:before { transform: translateX(24px); background-color: var(--bg-container); }
-.slider.round { border-radius: 34px; }
-.slider.round:before { border-radius: 50%; }
 
+/* Estilos de activado (Dark Mode) */
+input:checked + .slider { background-color: var(--color-action-secondary); }
+input:checked + .slider:before { transform: translateX(24px); background-color: var(--text-primary); }
+
+/* Etiquetas del switch */
+.dark-mode .mode-label.dark-mode-label { color: var(--text-primary); }
+.dark-mode .mode-label.light-mode-label { color: var(--text-secondary); }
+:not(.dark-mode) .mode-label.light-mode-label { color: var(--text-primary); }
+:not(.dark-mode) .mode-label.dark-mode-label { color: var(--text-secondary); }
 
 /* ================================================= */
 /* ESTILOS DE PREGUNTAS Y OPCIONES */
@@ -161,7 +154,6 @@ input:checked + .slider:before { transform: translateX(24px); background-color: 
     background-color: var(--bg-card); 
     border: 1px solid var(--border-color);
 }
-input[type="radio"] { margin-right: 10px; }
 
 /* ================================================= */
 /* MENÚ DE CATEGORÍAS */
@@ -178,25 +170,34 @@ input[type="radio"] { margin-right: 10px; }
 }
 .category-card:hover {
     background-color: var(--border-color); 
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* ================================================= */
 /* BOTONES Y LEADERBOARD */
 /* ================================================= */
 button {
+    /* Botón por defecto (Finalizar Examen) */
     background-color: var(--color-action-secondary); 
-    color: var(--bg-body); 
+    color: white; 
     font-weight: 700;
     padding: 10px 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
 }
-button:hover:not(:disabled) { background-color: var(--color-action-primary); color: white; }
+button:hover:not(:disabled) { 
+    background-color: var(--color-action-primary); 
+}
 
 .start-button {
+    /* Botones de Iniciar Práctica y Volver al Menú */
     background-color: var(--color-action-primary);
     color: white;
 }
-.start-button:hover { background-color: var(--color-action-primary); }
+.start-button:hover { 
+    background-color: var(--color-action-secondary); 
+}
 
 
 /* Leaderboard */
@@ -204,31 +205,32 @@ button:hover:not(:disabled) { background-color: var(--color-action-primary); col
     border: 1px solid var(--border-color);
     background-color: var(--bg-card);
     border-radius: 8px;
+    padding: 20px;
 }
 #leaderboard-table th { 
     background-color: var(--border-color); 
     font-weight: 700;
     color: var(--text-primary);
+    padding: 10px;
 }
 #leaderboard-table td {
     border-bottom: 1px solid var(--border-color);
     color: var(--text-primary);
+    padding: 10px;
 }
 
-/* Botón de Limpiar Historial */
 #leaderboard-section .clear-button { 
     background-color: var(--color-action-danger); 
     color: white;
     width: auto;
     font-size: 13px;
-    margin-bottom: 0;
+    margin-bottom: 10px;
+    display: block;
 }
 #leaderboard-section .clear-button:hover { background-color: #d32f2f; }
 
 
-/* ================================================= */
-/* RETROALIMENTACIÓN */
-/* ================================================= */
+/* Retroalimentación (Colores de estado) */
 .highlight-correct label { 
     background-color: var(--color-success-bg) !important; 
     color: var(--color-success-text) !important; 
