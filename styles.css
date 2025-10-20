@@ -1,42 +1,22 @@
 /* ================================================= */
-/* PALETA DE COLORES (DARK MODE - DEFAULT) */
+/* PALETA DE COLORES DARK MODE (Variables CSS) */
 /* ================================================= */
+/* Aplicamos la paleta de colores del usuario */
 :root {
-    /* Paleta del usuario (Gris/Azul) */
-    --bg-body: #1d1d20; /* Fondo principal (Near Black) */
+    --bg-body: #1d1d20; /* Fondo principal */
     --bg-container: #3a3c45; /* Fondo del Contenedor principal */
-    --bg-card: #4e4e5f; /* Fondo de elementos destacados */
+    --bg-card: #4e4e5f; /* Fondo de elementos destacados/cartas */
     --text-primary: #9fa5b2; /* Texto principal (Claro) */
     --text-secondary: #7d7c92; /* Texto secundario y acento suave */
     --border-color: #4e4e5f; /* Bordes y separadores */
     
-    /* Colores funcionales (Adaptados al Dark Mode) */
-    --color-success-bg: #2e7d32;
-    --color-success-text: #a5d6a7; 
-    --color-error-bg: #b71c1c; 
-    --color-error-text: #ffcdd2; 
-    --color-action: #42a5f5; /* Azul brillante para botones principales */
+    /* Colores funcionales */
+    --color-success-bg: #2e7d32; /* Verde Oscuro para fondo */
+    --color-success-text: #a5d6a7; /* Verde Claro para texto */
+    --color-error-bg: #b71c1c; /* Rojo Oscuro para fondo */
+    --color-error-text: #ffcdd2; /* Rojo Claro para texto */
+    --color-action: #42a5f5; /* Azul brillante para botones */
     --color-action-hover: #1e88e5; 
-}
-
-/* ================================================= */
-/* PALETA DE COLORES (LIGHT MODE) */
-/* ================================================= */
-.light-mode {
-    --bg-body: #f7f7f7;
-    --bg-container: #ffffff;
-    --bg-card: #e8f5e9; /* Light Green/Gray */
-    --text-primary: #343a40;
-    --text-secondary: #6c757d;
-    --border-color: #dee2e6;
-
-    /* Colores funcionales (Adaptados al Light Mode) */
-    --color-success-bg: #d4edda;
-    --color-success-text: #155724; 
-    --color-error-bg: #f8d7da; 
-    --color-error-text: #721c24; 
-    --color-action: #3f51b5; /* Azul índigo */
-    --color-action-hover: #303f9f; 
 }
 
 /* ================================================= */
@@ -48,7 +28,7 @@ body {
     padding: 40px 20px;
     background-color: var(--bg-body);
     color: var(--text-primary);
-    transition: background-color 0.3s, color 0.3s; /* Transición suave de modo */
+    transition: background-color 0.3s, color 0.3s;
 }
 .container {
     max-width: 900px;
@@ -56,7 +36,7 @@ body {
     background: var(--bg-container);
     padding: 40px;
     border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
 }
 h1 {
     color: var(--text-primary); 
@@ -80,78 +60,8 @@ h2 {
 }
 
 /* ================================================= */
-/* SWITCH DE TEMA (MODO CLARO/OSCURO) */
-/* ================================================= */
-.theme-switch-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end; /* Lo mueve a la derecha */
-    margin-bottom: 15px;
-    gap: 10px;
-}
-.mode-label {
-    font-size: 0.85em;
-    color: var(--text-secondary);
-    font-weight: 600;
-    user-select: none;
-}
-.light-mode .mode-label:first-child { color: var(--color-action); } /* Resalta el modo activo */
-:not(.light-mode) .mode-label:last-child { color: var(--text-primary); } /* Resalta el modo activo */
-
-.theme-switch {
-    display: inline-block;
-    height: 26px;
-    position: relative;
-    width: 50px;
-}
-.theme-switch input {
-    display: none;
-}
-.slider {
-    background-color: var(--text-secondary); /* Color del carril apagado */
-    bottom: 0;
-    cursor: pointer;
-    left: 0;
-    position: absolute;
-    right: 0;
-    top: 0;
-    transition: 0.4s;
-}
-.slider:before {
-    background-color: var(--bg-body); /* Color del círculo (Dark mode) */
-    bottom: 4px;
-    content: "";
-    height: 18px;
-    left: 4px;
-    position: absolute;
-    transition: 0.4s;
-    width: 18px;
-}
-input:checked + .slider {
-    background-color: var(--color-action); /* Color del carril encendido */
-}
-input:checked + .slider:before {
-    transform: translateX(24px);
-    background-color: var(--text-primary); /* Círculo en modo oscuro */
-}
-
-/* LIGHT MODE: Switch style */
-.light-mode .slider {
-    background-color: var(--border-color); /* Carril apagado */
-}
-.light-mode input:checked + .slider {
-    background-color: var(--color-action); /* Color del carril encendido */
-}
-.light-mode input:checked + .slider:before {
-    background-color: var(--bg-container); /* Círculo en modo claro */
-}
-.slider.round { border-radius: 34px; }
-.slider.round:before { border-radius: 50%; }
-
-/* ================================================= */
 /* ESTILOS DE PREGUNTAS Y OPCIONES */
 /* ================================================= */
-
 .question {
     margin-bottom: 20px;
     padding: 15px;
@@ -176,6 +86,7 @@ input:checked + .slider:before {
     border-radius: 6px;
     transition: background-color 0.1s;
     border: 1px solid transparent;
+    color: var(--text-primary);
 }
 .option label:hover {
     background-color: var(--bg-card); 
@@ -197,27 +108,31 @@ input[type="radio"] { margin-right: 10px; }
     font-size: 1.1em;
 }
 .category-card:hover {
-    background-color: var(--text-secondary); 
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    background-color: var(--color-action); /* Resaltado de acción */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    color: white;
 }
-.light-mode .category-card:hover { background-color: var(--bg-card); } /* Resalta en Light Mode */
+.category-card:hover strong {
+    color: white;
+}
+
 
 /* ================================================= */
 /* BOTONES Y LEADERBOARD */
 /* ================================================= */
 button {
     background-color: var(--color-action); 
-    color: var(--bg-body); /* Color de fondo oscuro para contraste */
+    color: white; 
     font-weight: 700;
     padding: 10px 15px;
 }
 button:hover:not(:disabled) { background-color: var(--color-action-hover); }
 
 .start-button {
-    background-color: var(--text-secondary); 
+    background-color: var(--bg-card);
     color: var(--text-primary);
 }
-.start-button:hover { background-color: var(--bg-card); }
+.start-button:hover { background-color: var(--color-3); }
 
 
 /* Retroalimentación */
@@ -248,7 +163,7 @@ button:hover:not(:disabled) { background-color: var(--color-action-hover); }
     border: 1px solid var(--border-color);
     background-color: var(--bg-card);
     border-radius: 8px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 #leaderboard-table th { 
     background-color: var(--bg-container); 
