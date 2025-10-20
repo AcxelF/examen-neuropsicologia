@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examen de Práctica de Neuropsicología</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #4CAF50;
+            text-align: center;
+        }
+        .question {
+            margin-bottom: 25px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            background-color: #fff;
+            transition: border 0.3s;
+        }
+        .question p {
+            font-weight: bold;
+            margin-top: 0;
+            color: #333;
+            font-size: 1.05em;
+        }
+        .option {
+            margin-bottom: 8px;
+        }
+        input[type="radio"] {
+            margin-right: 8px;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            font-size: 18px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            margin-top: 30px;
+            transition: background-color 0.3s;
+        }
+        button:hover:not(:disabled) {
+            background-color: #0056b3;
+        }
+        button:disabled {
+            background-color: #aaa;
+            cursor: not-allowed;
+        }
+        #results, #leaderboard-section {
+            margin-top: 20px;
+            padding: 20px;
+            border: 2px solid #4CAF50;
+            border-radius: 6px;
+            background-color: #e8f5e9;
+            font-size: 1.2em;
+            font-weight: bold;
+            text-align: center;
+            /* Se oculta inicialmente, pero la función calculateScore lo mostrará */
+        }
+        #results {
+            margin-bottom: 30px;
+        }
+        /* Estilos de retroalimentación */
+        .highlight-correct label {
+            background-color: #d4edda; /* Verde claro */
+            color: #155724;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+        .highlight-incorrect label {
+            background-color: #f8d7da; /* Rojo claro */
+            color: #721c24;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+        .not-answered {
+             border: 2px solid orange !important;
+        }
+        .explanation {
+            margin-top: 10px;
+            padding: 10px;
+            border-left: 5px solid #2196F3; /* Borde azul para explicaciones */
+            background-color: #e3f2fd; /* Fondo azul claro */
+            font-style: italic;
+            font-size: 0.95em;
+            color: #0d47a1;
+            display: none; /* Se muestra solo al finalizar */
+        }
+        /* Estilos del Leaderboard */
+        #leaderboard-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            font-size: 0.95em;
+        }
+        #leaderboard-table th, #leaderboard-table td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        #leaderboard-table th {
+            background-color: #f0f0f0;
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* Ocultar resultados y leaderboard al inicio */
+        #results, #leaderboard-section { display: none; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>📝 Examen de Práctica de Neuropsicología</h1>
+    <p>Selecciona la respuesta correcta para cada pregunta. Al finalizar, verás tu puntaje y las explicaciones.</p>
+    
+    <div id="results">
+        🎉 ¡Examen Finalizado! 🎉<br>
+        Tu puntaje es: <span id="score">0</span> de 82 aciertos.
+    </div>
+
+    <div id="leaderboard-section">
+        <h2>🏆 Tus Puntajes Recientes</h2>
+        <p>Los puntajes se guardan solo en tu navegador.</p>
+        <table id="leaderboard-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Aciertos</th>
+                    <th>Fecha</th>
+                </tr>
+            </thead>
+            <tbody>
+                </tbody>
+        </table>
+    </div>
+
+    <form id="quizForm">
+
+        <div class="quiz-section">
+            <h2>Parte 1: Neuropsicología y Atención (Preguntas 1-20)</h2>
+            
+            <div class="question" data-correct-answer="b" data-explanation="La Neuroplasticidad describe al cerebro como un sistema activo que remodela su estructura y conexiones funcionales constantemente en respuesta a la experiencia, el aprendizaje o el daño.">
+                <p>1. La Neuropsicología describe al cerebro, en el contexto de la Neuroplasticidad, como un órgano:</p>
+                <div class="option" data-value="a"> <input type="radio" id="q1a" name="q1" value="a"> <label for="q1a">A. Estático, que solo cambia en la infancia.</label> </div>
+                <div class="option" data-value="b"> <input type="radio" id="q1b" name="q1" value="b"> <label for="q1b">B. Dinámico, que constantemente cambia su arquitectura y sus relaciones funcionales.</label> </div>
+                <div class="option" data-value="c"> <input type="radio" id="q1c" name="q1" value="c"> <label for="q1c">C. Rígido, capaz de autorregular el tono o la vigilia.</label> </div>
+                <div class="option" data-value="d"> <input type="radio" id="q1d" name="q1" value="d"> <label for="q1d">D. Moldeable, solo en función de las lesiones.</label> </div>
+                <div class="explanation"></div>
+            </div>
+
+            <div class="question" data-correct-answer="d" data-explanation="En la adultez, la Neuroplasticidad se enfoca en la reorganización y la supervivencia neuronal, clave para la recuperación funcional tras el daño (plasticidad reconstructiva).">
+                <p>2. La capacidad de las neuronas en la edad adulta (Neuroplasticidad) se enfoca principalmente en:</p>
+                <div class="option" data-value="a"> <input type="radio" id="q2a" name="q2" value="a"> <label for="q2a">A. Diferenciarse y organizar conexiones neuronales.</label> </div>
+                <div class="option" data-value="b"> <input type="radio" id="q2b" name="q2" value="b"> <label for="q2b">B. Aumentar redes sinápticas, creando la base estructural.</label> </div>
+                <div class="option" data-value="c"> <input type="radio" id="q2c" name="q2" value="c"> <label for="q2c">C. La migración y mielinización del tejido neuronal.</label> </div>
+                <div class="option" data-value="d"> <input type="radio" id="q2d" name="q2" value="d"> <label for="q2d">D. Facilitar la supervivencia y reorganizar circuitos dañados.</label> </div>
+                <div class="explanation"></div>
+            </div>
+
+            <div class="question" data-correct-answer="d" data-explanation="La Plasticidad no adaptativa se refiere a los cambios maladaptativos del cerebro, como el 'calambre del pianista', donde el entrenamiento intensivo lleva a una pérdida de función.">
+                <p>3. ¿Cuál de los siguientes ejemplos ilustra la "Plasticidad no adaptativa"?</p>
+                <div class="option" data-value="a"> <input type="radio" id="q3a" name="q3" value="a"> <label for="q3a">A. Recuperación funcional después de un Accidente Cerebrovascular (ACV).</label> </div>
+                <div class="option" data-value="b"> <input type="radio" id="q3b" name="q3" value="b"> <label for="q3b">B. Adquisición de un nuevo idioma (aprendizaje).</label> </div>
+                <div class="option" data-value="c"> <input type="radio" id="q3c" name="q3" value="c"> <label for="q3c">C. Neurogénesis en fetos y embriones.</label> </div>
+                <div class="option" data-value="d"> <input type="radio" id="q3d" name="q3" value="d"> <label for="q3d">D. Distonía focal de tarea específica o "calambre del pianista".</label> </div>
+                <div class="explanation"></div>
+            </div>
+
+            <div class="question" data-correct-answer="d" data-explanation="La Potenciación a Largo Plazo (PLP) es el principal mecanismo sináptico que subyace al aprendizaje y se define como el aumento duradero en la fuerza de la conexión sináptica.">
+                <p>4. ¿Cuál es el mecanismo celular que subyace al aprendizaje y la memoria, que consiste en una intensificación duradera en la transmisión de señales entre dos neuronas que resulta de la estimulación sincrónica de ambas?</p>
+                <div class="option" data-value="a"> <input type="radio" id="q4a" name="q4" value="a"> <label for="q4a">A. Depresión Prolongada (DLP).</label> </div>
+                <div class="option" data-value="b"> <input type="radio" id="q4b" name="q4" value="b"> <label for="q4b">B. Sinapsis Hebianna.</label> </div>
+                <div class="option" data-value="c"> <input type="radio" id="q4c" name="q4" value="c"> <label for="q4c">C. Colateralización.</label> </div>
+                <div class="option" data-value="d"> <input type="radio" id="q4d" name="q4" value="d"> <label for="q4d">D. Potenciación a Largo Plazo (PLP).</label> </div>
+                <div class="explanation"></div>
+            </div>
+
+            <div class="question" data-correct-answer="c" data-explanation="La Dominancia Cerebral es el concepto neuropsicológico que se refiere a la superioridad de un hemisferio en una función específica (ej. lenguaje), un proceso involuntario no entrenable.">
+                <p>5. El predominio de un hemisferio sobre otro en una determinada función cognitiva, que es un proceso inconsciente e involuntario y no es entrenable, se denomina:</p>
+                <div class="option" data-value="a"> <input type="radio" id="q5a" name="q5" value="a"> <label for="q5a">A. Lateralidad.</label> </div>
+                <div class="option" data-value="b"> <input type="radio" id="q5b" name="q5" value="b"> <label for="q5b">B. Asimetría cerebral.</label> </div>
+                <div class="option" data-value="c"> <input type="radio" id="q5c" name="q5" value="c"> <label for="q5c">C. Dominancia cerebral.</label> </div>
+                <div class="option" data-value="d"> <input type="radio" id="q5d" name="q5" value="d"> <label for="q5d">D. Diferenciación hemisférica.</label> </div>
+                <div class="explanation"></div>
+            </div>
+
+            <div class="question" data-correct-answer="c" data-explanation="La Lateralización Progresiva postula que, aunque inicialmente ambos hemisferios tienen potencial, las funciones se van especializando y 'lateralizando' a medida que el niño crece.">
+                <p>6. Una de las teorías sobre el desarrollo de la Asimetría Cerebral, conocida como Lateralización Progresiva, propone que:</p>
+                <div class="option" data-value="a"> <input type="radio" id="q6a" name="q6" value="a"> <label for="q6a">A. La lateralización hemisférica se define desde el momento de nacer.</label> </div>
+                <div class="option" data-value="b"> <input type="radio" id="q6b" name="q6" value="b"> <label for="q6b">B. El hemisferio derecho madura más tarde que el izquierdo.</label> </div>
+                <div class="option" data-value="c"> <input type="radio" id="q6c" name="q6" value="c"> <label for="q6c">C. Los dos hemisferios pueden potenciar habilidades en los niños, pero se van lateralizando conforme crecen.</label> </div>
+                <div class="option" data-value="d"> <input type="radio" id="q6d" name="q6" value="d"> <label for="q6d">D. La asimetría solo está determinada por factores genéticos.</label> </div>
+                <div class="explanation"></div>
+            </div>
+
+            <div class="question" data-correct-answer="d" data-explanation="El Test Dicáptico (táctil) y el Dicotómico (auditivo) se usan para establecer la dominancia. El HI es dominante para la información verbal/simbólica, incluyendo el reconocimiento táctil de letras y números.">
+                <p>7. Mediante el Test Dicáptico, se comprueba que el hemisferio izquierdo es predominante para el reconocimiento táctil de:</p>
+                <div class="option" data-value="a"> <input type="radio" id="q7a" name="q7" value="a"> <label for="q7a">A. Formas tridimensionales.</label> </div>
+                <div class="option" data-value="b"> <input type="radio" id="q7b" name="q7" value="b"> <label for="q7b">B. Figuras geométricas.</label> </div>
+                <div class="option" data-value="c"> <input type="radio" id="q7c" name="q7" value="c"> <label for="q7c">C. Olores.</label> </div>
+                <div class="option" data-value="d"> <input type="radio" id="q7d" name="q7" value="d"> <label for="q7d">D. Letras y números.</label> </div>
+                <div class="explanation"></div>
+            </div>
+
+            <div class="question" data-correct-answer="d" data-explanation="El tercer nivel de la Conciencia Transitiva es el más elevado y se refiere a la autoconciencia o conciencia de sí mismo, que integra los niveles inferiores.">
+                <p>8. El tercer nivel de la Conciencia Transitiva involucra una actividad consciente de orden superior que incluye:</p>
+                <div class="option" data-value="a"> <input type="radio" id="q8a" name="q8" value="a"> <label for="q8a">A. Experiencias subjetivas (sensaciones y sentimientos).</label> </div>
+                <div class="option" data-value="b"> <input type="radio" id="q8b" name="q8" value="b"> <label for="q8b">B. Un estado alerta y de vigilia.</label> </div>
+                <div class="option" data-value="c"> <input type="radio" id="q8c" name="q8" value="c"> <label for="q8c">C. La relación de percepciones en su curso temporal con la memoria.</label> </div>
+                <div class="option" data-value="d"> <input type="radio" id="q8d" name="q8" value="d"> <label for="q8d">D. La capacidad de ser conscientes de sí mismos.</label> </div>
+                <div class="explanation"></div>
+            </div>
+
+            <div class="question" data-correct-answer="c" data-explanation="La Obnubilación es un estado intermedio de conciencia que se caracteriza por somnolencia y una respuesta lenta y confusa, pero con el paciente aún despierto.">
+                <p>9. El estado de conciencia donde el paciente está alerta, pero presenta somnolencia y responde a las preguntas con lentitud, confusión y desorientación, es:</p>
+                <div class="option" data-value="a"> <input type="radio" id="q9a" name="q9" value="a"> <label for="q9a">A. Vigilia.</label> </div>
+                <div class="option" data-value="b"> <input type="radio" id="q9b" name="q9" value="b"> <label for="q9b">B. Coma.</label> </div>
+                <div class="option" data-value="c"> <input type="radio" id="q9c" name="q9" value="c"> <label for="q9c">C. Obnubilación.</label> </div>
+                <div class="option" data-value="d"> <input type="radio" id="q9d" name="q9" value="d"> <label for="q9d">D. Estupor.</label> </div>
+                <div class="explanation"></div>
+            </div>
+
+            <div class="question" data-correct-answer="c" data-explanation="La Heminegligencia se define como el fracaso en orientar, informar o responder a estímulos presentados en el espacio opuesto a la lesión cerebral (generalmente parietal derecho).">
+                <p>10. La Heminegligencia atencional o sensorial se da por lesión cerebral y se caracteriza porque:</p>
+                <div class="option" data-value="a"> <input type="radio" id="q10a" name="q10" value="a"> <label for="q10a">A. Falla en la percepción solo cuando se utilizan ambos lados del cuerpo.</label> </div>
+                <div class="option" data-value="b"> <input type="radio" id="q10b" name="q10" value="b"> <label for="q10b">B. El paciente ignora solo parte de su propio cuerpo (hemisomatognosia).</label> </div>
+                <div class="option" data-value="c"> <input type="radio" id="q10c" name="q10" value="c"> <label for="q10c">C. La atención selectiva no percibe estímulos del espacio externo o del propio cuerpo, del lado opuesto de la lesión.</label> </div>
+                <div class="option" data-value="d"> <input type="radio" id="q10d" name="q10" value="d"> <label for="q10d">D. Es más sutil que la hemi inatención.</label> </div>
+                <div class="explanation"></div>
+            </div>
+
+            <div class="question" data-correct-answer="c" data-explanation="La Dopamina y la Noradrenalina son los neurotransmisores clave en la regulación del córtex prefrontal y los ganglios basales, circuitos implicados en la atención, la inhibición y el TDAH.">
+                <p>11. Los estudios indican que el TDAH surge cuando hay problemas en los circuitos reguladores que comunican el córtex prefrontal y los ganglios basales, mediante los neurotransmisores:</p>
+                <div class="option" data-value="a"> <input type="radio" id="q11a" name="q11" value="a"> <label for="q11a">A. Acetilcolina y Serotonina.</label> </div>
+                <div class="option" data-value="b"> <input type="radio" id="q11b" name="q11" value="b"> <label for="q11b">B. Glutamato y GABA.</label> </div>
+                <div class="option" data-value="c"> <input type="radio" id="q11c" name="q11" value="c"> <label for="q11c">C. Dopamina y Noradrenalina.</label> </div>
+                <div class="option" data-value="d"> <input type="radio" id="q11d" name="q11" value="d"> <label for="q11d">D. Melatonina y Adrenalina.</label> </div>
+                <div class="explanation"></div>
+            </div>
+
+            <div class="question" data-correct-answer="c" data-explanation="El hemisferio izquierdo es dominante para el lenguaje en el 95% de las personas diestras y en el 70% de las zurdas (lo que indica que la dominancia manual no siempre predice la cerebral).">
+                <p>12. Las áreas del lenguaje se encuentran ubicadas en el hemisferio cerebral izquierdo para:</p>
+                <div class="option" data-value="a"> <input type="radio" id="q12a" name="q12" value="a"> <label for="q12a">A. El 70% de las personas zurdas.</label> </div>
+                <div class="option" data-value="b"> <input type="radio" id="q12b" name="q12" value="b"> <label for="q12b">B. El 5% de las personas diestras.</label> </div>
+                <div class="option" data-value="c"> <input type="radio" id="q12c" name="q12" value="c"> <label for="q12c">C. El 95% de las personas diestras.</label> </div>
+                <div class="option" data-value="d"> <input type="radio" id="q12d" name="q12" value="d"> <label for="q12d">D. El 100% de la población general.</label> </div>
+                <div class="explanation"></div>
+            </div>
+
+            <div class="question" data-correct-answer="d" data-explanation="La Afasia Semántica (Luria, lesión parieto-occipital izquierda) se relaciona con la dificultad para comprender estructuras complejas como las relaciones lógico-gramaticales o las espaciales.">
+                <p>13. Según la clasificación de A. Luria, la Afasia Semántica se caracteriza por una dificultad para:</p>
+                <div class="option" data-value="a"> <input type="radio" id="q13a" name="q13" value="a"> <label for="q13a">A. La alteración de la base cinestésica de la articulación (lenguaje no fluyente).</label> </div>
+                <div class="option" data-value="b"> <input type="radio" id="q13b" name="q13" value="b"> <label for="q13b">B. La alteración de la comparación y reconocimiento visual-auditivo de las palabras.</label> </div>
+                <div class="option" data-value="c"> <input type="radio" id="q13c" name="q13" value="c"> <label for="q13c">C. La dificultad en asociar lo percibido y el significado de las palabras (anomia).</label> </div>
+                <div class="option" data-value="d"> <input type="radio" id="q13d" name="q13" value="d"> <label for="q13d">D. Reconocer relaciones espacio-temporales y comprender estructuras lógico-gramaticales.</label> </div>
+                <div class="explanation"></div>
+            </div>
+
+            <div class="question" data-correct-answer="b" data-explanation="La Afasia de Wernicke (Sensorial) se caracteriza por un lenguaje fluido pero incoherente, con severo déficit de comprensión y repetición.">
+                <p>14. Según la clasificación de Geschwind, ¿qué tipo de afasia se caracteriza por ser FLUENTE, NO COMPRENDER y NO REPETIR el lenguaje?</p>
+                <div class="option" data-value="a"> <input type="radio" id="q14a" name="q14" value="a"> <label for="q14a">A. Afasia Global.</label> </div>
+                <div class="option" data-value="b"> <input type="radio" id="q14b" name="q14" value="b"> <label for="q14b">B. Afasia de Wernicke.</label> </div>
+                <div class="option" data-value="c"> <input type="radio" id="q14c" name="q14" value="c"> <label for="q14c">C. Afasia Anómica.</label> </div>
+                <div class="option" data-value="d"> <input type="radio" id="q14d" name="q14" value="d"> <label for="q14d">D. Afasia de Broca.</label> </div>
+                <div class="explanation"></div>
+            </div>
+
+            <div class="question" data-correct-answer="b" data-explanation="La Afasia es una pérdida del lenguaje adquirida debido a una lesión cerebral (orgánica). La Disfasia/Trastorno Específico del Lenguaje (TEL) es un trastorno primario del desarrollo sin una lesión neurológica adquirida conocida.">
+                <p>15. El paciente que sufre Disfasia (Trastorno Específico del Lenguaje) se distingue del paciente afásico en que el trastorno:</p>
+                <div class="option" data-value="a"> <input type="radio" id="q15a" name="q15" value="a"> <label for="q15a">A. Es considerado un trastorno extremo y grave.</label> </div>
+                <div class="option" data-value="b"> <input type="radio" id="q15b" name="q15" value="b"> <label for="q15b">B. No tiene un origen orgánico o lesión cerebral adquirida.</label> </div>
+                <div class="option" data-value="c"> <input type="radio" id="q15c" name="q15" value="c"> <label for="q15c">C. Tiene un origen orgánico de tipo vascular.</label> </div>
+                <div class="option" data-value="d"> <input type="radio" id="q15d" name="q15" value="d"> <label for="q15d">D. Afecta al lenguaje ya formado.</label> </div>
+                <div class="explanation"></div>
+            </div>
+
+            <div class="question" data-correct-answer="b" data-explanation="La Apraxia Ideatoria es un déficit en el 'plan' mental de la acción, resultando en la incapacidad de llevar a cabo secuencias complejas de movimientos, sobre todo al usar objetos.">
+                <p>16. El déficit en la Apraxia Ideatoria radica en la alteración del sistema conceptual, lo que se manifiesta en:</p>
+                <div class="option" data-value="a"> <input type="radio" id="q16a" name="q16" value="a"> <label for="q16a">A. Incapacidad para realizar movimientos o gestos voluntarios simples por imitación.</label> </div>
+                <div class="option" data-value="b"> <input type="radio" id="q16b" name="q16" value="b"> <label for="q16b">B. Incapacidad para llevar a cabo secuencia de movimientos, en especial con objetos o herramientas conocidas.</label> </div>
+                <div class="option" data-value="c"> <input type="radio" id="q16c" name="q16" value="c"> <label for="q16c">C. Errores espaciales de orientación y movimiento.</label> </div>
+                <div class="option" data-value="d"> <input type="radio" id="q16d" name="q16" value="d"> <label for="q16d">D. Disociación entre movimientos voluntarios e involuntarios.</label> </div>
+                <div class="explanation"></div>
+            </div>
+
+            <div class="question" data-correct-answer="c" data-explanation="La Apraxia Constructiva es la incapacidad para organizar espacialmente las partes de un todo (visoconstrucción), siendo evidente al dibujar o construir figuras.">
+                <p>17. El trastorno que se caracteriza por la alteración en la capacidad de organizar la información espacial y llevar a cabo actividades de visoconstrucción (dibujar, construir cubos o rompecabezas) se denomina:</p>
+                <div class="option" data-value="a"> <input type="radio" id="q17a" name="q17" value="a"> <label for="q17a">A. Apraxia del Vestido.</label> </div>
+                <div class="option" data-value="b"> <input type="radio" id="q17b" name="q17" value="b"> <label for="q17b">B. Apraxia Ideomotora.</label> </div>
+                <div class="option" data-value="c"> <input type="radio" id="q17c" name="q17" value="c"> <label for="q17c">C. Apraxia Constructiva.</label> </div>
+                <div class="option" data-value="d"> <input type="radio" id="q17d" name="q17" value="d"> <label for="q17d">D. Apraxia Bucofacial.</label> </div>
+                <div class="explanation"></div>
+            </div>
+
+            <div class="question" data-correct-answer="b" data-explanation="La Apraxia Bucofacial se caracteriza por la disociación entre los movimientos voluntarios (pedidos por orden) e involuntarios/automáticos (espontáneos) de los órganos orofaciales.">
+                <p>18. La Apraxia Bucofacial se caracteriza por una disociación dada por la:</p>
+                <div class="option" data-value="a"> <input type="radio" id="q18a" name="q18" value="a"> <label for="q18a">A. Incapacidad para anudar cordones o corbatas.</label> </div>
+                <div class="option" data-value="b"> <input type="radio" id="q18b" name="q18" value="b"> <label for="q18b">B. Incapacidad para realizar actividades voluntarias (ej. soplar ante la orden) con conservación de actividades involuntarias (ej. tragar de forma espontánea).</label> </div>
+                <div class="option" data-value="c"> <input type="radio" id="q18c" name="q18" value="c"> <label for="q18c">C. Dificultad para iniciar los movimientos de forma coordinada (marcha).</label> </div>
+                <div class="option" data-value="d"> <input type="radio" id="q18d" name="q18" value="d"> <label for="q18d">D. Hemiapraxia que afecta a la mano izquierda por callosotomía.</label> </div>
+                <div class="explanation"></div>
+            </div>
+
+            <div class="question" data-correct-answer="c" data-explanation="La Agnosia Asociativa implica que el paciente ve el objeto y puede describirlo (percepción intacta), pero no puede reconocer su significado o función (defecto semántico).">
+                <p>19. ¿Qué modalidad de agnosia visual, según Lissauer (1895), se caracteriza por tener la capacidad perceptiva intacta, pero con incapacidad para atribuir un significado (semántica) a los estímulos visuales?</p>
+                <div class="option" data-value="a"> <input type="radio" id="q19a" name="q19" value="a"> <label for="q19a">A. Agnosia Aperceptiva.</label> </div>
+                <div class="option" data-value="b"> <input type="radio" id="q19b" name="q19" value="b"> <label for="q19b">B. Simultagnosia.</label> </div>
+                <div class="option" data-value="c"> <input type="radio" id="q19c" name="q19" value="c"> <label for="q19c">C. Agnosia Asociativa.</label> </div>
+                <div class="option" data-value="d"> <input type="radio" id="q19d" name="q19" value="d"> <label for="q19d">D. Prosopagnosia.</label> </div>
+                <div class="explanation"></div>
+            </div>
+
+            <div class="question" data-correct-answer="d" data-explanation="La Asomatognosia es la negación de una parte del cuerpo, un tipo de agnosia somatosensorial, asociada a la negligencia y lesiones del hemisferio derecho.">
+                <p>20. El término que se refiere a la negación de una parte del cuerpo correspondiente a la zona hemipléjica, asociado a lesiones agudas de la región parietal posterior del hemisferio derecho, se conoce como:</p>
+                <div class="option" data-value="a"> <input type="radio" id="q20a" name="q20" value="a"> <label for="q20a">A. Anosognosia.</label> </div>
+                <div class="option" data-value="b"> <input type="radio" id="q20b" name="q20" value="b"> <label for="q20b">B. Misoplejia.</label> </div>
+                <div class="option" data-value="c"> <input type="radio" id="q20c" name="q20" value="c"> <label for="q20c">C. Analgoagnosia.</label> </div>
+                <div class="option" data-value="d"> <input type="radio" id="q20d" name="q20" value="d"> <label for="q20d">D. Asomatognosia.</label> </div>
+                <div class="explanation"></div>
+            </div>
+
+            <h2>Parte 2: Lenguaje, Praxias y Agnosias (Preguntas 21-42)</h2>
+
+            <div class="question" data-correct-answer="b" data-explanation="El 95% de las personas diestras tiene el lenguaje lateralizado en el hemisferio izquierdo, mientras que en los zurdos la lateralización es más variable.">
+                <p>21. Las áreas del lenguaje se encuentran ubicadas en el hemisferio cerebral izquierdo para la mayoría de la población. Específicamente, esto aplica para aproximadamente:</p>
+                <div class="option" data-value="a"> <input type="radio" id="q21a" name="q21" value="a"> <label for="q21a">A. El 70% de las personas zurdas.</label> </div>
+                <div class="option" data-value="b"> <input type="radio" id="q21b" name="q21" value="b"> <label for="q21b">B. El 95% de las personas diestras.</label> </div>
+                <div class="option" data-value="c"> <input type="radio" id="q21c" name="q21" value="c"> <label for="q21c">C. El 50% de las personas diestras.</label> </div>
+                <div class="option" data-value="d"> <input type="radio" id="q21d" name="q21" value="d"> <label for="q21d">D. La totalidad de las personas zurdas.</label> </div>
+                <div class="explanation"></div>
+            </div>
+
+            <div class="question" data-correct-answer="d" data-explanation="El Fascículo Arqueado (o Arcuata) es un haz de fibras de asociación que conecta el área de Wernicke (comprensión) con el área de Broca (producción), siendo crucial para la repetición.">
+                <p>22. ¿Qué estructura bajo la corteza cerebral conecta las áreas del lenguaje (Broca y Wernicke) y es fundamental en el mecanismo de repetición?</p>
+                <div class="option" data-value="a"> <input type="radio" id="q22a" name="q22" value="a"> <label for="q22a">A. El Cuerpo Calloso.</label> </div>
+                <div class="option" data-value="b"> <input type="radio" id="q22b" name="q22" value="b"> <label for="q22b">B. La Cisura de Silvio.</label> </div>
+                <div class="option" data-value="c"> <input type="radio" id="q22c" name="q22" value="c"> <label for="q22c">C. La Ínsula.</label> </div>
+                <div class="option" data-value="d"> <input type="radio" id="q22d" name="q22" value="d"> <label for="q22d">D. El Fascículo Arqueado o Arcuata.</label> </div>
+                <div class="explanation"></div>
+            </div>
+
+            <div class="question" data-correct-answer="c" data-explanation="El área de Wernicke se localiza principalmente en el Área 22 de Brodmann (córtex temporal superior), con contribuciones importantes de las Áreas 39 y 40 (giros angular y supramarginal).">
+                <p>23. ¿Qué Área de Brodmann se relaciona con la comprensión del lenguaje (Área de Wernicke)?</p>
+                <div class="option" data-value="a"> <input type="radio" id="q23a" name="q23" value="a"> <label for="q23a">A. 44 y 45.</label> </div>
+                <div class="option" data-value="b"> <input type="radio" id="q23b" name="q23" value="b"> <label for="q23b">B. 4 y 6.</label> </div>
+                <div class="option" data-value="c"> <input type="radio" id="q23c" name="q23" value="c"> <label for="q23c">C. 39, 40 y 22.</label> </div>
+                <div class="option" data-value="d"> <input type="radio" id="q23d" name="q23" value="d"> <label for="q23d">D. 1, 2 y 3.</label> </div>
+                <div class="explanation"></div>
+            </div>
+
+            <div class="question" data-correct-answer="b" data-explanation="La Afasia de Broca (motora) es típicamente no fluida o disfluente, caracterizada por un habla laboriosa, lenta y con interrupciones.">
+                <p>24. La Afasia de Broca se caracteriza por ser un tipo de afasia:</p>
+                <div class="option" data-value="a"> <input type="radio" id="q24a" name="q24" value="a"> <label for="q24a">A. Fluida (o de logorrea).</label> </div>
+                <div class="option" data-value="b"> <input type="radio" id="q24b" name="q24" value="b"> <label for="q24b">B. No fluida (o de tartamudeo).</label> </div>
+                <div class="option" data-value="c"> <input type="radio" id="q24c" name="q24" value="c"> <label for="q24c">C. Sensorial.</label> </div>
+                <div class="option" data-value="d"> <input type="radio" id="q24d" name="q24" value="d"> <label for="q24d">D. Transcortical Sensorial.</label> </div>
+                <div class="explanation"></div>
+            </div>
+
+            <div class="question" data-correct-answer="c" data-explanation="El agramatismo es la característica distintiva de la Afasia de Broca: omisión de palabras gramaticales (artículos, preposiciones) resultando en un 'habla telegráfica'.">
+                <p>25. Una de las características más relevantes de la producción verbal en la Afasia de Broca es:</p>
+                <div class="option" data-value="a"> <input type="radio" id="q25a" name="q25" value="a"> <label for="q25a">A. La presencia de parafasias y neologismos.</label> </div>
+                <div class="option" data-value="b"> <input type="radio" id="q25b" name="q25" value="b"> <label for="q25b">B. La anosognosia (inconsciencia de los errores).</label> </div>
+                <div class="option" data-value="c"> <input type="radio" id="q25c" name="q25" value="c"> <label for="q25c">C. El agramatismo (decremento de palabras sintácticas o gramaticales).</label> </div>
+                <div class="option" data-value="d"> <input type="radio" id="q25d" name="q25" value="d"> <label for="q25d">D. El habla telegráfica con fluidez normal.</label> </div>
+                <div class="explanation"></div>
+            </div>
+
+            <div class="question" data-correct-answer="d" data-explanation="La Anosognosia es la falta de conciencia o negación de la propia enfermedad. Es frecuente en la Afasia de Wernicke y en la Heminegligencia.">
+                <p>26. En la Afasia de Wernicke, el paciente presenta un habla fluida pero desprovista de sentido y tiene un déficit para la comprensión. Además, suelen ser inconscientes de los errores que cometen al comunicarse. ¿Cómo se denomina esta falta de conciencia?</p>
+                <div class="option" data-value="a"> <input type="radio" id="q26a" name="q26" value="a"> <label for="q26a">A. Disprosodia.</label> </div>
+                <div class="option" data-value="b"> <input type="radio" id="q26b" name="q26" value="b"> <label for="q26b">B. Agrafía.</label> </div>
+                <div class="option" data-value="c"> <input type="radio" id="q26c" name="q26" value="c"> <label for="q26c">C. Alexia.</label> </div>
+                <div class="option" data-value="d"> <input type="radio" id="q26d" name="q26" value="d"> <label for="q26d">D. Anosognosia.</label> </div>
+                <div class="explanation"></div>
+            </div>
+
+            <div class="question" data-correct-answer="d" data-explanation="El modelo de Lichtheim-Geschwind sitúa la Afasia de Conducción por lesión en el Fascículo Arqueado, interrumpiendo la conexión directa entre Broca y Wernicke, lo que causa el déficit de repetición.">
+                <p>27. Según el modelo conexionista clásico de Lichtheim, la Afasia de Conducción se produce por una lesión en:</p>
+                <div class="option" data-value="a"> <input type="radio" id="q27a" name="q27" value="a"> <label for="q27a">A. El Área de Broca.</label> </div>
+                <div class="option" data-value="b"> <input type="radio" id="q27b" name="q27" value="b"> <label for="q27b">B. El Área de Wernicke.</label> </div>
+                <div class="option" data-value="c"> <input type="radio" id="q27c" name="q27" value="c"> <label for="q27c">C. El Área Conceptual.</label> </div>
+                <div class="option" data-value="d"> <input type="radio" id="q27d" name="q27" value="d"> <label for="q27d">D. Las vías que conectan las áreas de Broca y Wernicke.</label> </div>
+                <div class="explanation"></div>
+            </div>
+
+            <div class="question" data-correct-answer="d" data-explanation="La Afasia Anómica (o Nominal) se caracteriza por la dificultad para evocar palabras, especialmente sustantivos y nombres propios (anomia), recurriendo a circunloquios para describirlos.">
+                <p>28. La Afasia Anómica (o Nominal) afecta principalmente a:</p>
+                <div class="option" data-value="a"> <input type="radio" id="q28a" name="q28" value="a"> <label for="q28a">A. La repetición.</label> </div>
+                <div class="option" data-value="b"> <input type="radio" id="q28b" name="q28" value="b"> <label for="q28b">B. La comprensión auditiva.</label> </div>
+                <div class="option" data-value="c"> <input type="radio" id="q28c" name="q28" value="c"> <label for="q28c">C. La articulación.</label> </div>
+                <div class="option" data-value="d"> <input type="radio" id="q28d" name="q28" value="d"> <label for="q28d">D. Los sustantivos (dificultad en encontrar la palabra correcta).</label> </div>
+                <div class="explanation"></div>
+            </div>
+
+            <div class="question" data-correct-answer="d" data-explanation="La Afasia es un trastorno adquirido secundario a lesión (ACV, TEC). La Disfasia/TEL es un trastorno primario del desarrollo, sin causa orgánica adquirida conocida.">
+                <p>29. Una diferencia clave entre Afasia y Disfasia es que:</p>
+                <div class="option" data-value="a"> <input type="radio" id="q29a" name="q29" value="a"> <label for="q29a">A. La Afasia es un trastorno idiopático y la Disfasia tiene un origen orgánico.</label> </div>
+                <div class="option" data-value="b"> <input type="radio" id="q29b" name="q29" value="b"> <label for="q29b">B. La Disfasia se caracteriza por la pérdida total de la capacidad de hablar.</label> </div>
+                <div class="option" data-value="c"> <input type="radio" id="q29c" name="q29" value="c"> <label for="q29c">C. La Afasia solo se produce en adultos y la Disfasia solo en niños.</label> </div>
+                <div class="option" data-value="d"> <input type="radio" id="q29d" name="q29" value="d"> <label for="q29d">D. La Afasia es un trastorno del lenguaje secundario a una lesión cerebral adquirida, mientras que la Disfasia no tiene un origen orgánico.</label> </div>
+                <div class="explanation"></div>
+            </div>
+
+            <div class="question" data-correct-answer="d" data-explanation="La Disfemia, comúnmente conocida como tartamudez o espasmofemia, es un trastorno de la fluidez del habla que implica repeticiones, prolongaciones o bloqueos espasmódicos en la emisión.">
+                <p>30. El trastorno de elocución que se caracteriza por el bloqueo espasmódico que interrumpe o impide la emisión de la palabra (ej. repetición involuntaria de sílabas), que no es una afasia, se denomina:</p>
+                <div class="option" data-value="a"> <input type="radio" id="q30a" name="q30" value="a"> <label for="q30a">A. Disartria.</label> </div>
+                <div class="option" data-value="b"> <input type="radio" id="q30b" name="q30" value="b"> <label for="q30b">B. Disfonía.</label> </div>
+                <div class="option" data-value="c"> <input type="radio" id="q30c" name="q30" value="c"> <label for="q30c">C. Disglosia.</label> </div>
+                <div class="option" data-value="d"> <input type="radio" id="q30d" name="q30" value="d"> <label for="q30d">D. Disfemia.</label> </div>
+                <div class="explanation"></div>
+            </div>
+
+            <div class="question" data-correct-answer="c" data-explanation="Las Praxias son sistemas de movimientos coordinados y organizados para un fin, que se aprenden a través de la experiencia y se automatizan con la repetición.">
+                <p>31. Las Praxias se definen como acciones motoras:</p>
+                <div class="option" data-value="a"> <input type="radio" id="q31a" name="q31" value="a"> <label for="q31a">A. Involuntarias y reflejas, que se aprenden durante la infancia.</label> </div>
+                <div class="option" data-value="b"> <input type="radio" id="q31b" name="q31" value="b"> <label for="q31b">B. Simples y aisladas, controladas por el córtex asociativo motor.</label> </div>
+                <div class="option" data-value="c"> <input type="radio" id="q31c" name="q31" value="c"> <label for="q31c">C. Coordinadas, que se realizan para la consecución de un fin, aprendidas y conscientes, que por repetición se automatizan.</label> </div>
+                <div class="option" data-value="d"> <input type="radio" id="q31d" name="q31" value="d"> <label for="q31d">D. Complejas y no automáticas, controladas únicamente por el sistema conceptual.</label> </div>
+                <div class="explanation"></div>
+            </div>
+
+            <div class="question" data-correct-answer="d" data-explanation="La Apraxia Ideatoria es un trastorno del 'saber hacer' que afecta el sistema conceptual, es decir, el conocimiento sobre qué objeto usar y cómo debe ser la secuencia de la acción.">
+                <p>32. ¿Cuál de los siguientes componentes se considera afectado en la Apraxia Ideatoria?</p>
+                <div class="option" data-value="a"> <input type="radio" id="q32a" name="q32" value="a"> <label for="q32a">A. El sistema de producción.</label> </div>
+                <div class="option" data-value="b"> <input type="radio" id="q32b" name="q32" value="b"> <label for="q32b">B. El área premotora suplementaria.</label> </div>
+                <div class="option" data-value="c"> <input type="radio" id="q32c" name="q32" value="c"> <label for="q32c">C. La ejecución del gesto simple.</label> </div>
+                <div class="option" data-value="d"> <input type="radio" id="q32d" name="q32" value="d"> <label for="q32d">D. El sistema conceptual (conocimiento sobre la función de objetos).</label> </div>
+                <div class="explanation"></div>
+            </div>
+
+            <div class="question" data-correct-answer="d" data-explanation="La Apraxia Ideomotora (déficit en la ejecución) se asocia frecuentemente con lesiones del hemisferio izquierdo en la zona que conecta los lóbulos parietal, temporal y occipital.">
+                <p>33. La Apraxia Ideomotora se atribuye a una lesión del hemisferio izquierdo, específicamente en:</p>
+                <div class="option" data-value="a"> <input type="radio" id="q33a" name="q33" value="a"> <label for="q33a">A. El córtex prefrontal.</label> </div>
+                <div class="option" data-value="b"> <input type="radio" id="q33b" name="q33" value="b"> <label for="q33b">B. Los lóbulos occipitales.</label> </div>
+                <div class="option" data-value="c"> <input type="radio" id="q33c" name="q33" value="c"> <label for="q33c">C. El Tálamo.</label> </div>
+                <div class="option" data-value="d"> <input type="radio" id="q33d" name="q33" value="d"> <label for="q33d">D. La unión parieto-occipital o giro angular y supramarginal.</label> </div>
+                <div class="explanation"></div>
+            </div>
+
+            <div class="question" data-correct-answer="c" data-explanation="El uso de un objeto conocido de forma incorrecta (ej. martillar con un destornillador) es un error de Contenido (déficit conceptual/asociativo), típico de la apraxia ideatoria.">
+                <p>34. Un paciente que, al solicitarle que use un destornillador, lo usa como si fuera un martillo (defecto en el conocimiento de la acción) está cometiendo un error de:</p>
+                <div class="option" data-value="a"> <input type="radio" id="q34a" name="q34" value="a"> <label for="q34a">A. Errores Espaciales de Movimiento.</label> </div>
+                <div class="option" data-value="b"> <input type="radio" id="q34b" name="q34" value="b"> <label for="q34b">B. Errores de Producción Temporales.</label> </div>
+                <div class="option" data-value="c"> <input type="radio" id="q34c" name="q34" value="c"> <label for="q34c">C. Errores de Contenido de tipo Asociativo.</label> </div>
+                <div class="option" data-value="d"> <input type="radio" id="q34d" name="q34" value="d"> <label for="q34d">D. Errores Espaciales Posturales.</label> </div>
+                <div class="explanation"></div>
+            </div>
+
+            <div class="question" data-correct-answer="c" data-explanation="La Apraxia Constructiva afecta la capacidad visoespacial y la construcción de estructuras o figuras, incluyendo el dibujo.">
+                <p>35. La Apraxia Constructiva se caracteriza por una alteración en la capacidad de:</p>
+                <div class="option" data-value="a"> <input type="radio" id="q35a" name="q35" value="a"> <label for="q35a">A. Realizar movimientos simples por imitación.</label> </div>
+                <div class="option" data-value="b"> <input type="radio" id="q35b" name="q35" value="b"> <label for="q35b">B. Manipular objetos reales.</label> </div>
+                <div class="option" data-value="c"> <input type="radio" id="q35c" name="q35" value="c"> <label for="q35c">C. Organizar la información espacial y llevar a cabo actividades de visoconstrucción (dibujar).</label> </div>
+                <div class="option" data-value="d"> <input type="radio" id="q35d" name="q35" value="d"> <label for="q35d">D. Vestirse y anudar cordones.</label> </div>
+                <div class="explanation"></div>
+            </div>
+
+            <div class="question" data-correct-answer="c" data-explanation="La Apraxia del Vestido es una forma de apraxia que afecta las habilidades motoras y visoespaciales necesarias para ponerse o abrocharse la ropa.">
+                <p>36. ¿Qué tipo de apraxia se expresa por la dificultad para vestirse, disponer o colocarse las prendas y se presenta por lesiones parieto-occipitales del hemisferio derecho?</p>
+                <div class="option" data-value="a"> <input type="radio" id="q36a" name="q36" value="a"> <label for="q36a">A. Apraxia Ideatoria.</label> </div>
+                <div class="option" data-value="b"> <input type="radio" id="q36b" name="q36" value="b"> <label for="q36b">B. Apraxia Bucofacial.</label> </div>
+                <div class="option" data-value="c"> <input type="radio" id="q36c" name="q36" value="c"> <label for="q36c">C. Apraxia del Vestido.</label> </div>
+                <div class="option" data-value="d"> <input type="radio" id="q36d" name="q36" value="d"> <label for="q36d">D. Apraxia de la Marcha.</label> </div>
+                <div class="explanation"></div>
+            </div>
+
+            <div class="question" data-correct-answer="b" data-explanation="La Apraxia Callosa es una hemiapraxia que afecta la mano izquierda, pues al estar dañado el cuerpo calloso, la información verbal del hemisferio izquierdo no puede alcanzar el hemisferio derecho (que controla la mano izquierda).">
+                <p>37. La Apraxia Callosa es una forma de hemiapraxia que afecta la ejecución de actividades motoras mediante orden verbal, específicamente en la mano:</p>
+                <div class="option" data-value="a"> <input type="radio" id="q37a" name="q37" value="a"> <label for="q37a">A. Derecha, por lesión en el área premotora.</label> </div>
+                <div class="option" data-value="b"> <input type="radio" id="q37b" name="q37" value="b"> <label for="q37b">B. Izquierda, por desconexión del cuerpo calloso.</label> </div>
+                <div class="option" data-value="c"> <input type="radio" id="q37c" name="q37" value="c"> <label for="q37c">C. Derecha, por lesión talámica.</label> </div>
+                <div class="option" data-value="d"> <input type="radio" id="q37d" name="q37" value="d"> <label for="q37d">D. Izquierda, por lesión en el córtex parietal izquierdo.</label> </div>
+                <div class="explanation"></div>
+            </div>
+
+            <div class="question" data-correct-answer="c" data-explanation="La Agnosia es la incapacidad para el reconocimiento de estímulos familiares (visuales, táctiles, auditivos) a pesar de tener la función sensorial básica intacta, debido a una lesión cortical asociativa.">
+                <p>38. ¿Cuál es el trastorno caracterizado por la incapacidad para reconocer estímulos familiares y atribuirles significado, que no se debe a déficits sensoriales, sino a lesiones de áreas asociativas del córtex cerebral?</p>
+                <div class="option" data-value="a"> <input type="radio" id="q38a" name="q38" value="a"> <label for="q38a">A. Apraxia.</label> </div>
+                <div class="option" data-value="b"> <input type="radio" id="q38b" name="q38" value="b"> <label for="q38b">B. Afasia.</label> </div>
+                <div class="option" data-value="c"> <input type="radio" id="q38c" name="q38" value="c"> <label for="q38c">C. Agnosia.</label> </div>
+                <div class="option" data-value="d"> <input type="radio" id="q38d" name="q38" value="d"> <label for="q38d">D. Disfasia.</label> </div>
+                <div class="explanation"></div>
+            </div>
+
+            <div class="question" data-correct-answer="c" data-explanation="La Agnosia Aperceptiva implica un fallo en la 'percepción' del objeto, el paciente no puede formar una representación coherente, aunque los ojos funcionen (Lissauer).">
+                <p>39. Lissauer (1895) propuso la Agnosia Aperceptiva, la cual se caracteriza por:</p>
+                <div class="option" data-value="a"> <input type="radio" id="q39a" name="q39" value="a"> <label for="q39a">A. Capacidad perceptiva intacta pero con defecto semántico.</label> </div>
+                <div class="option" data-value="b"> <input type="radio" id="q39b" name="q39" value="b"> <label for="q39b">B. Incapacidad para interpretar globalmente un dibujo (Simultagnosia).</label> </div>
+                <div class="option" data-value="c"> <input type="radio" id="q39c" name="q39" value="c"> <label for="q39c">C. Incapacidad para percibir y dar significado a una imagen, con defecto en reconocer cualidades de los objetos.</label> </div>
+                <div class="option" data-value="d"> <input type="radio" id="q39d" name="q39" value="d"> <label for="q39d">D. Incapacidad para reconocer rostros (Prosopagnosia).</label> </div>
+                <div class="explanation"></div>
+            </div>
+
+            <div class="question" data-correct-answer="c" data-explanation="La Prosopagnosia se produce por lesiones bilaterales o unilaterales derechas en el giro fusiforme, que forma parte de la región occipitotemporal.">
+                <p>40. La Prosopagnosia es la incapacidad para reconocer el rostro de familiares y seres queridos, a pesar de no existir dificultades visuales aparentes. Este trastorno se produce tras lesiones que afectan el territorio:</p>
+                <div class="option" data-value="a"> <input type="radio" id="q40a" name="q40" value="a"> <label for="q40a">A. Parieto-occipital del hemisferio derecho.</label> </div>
+                <div class="option" data-value="b"> <input type="radio" id="q40b" name="q40" value="b"> <label for="q40b">B. Occipital izquierdo y el esplenio del cuerpo calloso.</label> </div>
+                <div class="option" data-value="c"> <input type="radio" id="q40c" name="q40" value="c"> <label for="q40c">C. Occipitoparietal o al occipitotemporal.</label> </div>
+                <div class="option" data-value="d"> <input type="radio" id="q40d" name="q40" value="d"> <label for="q40d">D. Temporal izquierdo (Áreas 42 y 22).</label> </div>
+                <div class="explanation"></div>
+            </div>
+
+            <div class="question" data-correct-answer="c" data-explanation="La Asteroagnosia Secundaria o Asimbolía (la 'verdadera' agnosia táctil) implica que la sensación táctil está bien, pero el significado del objeto palpado no se puede procesar a nivel cognitivo.">
+                <p>41. La Asteroagnosia Secundaria o Asimbolía se considera la "verdadera asteroagnosia" porque:</p>
+                <div class="option" data-value="a"> <input type="radio" id="q41a" name="q41" value="a"> <label for="q41a">A. Es un trastorno sensorial por lesión de áreas somestésicas primarias.</label> </div>
+                <div class="option" data-value="b"> <input type="radio" id="q41b" name="q41" value="b"> <label for="q41b">B. Se presenta como la pérdida de capacidad para discriminar el dolor (Analgoagnosia).</label> </div>
+                <div class="option" data-value="c"> <input type="radio" id="q41c" name="q41" value="c"> <label for="q41c">C. El sujeto es incapaz de atribuir significado al objeto palpado, a pesar de que la capacidad sensitiva no está alterada.</label> </div>
+                <div class="option" data-value="d"> <input type="radio" id="q41d" name="q41" value="d"> <label for="q41d">D. Se produce por lesiones en las Áreas 5, 7 y 40 de Brodmann.</label> </div>
+                <div class="explanation"></div>
+            </div>
+
+            <div class="question" data-correct-answer="d" data-explanation="La Anosognosia es la falta de conciencia de un déficit o enfermedad neurológica. Es común en lesiones derechas asociadas a hemiplejias y heminegligencia.">
+                <p>42. La Anosognosia es un tipo de agnosia para las enfermedades que se define como:</p>
+                <div class="option" data-value="a"> <input type="radio" id="q42a" name="q42" value="a"> <label for="q42a">A. La sensación de mal olor (Cacosmia).</label> </div>
+                <div class="option" data-value="b"> <input type="radio" id="q42b" name="q42" value="b"> <label for="q42b">B. La negación de una parte del cuerpo correspondiente a la zona hemipléjica (Asomatognosia).</label> </div>
+                <div class="option" data-value="c"> <input type="radio" id="q42c" name="q42" value="c"> <label for="q42c">C. Respuestas de odio o rechazo hacia el miembro paralizado (Misoplejia).</label> </div>
+                <div class="option" data-value="d"> <input type="radio" id="q42d" name="q42" value="d"> <label for="q42d">D. La ausencia de conciencia o la negación de una enfermedad (neurológica).</label> </div>
+                <div class="explanation"></div>
+            </div>
+
+            <h2>Parte 3: Afasias, Historia y Plasticidad Profunda (Preguntas 43-82)</h2>
+
+            <div class="question" data-correct-answer="b" data-explanation="La afasia es un trastorno del lenguaje adquirido (no de nacimiento) causado por una lesión cerebral en una persona que previamente podía hablar con normalidad.">
+                <p>43. ¿En qué consiste fundamentalmente una afasia?</p>
+                <div class="option" data-value="a"> <input type="radio" id="q43a" name="q43" value="a"> <label for="q43a">A. En la abolición total de las capacidades expresivas durante la fase inicial.</label> </div>
+                <div class="option" data-value="b"> <input type="radio" id="q43b" name="q43" value="b"> <label for="q43b">B. En un trastorno del lenguaje ocasionado por una lesión cerebral en una persona que previamente podía hablar con normalidad.</label> </div>
+                <div class="option" data-value="c"> <input type="radio" id="q43c" name="q43" value="c"> <label for="q43c">C. En un trastorno que solo se reduce a la expresión o comprensión hablada, sin afectar la modalidad escrita.</label> </div>
+                <div class="option" data-value="d"> <input type="radio" id="q43d" name="q43" value="d"> <label for="q43d">D. En la incapacidad para realizar movimientos o secuencias motoras con los órganos bucofonatorios, sin parálisis asociada.</label> </div>
+                <div class="explanation"></div>
+            </div>
+
+            <div class="question" data-correct-answer="b" data-explanation="Una afasia, al ser un trastorno central del lenguaje, afecta todas las modalidades, incluyendo la capacidad escrita (agrafía) y la lectura (alexia).">
+                <p>44. ¿Qué modalidad lingüística, además de la expresión y comprensión hablada, se ve afectada en la afasia?</p>
+                <div class="option" data-value="a"> <input type="radio" id="q44a" name="q44" value="a"> <label for="q44a">A. La memoria reciente.</label> </div>
+                <div class="option" data-value="b"> <input type="radio" id="q44b" name="q44" value="b"> <label for="q44b">B. La capacidad escrita.</label> </div>
+                <div class="option" data-value="c"> <input type="radio" id="q44c" name="q44" value="c"> <label for="q44c">C. La función simbólica de la voz (disfonía).</label> </div>
+                <div class="option" data-value="d"> <input type="radio" id="q44d" name="q44" value="d"> <label for="q44d">D. La capacidad de cálculo.</label> </div>
+                <div class="explanation"></div>
+            </div>
+
+            <div class="question" data-correct-answer="c" data-explanation="El agramatismo (uso telegráfico) se observa en la recuperación del lenguaje proposicional (lenguaje intencional y significativo) en trastornos graves.">
+                <p>45. El agramatismo (dificultad para uniones gramaticales y uso de lenguaje telegráfico) se configura generalmente a lo largo de la regresión de trastornos graves de qué tipo de lenguaje:</p>
+                <div class="option" data-value="a"> <input type="radio" id="q45a" name="q45" value="a"> <label for="q45a">A. Lenguaje de jerga semántica.</label> </div>
+                <div class="option" data-value="b"> <input type="radio" id="q45b" name="q45" value="b"> <label for="q45b">B. Lenguaje automatizado.</label> </div>
+                <div class="option" data-value="c"> <input type="radio" id="q45c" name="q45" value="c"> <label for="q45c">C. Lenguaje proposicional.</label> </div>
+                <div class="option" data-value="d"> <input type="radio" id="q45d" name="q45" value="d"> <label for="q45d">D. Ecolalia.</label> </div>
+                <div class="explanation"></div>
+            </div>
+
+            <div class="question" data-correct-answer="c" data-explanation="Las perseveraciones implican la repetición inapropiada y persistente de respuestas, palabras o temas que ya se han dicho o utilizado.">
+                <p>46. ¿Qué fenómeno semiológico se caracteriza por la utilización repetitiva de elementos del lenguaje que el paciente acaba de emitir?</p>
+                <div class="option" data-value="a"> <input type="radio" id="q46a" name="q46" value="a"> <label for="q46a">A. Ecolalia</label> </div>
+                <div class="option" data-value="b"> <input type="radio" id="q46b" name="q46" value="b"> <label for="q46b">B. Neologismos</label> </div>
+                <div class="option" data-value="c"> <input type="radio" id="q46c" name="q46" value="c"> <label for="q46c">C. Perseveraciones</label> </div>
+                <div class="option" data-value="d"> <input type="radio" id="q46d" name="q46" value="d"> <label for="q46d">D. Disintaxis</label> </div>
+                <div class="explanation"></div>
+            </div>
+
+            <div class="question" data-correct-answer="b" data-explanation="La característica distintiva de las afasias transcorticales es que la capacidad de repetición del lenguaje está conservada, a diferencia de las afasias perisilvianas.">
+                <p>47. ¿Cuál es el dato descollante que caracteriza a las afasias transcorticales (sensorial, motora o mixta)?</p>
+                <div class="option" data-value="a"> <input type="radio" id="q47a" name="q47" value="a"> <label for="q47a">A. Producción de jergafasia.</label> </div>
+                <div class="option" data-value="b"> <input type="radio" id="q47b" name="q47" value="b"> <label for="q47b">B. Repetición conservada.</label> </div>
+                <div class="option" data-value="c"> <input type="radio" id="q47c" name="q47" value="c"> <label for="q47c">C. Agramatismo severo.</label> </div>
+                <div class="option" data-value="d"> <input type="radio" id="q47d" name="q47" value="d"> <label for="q47d">D. Hemiplejía derecha.</label> </div>
+                <div class="explanation"></div>
+            </div>
+
+            <div class="question" data-correct-answer="b" data-explanation="La Afasia de Broca se caracteriza por ser de fluidez no fluente (con esfuerzo) y por presentar agramatismo (habla telegráfica).">
+                <p>48. La afasia de Broca se caracteriza por ser una afasia de qué tipo de fluidez y qué trastorno relevante presenta en su producción verbal:</p>
+                <div class="option" data-value="a"> <input type="radio" id="q48a" name="q48" value="a"> <label for="q48a">A. Fluente; anosognosia.</label> </div>
+                <div class="option" data-value="b"> <input type="radio" id="q48b" name="q48" value="b"> <label for="q48b">B. No fluente; agramatismo.</label> </div>
+                <div class="option" data-value="c"> <input type="radio" id="q48c" name="q48" value="c"> <label for="q48c">C. Fluente; parafasias semánticas masivas.</label> </div>
+                <div class="option" data-value="d"> <input type="radio" id="q48d" name="q48" value="d"> <label for="q48d">D. No fluente; alexia sin agrafía.</label> </div>
+                <div class="explanation"></div>
+            </div>
+
+            <div class="question" data-correct-answer="c" data-explanation="La Afasia de Wernicke (Sensorial) se localiza en el lóbulo temporal izquierdo, específicamente en el tercio posterior de la primera y segunda circunvolución temporal.">
+                <p>49. ¿Cuál es la localización anatómica característica de la Afasia Sensorial (Wernicke)?</p>
+                <div class="option" data-value="a"> <input type="radio" id="q49a" name="q49" value="a"> <label for="q49a">A. El pie de la tercera circunvolución frontal.</label> </div>
+                <div class="option" data-value="b"> <input type="radio" id="q49b" name="q49" value="b"> <label for="q49b">B. El área motora suplementaria del lóbulo frontal.</label> </div>
+                <div class="option" data-value="c"> <input type="radio" id="q49c" name="q49" value="c"> <label for="q49c">C. El tercio posterior de la primera y segunda circunvolución temporal del hemisferio izquierdo.</label> </div>
+                <div class="option" data-value="d"> <input type="radio" id="q49d" name="q49" value="d"> <label for="q49d">D. La región insular y el fascículo arcuato.</label> </div>
+                <div class="explanation"></div>
+            </div>
+
+            <div class="question" data-correct-answer="b" data-explanation="La Afasia de Conducción es un trastorno FLUENTE caracterizado por un déficit severo en la repetición de palabras y frases.">
+                <p>50. La Afasia de Conducción es un trastorno FLUENTE, con comprensión relativamente preservada, pero se caracteriza principalmente por:</p>
+                <div class="option" data-value="a"> <input type="radio" id="q50a" name="q50" value="a"> <label for="q50a">A. Superproducción de neologismos.</label> </div>
+                <div class="option" data-value="b"> <input type="radio" id="q50b" name="q50" value="b"> <label for="q50b">B. Dificultad severa para la repetición.</label> </div>
+                <div class="option" data-value="c"> <input type="radio" id="q50c" name="q50" value="c"> <label for="q50c">C. Mutismo y agrafía.</label> </div>
+                <div class="option" data-value="d"> <input type="radio" id="q50d" name="q50" value="d"> <label for="q50d">D. Trastorno del cálculo.</label> </div>
+                <div class="explanation"></div>
+            </div>
+
+            <div class="question" data-correct-answer="d" data-explanation="La Disprosodia es la alteración en el ritmo, la entonación y la melodía del lenguaje (prosodia). La xenoloquia es un ejemplo de disprosodia.">
+                <p>51. ¿Qué término describe la alteración de la melodía del lenguaje que, a veces, reproduce un acento extranjero (xenoloquia)?</p>
+                <div class="option" data-value="a"> <input type="radio" id="q51a" name="q51" value="a"> <label for="q51a">A. Agramatismo</label> </div>
+                <div class="option" data-value="b"> <input type="radio" id="q51b" name="q51" value="b"> <label for="q51b">B. Disintaxis</label> </div>
+                <div class="option" data-value="c"> <input type="radio" id="q51c" name="q51" value="c"> <label for="q51c">C. Apraxia bucofonatoria</label> </div>
+                <div class="option" data-value="d"> <input type="radio" id="q51d" name="q51" value="d"> <label for="q51d">D. Disprosodia</label> </div>
+                <div class="explanation"></div>
+            </div>
+
+            <div class="question" data-correct-answer="b" data-explanation="La Afasia Global es el trastorno más grave, con alteración masiva de la expresión, la comprensión y la repetición.">
+                <p>52. ¿Cuál de las siguientes es una característica de la Afasia Global?</p>
+                <div class="option" data-value="a"> <input type="radio" id="q52a" name="q52" value="a"> <label for="q52a">A. Lenguaje fluido y abundante, pero sin significado.</label> </div>
+                <div class="option" data-value="b"> <input type="radio" id="q52b" name="q52" value="b"> <label for="q52b">B. Alteración grave tanto de las funciones expresivas como de las receptivas.</label> </div>
+                <div class="option" data-value="c"> <input type="radio" id="q52c" name="q52" value="c"> <label for="q52c">C. Repetición conservada, pero sin comprensión.</label> </div>
+                <div class="option" data-value="d"> <input type="radio" id="q52d" name="q52" value="d"> <label for="q52d">D. Anomia y circunloquios como único síntoma.</label> </div>
+                <div class="explanation"></div>
+            </div>
+
+            <div class="question" data-correct-answer="c" data-explanation="Alcmeón de Crotona (s. V a.C.) fue uno de los primeros en proponer que el cerebro era el asiento de la conciencia y pionero en la práctica de la disección.">
+                <p>53. ¿Quién propuso que el origen del comportamiento radicaba en el cerebro, siendo el primer griego en practicar la disección de cadáveres?</p>
+                <div class="option" data-value="a"> <input type="radio" id="q53a" name="q53" value="a"> <label for="q53a">A. Aristóteles</label> </div>
+                <div class="option" data-value="b"> <input type="radio" id="q53b" name="q53" value="b"> <label for="q53b">B. Hipócrates</label> </div>
+                <div class="option" data-value="c"> <input type="radio" id="q53c" name="q53" value="c"> <label for="q53c">C. Alcmeón de Crotona</label> </div>
+                <div class="option" data-value="d"> <input type="radio" id="q53d" name="q53" value="d"> <label for="q53d">D. Galeno</label> </div>
+                <div class="explanation"></div>
+            </div>
+
+            <div class="question" data-correct-answer="c" data-explanation="Aristóteles, en la Antigüedad, defendió la hipótesis cardial o cardiocentrista, situando la razón y la emoción en el corazón.">
+                <p>54. ¿Qué figura histórica, contradiciendo a Galeno, situó los procesos intelectuales y los sentimientos en el corazón?</p>
+                <div class="option" data-value="a"> <input type="radio" id="q54a" name="q54" value="a"> <label for="q54a">A. Leonardo Da Vinci</label> </div>
+                <div class="option" data-value="b"> <input type="radio" id="q54b" name="q54" value="b"> <label for="q54b">B. Franz Joseph Gall</label> </div>
+                <div class="option" data-value="c"> <input type="radio" id="q54c" name="q54" value="c"> <label for="q54c">C. Aristóteles</label> </div>
+                <div class="option" data-value="d"> <input type="radio" id="q54d" name="q54" value="d"> <label for="q54d">D. René Descartes</label> </div>
+                <div class="explanation"></div>
+            </div>
+
+            <div class="question" data-correct-answer="c" data-explanation="La teoría holística (o antilocalizacionista) sostiene que las funciones cognitivas dependen del cerebro en su conjunto, y no de áreas discretas y aisladas.">
+                <p>55. ¿Qué teoría sostuvo que las funciones mentales dependen del funcionamiento global del cerebro, oponiéndose al localizacionismo?</p>
+                <div class="option" data-value="a"> <input type="radio" id="q55a" name="q55" value="a"> <label for="q55a">A. Frenológica</label> </div>
+                <div class="option" data-value="b"> <input type="radio" id="q55b" name="q55" value="b"> <label for="q55b">B. Conexionista</label> </div>
+                <div class="option" data-value="c"> <input type="radio" id="q55c" name="q55" value="c"> <label for="q55c">C. Holística</label> </div>
+                <div class="option" data-value="d"> <input type="radio" id="q55d" name="q55" value="d"> <label for="q55d">D. Jerárquica</label> </div>
+                <div class="explanation"></div>
+            </div>
+
+            <div class="question" data-correct-answer="d" data-explanation="El localizacionismo extremo (ej. la frenología o el localizacionismo puro) es criticado por su reduccionismo topográfico, que intenta ubicar funciones complejas en puntos muy específicos del córtex.">
+                <p>56. ¿Cuál de los siguientes es un aspecto negativo del enfoque localizacionista clásico?</p>
+                <div class="option" data-value="a"> <input type="radio" id="q56a" name="q56" value="a"> <label for="q56a">A. Desarrolla el concepto de asimetría cerebral.</label> </div>
+                <div class="option" data-value="b"> <input type="radio" id="q56b" name="q56" value="b"> <label for="q56b">B. El funcionamiento cerebral es integrado.</label> </div>
+                <div class="option" data-value="c"> <input type="radio" id="q56c" name="q56" value="c"> <label for="q56c">C. Se aleja de la comprensión de las funciones cognitivas en relación a las bases estructurales cerebrales.</label> </div>
+                <div class="option" data-value="d"> <input type="radio" id="q56d" name="q56" value="d"> <label for="q56d">D. Reduccionismo topográfico.</label> </div>
+                <div class="explanation"></div>
+            </div>
+
+            <div class="question" data-correct-answer="c" data-explanation="Constantin von Monakow introdujo el concepto de diásquisis para describir cómo una lesión localizada produce una disfunción funcional en áreas distantes pero conectadas.">
+                <p>57. El término diásquisis (propagación de los efectos del daño cerebral a lo largo de todo el cerebro) fue introducido por:</p>
+                <div class="option" data-value="a"> <input type="radio" id="q57a" name="q57" value="a"> <label for="q57a">A. Kurt Goldstein</label> </div>
+                <div class="option" data-value="b"> <input type="radio" id="q57b" name="q57" value="b"> <label for="q57b">B. Karl S. Lashley</label> </div>
+                <div class="option" data-value="c"> <input type="radio" id="q57c" name="q57" value="c"> <label for="q57c">C. Von Monakow</label> </div>
+                <div class="option" data-value="d"> <input type="radio" id="q57d" name="q57" value="d"> <label for="q57d">D. Donald Hebb</label> </div>
+                <div class="explanation"></div>
+            </div>
+
+            <div class="question" data-correct-answer="b" data-explanation="Alexander R. Luria es el padre de la neuropsicología moderna, famoso por su concepto de Sistemas Funcionales Complejos y las tres Unidades Funcionales del cerebro.">
+                <p>58. ¿Qué figura es considerada una de las piedras angulares de la neuropsicología contemporánea por su Teoría de los Sistemas Funcionales y la propuesta de tres unidades funcionales?</p>
+                <div class="option" data-value="a"> <input type="radio" id="q58a" name="q58" value="a"> <label for="q58a">A. Roger Sperry</label> </div>
+                <div class="option" data-value="b"> <input type="radio" id="q58b" name="q58" value="b"> <label for="q58b">B. Alexander R. Luria</label> </div>
+                <div class="option" data-value="c"> <input type="radio" id="q58c" name="q58" value="c"> <label for="q58c">C. Wilder Penfield</label> </div>
+                <div class="option" data-value="d"> <input type="radio" id="q58d" name="q58" value="d"> <label for="q58d">D. Norman Geschwind</label> </div>
+                <div class="explanation"></div>
+            </div>
+
+            <div class="question" data-correct-answer="b" data-explanation="La Tomografía Axial Computarizada (TAC o CT) fue el primer método de neuroimagen que permitió ver el cerebro 'in vivo' con alta resolución y relacionar la clínica con la localización anatómica exacta.">
+                <p>59. ¿Qué método diagnóstico moderno surgió a partir de 1975, revolucionando los conceptos de la actividad cognitiva y permitiendo correlaciones clínico-anatómicas más precisas?</p>
+                <div class="option" data-value="a"> <input type="radio" id="q59a" name="q59" value="a"> <label for="q59a">A. Electroencefalografía (EEG).</label> </div>
+                <div class="option" data-value="b"> <input type="radio" id="q59b" name="q59" value="b"> <label for="q59b">B. Tomografía Axial Computarizada (TAC).</label> </div>
+                <div class="option" data-value="c"> <input type="radio" id="q59c" name="q59" value="c"> <label for="q59c">C. Potenciales Evocados (PE).</label> </div>
+                <div class="option" data-value="d"> <input type="radio" id="q59d" name="q59" value="d"> <label for="q59d">D. Rayos X tradicionales.</label> </div>
+                <div class="explanation"></div>
+            </div>
+
+            <div class="question" data-correct-answer="b" data-explanation="La Ley de la acción en masa de Lashley postula que la función se correlaciona mejor con la cantidad de corteza destruida, no con la localización específica (un concepto más holístico).">
+                <p>60. Según la Ley de la acción en masa, propuesta por Karl S. Lashley, las consecuencias que tiene una lesión en el comportamiento guardan mayor relación con:</p>
+                <div class="option" data-value="a"> <input type="radio" id="q60a" name="q60" value="a"> <label for="q60a">A. La localización específica del tejido dañado.</label> </div>
+                <div class="option" data-value="b"> <input type="radio" id="q60b" name="q60" value="b"> <label for="q60b">B. La cantidad de tejido nervioso dañado.</label> </div>
+                <div class="option" data-value="c"> <input type="radio" id="q60c" name="q60" value="c"> <label for="q60c">C. La edad del paciente.</label> </div>
+                <div class="option" data-value="d"> <input type="radio" id="q60d" name="q60" value="d"> <label for="q60d">D. El efecto de diásquisis.</label> </div>
+                <div class="explanation"></div>
+            </div>
+
+            <div class="question" data-correct-answer="c" data-explanation="La Neuropsicología, en su definición más amplia, estudia la compleja relación entre los procesos cerebrales y la manifestación conductual (o cognitiva) de los seres humanos.">
+                <p>61. ¿Cuál es la definición de Neuropsicología según Kolb y Whishaw (2009)?</p>
+                <div class="option" data-value="a"> <input type="radio" id="q61a" name="q61" value="a"> <label for="q61a">A. El estudio de los mecanismos nerviosos que afectan críticamente el comportamiento.</label> </div>
+                <div class="option" data-value="b"> <input type="radio" id="q61b" name="q61" value="b"> <label for="q61b">B. El estudio de las alteraciones de las funciones superiores producidas por lesiones del cerebro.</label> </div>
+                <div class="option" data-value="c"> <input type="radio" id="q61c" name="q61" value="c"> <label for="q61c">C. El estudio de la relación existente entre funciones cerebrales y la conducta de los seres humanos.</label> </div>
+                <div class="option" data-value="d"> <input type="radio" id="q61d" name="q61" value="d"> <label for="q61d">D. El estudio científico de la relación entre el lenguaje y la memoria.</label> </div>
+                <div class="explanation"></div>
+            </div>
+
+            <div class="question" data-correct-answer="c" data-explanation="Penfield es famoso por el mapeo cortical mediante la estimulación eléctrica durante cirugías con anestesia local, lo que le permitió dibujar los 'Homúnculos' sensorial y motor.">
+                <p>62. El Dr. Wilder Penfield es reconocido por:</p>
+                <div class="option" data-value="a"> <input type="radio" id="q62a" name="q62" value="a"> <label for="q62a">A. Ser el iniciador de la psicocirugía (lobotomía).</label> </div>
+                <div class="option" data-value="b"> <input type="radio" id="q62b" name="q62" value="b"> <label for="q62b">B. Los estudios del "Cerebro Dividido" (Split-Brain).</label> </div>
+                <div class="option" data-value="c"> <input type="radio" id="q62c" name="q62" value="c"> <label for="q62c">C. Realizar operaciones con anestesia local para hacer un mapeo de las actividades motrices y sensitivas (Homúnculos).</label> </div>
+                <div class="option" data-value="d"> <input type="radio" id="q62d" name="q62" value="d"> <label for="q62d">D. Introducir la Ley de la acción en masa.</label> </div>
+                <div class="explanation"></div>
+            </div>
+
+            <div class="question" data-correct-answer="c" data-explanation="La Plasticidad reconstructiva (o reparadora) es la que se pone en marcha después de una lesión cerebral para intentar recuperar o compensar la función perdida.">
+                <p>63. ¿Qué tipo de plasticidad permite la remodelación funcional del cerebro mediante diferentes mecanismos a nivel histológico, bioquímico y fisiológico después de un evento como una lesión?</p>
+                <div class="option" data-value="a"> <input type="radio" id="q63a" name="q63" value="a"> <label for="q63a">A. Plasticidad adaptativa (aprendizaje).</label> </div>
+                <div class="option" data-value="b"> <input type="radio" id="q63b" name="q63" value="b"> <label for="q63b">B. Plasticidad evolutiva (desarrollo).</label> </div>
+                <div class="option" data-value="c"> <input type="radio" id="q63c" name="q63" value="c"> <label for="q63c">C. Plasticidad reconstructiva (post lesional).</label> </div>
+                <div class="option" data-value="d"> <input type="radio" id="q63d" name="q63" value="d"> <label for="q63d">D. Plasticidad reactiva (estímulo transitorio).</label> </div>
+                <div class="explanation"></div>
+            </div>
+
+            <div class="question" data-correct-answer="c" data-explanation="La Neuroplasticidad evolutiva incluye Neurogénesis, Sinaptogénesis y Poda sináptica. La degeneración retrógrada es un mecanismo de daño post-lesional.">
+                <p>64. ¿Cuál de los siguientes mecanismos *no está mencionado como un proceso mediante el cual se da la Neuroplasticidad evolutiva o natural?</p>
+                <div class="option" data-value="a"> <input type="radio" id="q64a" name="q64" value="a"> <label for="q64a">A. Neurogénesis.</label> </div>
+                <div class="option" data-value="b"> <input type="radio" id="q64b" name="q64" value="b"> <label for="q64b">B. Poda sináptica.</label> </div>
+                <div class="option" data-value="c"> <input type="radio" id="q64c" name="q64" value="c"> <label for="q64c">C. Degeneración retrógrada.</label> </div>
+                <div class="option" data-value="d"> <input type="radio" id="q64d" name="q64" value="d"> <label for="q64d">D. Sinaptogénesis.</label> </div>
+                <div class="explanation"></div>
+            </div>
+
+            <div class="question" data-correct-answer="b" data-explanation="Según Hebb, la memoria a corto plazo está basada en la actividad eléctrica transitoria (circuitos reverberantes), que se consolida en memoria a largo plazo a través de cambios estructurales permanentes.">
+                <p>65. Según Donald Hebb (1949), ¿en qué consiste la memoria a corto plazo?</p>
+                <div class="option" data-value="a"> <input type="radio" id="q65a" name="q65" value="a"> <label for="q65a">A. En la potenciación a largo plazo.</label> </div>
+                <div class="option" data-value="b"> <input type="radio" id="q65b" name="q65" value="b"> <label for="q65b">B. En un circuito reverberante que se consolida en memoria a largo plazo a través de cambios estructurales permanentes en el cerebro.</label> </div>
+                <div class="option" data-value="c"> <input type="radio" id="q65c" name="q65" value="c"> <label for="q65c">C. En una disminución en la excitabilidad de la membrana postsináptica.</label> </div>
+                <div class="option" data-value="d"> <input type="radio" id="q65d" name="q65" value="d"> <label for="q65d">D. En una regeneración axonal.</label> </div>
+                <div class="explanation"></div>
+            </div>
+
+            <div class="question" data-correct-answer="d" data-explanation="La Vicariedad de la función se refiere a la capacidad de una zona del cerebro para asumir las funciones de una zona dañada, apoyándose en la idea de que muchas áreas tienen el potencial de hacer el trabajo de otras.">
+                <p>66. ¿Cuál de las siguientes hipótesis para la recuperación de la función post-lesional se basa en la idea de que el tejido intacto toma a su cargo las funciones de las zonas dañadas, apoyada en la equipotencialidad?</p>
+                <div class="option" data-value="a"> <input type="radio" id="q66a" name="q66" value="a"> <label for="q66a">A. Reprogramación de la función.</label> </div>
+                <div class="option" data-value="b"> <input type="radio" id="q66b" name="q66" value="b"> <label for="q66b">B. Diásquisis.</label> </div>
+                <div class="option" data-value="c"> <input type="radio" id="q66c" name="q66" value="c"> <label for="q66c">C. Redundancia o duplicidad.</label> </div>
+                <div class="option" data-value="d"> <input type="radio" id="q66d" name="q66" value="d"> <label for="q66d">D. Vicariedad de la función.</label> </div>
+                <div class="explanation"></div>
+            </div>
+
+            <div class="question" data-correct-answer="b" data-explanation="La Plasticidad no adaptativa se refiere a los cambios funcionales o estructurales que ocurren, pero que no necesariamente mejoran la función (o incluso la empeoran), como ocurre en las distonías focales.">
+                <p>67. El concepto de Plasticidad no adaptativa se refiere a la plasticidad que:</p>
+                <div class="option" data-value="a"> <input type="radio" id="q67a" name="q67" value="a"> <label for="q67a">A. Necesariamente conduce a la mejoría de la función tras una lesión.</label> </div>
+                <div class="option" data-value="b"> <input type="radio" id="q67b" name="q67" value="b"> <label for="q67b">B. Puede resultar en una pérdida o mejoría de las capacidades conductuales, como la distonía focal o las dislexias del desarrollo.</label> </div>
+                <div class="option" data-value="c"> <input type="radio" id="q67c" name="q67" value="c"> <label for="q67c">C. Solo ocurre durante la exposición a un estímulo transitorio (reactiva).</label> </div>
+                <div class="option" data-value="d"> <input type="radio" id="q67d" name="q67" value="d"> <label for="q67d">D. Es un proceso exclusivo de la maduración durante la adolescencia.</label> </div>
+                <div class="explanation"></div>
+            </div>
+
+            <div class="question" data-correct-answer="b" data-explanation="La Degeneración anterógrada (o Walleriana) es la degeneración del axón distal, es decir, el segmento que está separado del cuerpo neuronal.">
+                <p>68. ¿Qué ocurre con la Degeneración anterógrada tras una axotomía (corte del axón)?</p>
+                <div class="option" data-value="a"> <input type="radio" id="q68a" name="q68" value="a"> <label for="q68a">A. Degeneración del segmento proximal.</label> </div>
+                <div class="option" data-value="b"> <input type="radio" id="q68b" name="q68" value="b"> <label for="q68b">B. Degeneración del segmento distal.</label> </div>
+                <div class="option" data-value="c"> <input type="radio" id="q68c" name="q68" value="c"> <label for="q68c">C. Liberación de la inhibición para fortalecer conexiones.</label> </div>
+                <div class="option" data-value="d"> <input type="radio" id="q68d" name="q68" value="d"> <label for="q68d">D. Siempre conduce al nuevo crecimiento de las neuronas dañadas.</label> </div>
+                <div class="explanation"></div>
+            </div>
+
+            <div class="question" data-correct-answer="c" data-explanation="La Asimetría Cerebral se refiere a las diferencias biológicas (anatómicas, estructurales y funcionales) entre los hemisferios. Es el sustrato biológico de la Dominancia y la Lateralidad.">
+                <p>69. ¿Cómo se define la Asimetría Cerebral?</p>
+                <div class="option" data-value="a"> <input type="radio" id="q69a" name="q69" value="a"> <label for="q69a">A. El predominio de un hemisferio sobre otro en una determinada función cognitiva (dominancia).</label> </div>
+                <div class="option" data-value="b"> <input type="radio" id="q69b" name="q69" value="b"> <label for="q69b">B. La manifestación efectora de la dominancia para el lenguaje mediante el uso preferente de mano, pie, ojo y oído (lateralidad).</label> </div>
+                <div class="option" data-value="c"> <input type="radio" id="q69c" name="q69" value="c"> <label for="q69c">C. Las diferencias anatómicas, estructurales y funcionales que se presentan en áreas homólogas de los hemisferios cerebrales.</label> </div>
+                <div class="option" data-value="d"> <input type="radio" id="q69d" name="q69" value="d"> <label for="q69d">D. La diferencia en el estilo cognitivo de cada hemisferio cerebral (diferenciación).</label> </div>
+                <div class="explanation"></div>
+            </div>
+
+            <div class="question" data-correct-answer="c" data-explanation="La Dominancia Cerebral es el concepto que describe el predominio de un hemisferio para una función compleja (ej. el HI es dominante para el lenguaje en la mayoría de la población).">
+                <p>70. ¿Qué concepto se refiere al predominio de un hemisferio sobre otro en una determinada función cognitiva, siendo un proceso inconsciente e involuntario?</p>
+                <div class="option" data-value="a"> <input type="radio" id="q70a" name="q70" value="a"> <label for="q70a">A. Lateralidad.</label> </div>
+                <div class="option" data-value="b"> <input type="radio" id="q70b" name="q70" value="b"> <label for="q70b">B. Diferenciación hemisférica.</label> </div>
+                <div class="option" data-value="c"> <input type="radio" id="q70c" name="q70" value="c"> <label for="q70c">C. Dominancia cerebral.</label> </div>
+                <div class="option" data-value="d"> <input type="radio" id="q70d" name="q70" value="d"> <label for="q70d">D. Hemisferio verbal.</label> </div>
+                <div class="explanation"></div>
+            </div>
+
+            <div class="question" data-correct-answer="b" data-explanation="En los zurdos, la lateralización es más variable: el 70% tiene dominancia izquierda, pero un 15% tiene dominancia derecha y otro 15% tiene representación bilateral.">
+                <p>71. ¿Cuál es el rango de localización de los centros del lenguaje en las personas zurdas?</p>
+                <div class="option" data-value="a"> <input type="radio" id="q71a" name="q71" value="a"> <label for="q71a">A. En el hemisferio izquierdo en el 96% de los casos.</label> </div>
+                <div class="option" data-value="b"> <input type="radio" id="q71b" name="q71" value="b"> <label for="q71b">B. Puede estar localizado en cualquiera de los dos hemisferios o en ambos a la vez.</label> </div>
+                <div class="option" data-value="c"> <input type="radio" id="q71c" name="q71" value="c"> <label for="q71c">C. Siempre en ambos hemisferios a la vez.</label> </div>
+                <div class="option" data-value="d"> <input type="radio" id="q71d" name="q71" value="d"> <label for="q71d">D. Exclusivamente en el hemisferio derecho (100%).</label> </div>
+                <div class="explanation"></div>
+            </div>
+
+            <div class="question" data-correct-answer="c" data-explanation="La Extinción Sensorial (o Simultanagnosia) es un déficit más sutil de la negligencia, donde un estímulo se percibe correctamente si está solo, pero se extingue o ignora si se presenta simultáneamente con otro en el lado no afectado.">
+                <p>72. ¿En qué consiste el trastorno atencional conocido como Extinción sensorial?</p>
+                <div class="option" data-value="a"> <input type="radio" id="q72a" name="q72" value="a"> <label for="q72a">A. Ignorar parte del propio cuerpo (hemisomatognosia).</label> </div>
+                <div class="option" data-value="b"> <input type="radio" id="q72b" name="q72" value="b"> <label for="q72b">B. No percibir estímulos del espacio externo o del propio cuerpo del lado opuesto a la lesión (heminegligencia).</label> </div>
+                <div class="option" data-value="c"> <input type="radio" id="q72c" name="q72" value="c"> <label for="q72c">C. Fallas en la percepción donde se extingue un estímulo solo cuando se utilizan ambos lados del cuerpo.</label> </div>
+                <div class="option" data-value="d"> <input type="radio" id="q72d" name="q72" value="d"> <label for="q72d">D. No dirigir la atención a una zona del espacio opuesta a la lesión (hemi inatención).</label> </div>
+                <div class="explanation"></div>
+            </div>
+
+            <div class="question" data-correct-answer="d" data-explanation="La Heminegligencia Personal (o Hemisomatognosia) es un tipo de negligencia que afecta el cuerpo del paciente, que ignora un lado de su propio cuerpo (el hemicuerpo contrario a la lesión).">
+                <p>73. ¿Qué trastorno de la atención se refiere al paciente que ignora parte de su propio cuerpo (el hemicuerpo contrario a la lesión), lo que puede manifestarse como fallas al vestirse?</p>
+                <div class="option" data-value="a"> <input type="radio" id="q73a" name="q73" value="a"> <label for="q73a">A. Extinción sensorial.</label> </div>
+                <div class="option" data-value="b"> <input type="radio" id="q73b" name="q73" value="b"> <label for="q73b">B. Hemi inatención.</label> </div>
+                <div class="option" data-value="c"> <input type="radio" id="q73c" name="q73" value="c"> <label for="q73c">C. Heminegligencia atencional.</label> </div>
+                <div class="option" data-value="d"> <input type="radio" id="q73d" name="q73" value="d"> <label for="q73d">D. Espacial personal (Hemisomatognosia).</label> </div>
+                <div class="explanation"></div>
+            </div>
+
+            <div class="question" data-correct-answer="b" data-explanation="La Dopamina y la Noradrenalina son los neurotransmisores monoaminérgicos más implicados en la regulación del córtex prefrontal, cruciales para el control ejecutivo y la atención (afectados en el TDAH).">
+                <p>74. Según la neurobiología del TDAH, ¿qué neurotransmisores están implicados en los circuitos reguladores que comunican el córtex prefrontal y los ganglios basales?</p>
+                <div class="option" data-value="a"> <input type="radio" id="q74a" name="q74" value="a"> <label for="q74a">A. Serotonina y Acetilcolina.</label> </div>
+                <div class="option" data-value="b"> <input type="radio" id="q74b" name="q74" value="b"> <label for="q74b">B. Dopamina y Noradrenalina.</label> </div>
+                <div class="option" data-value="c"> <input type="radio" id="q74c" name="q74" value="c"> <label for="q74c">C. GABA y Glutamato.</label> </div>
+                <div class="option" data-value="d"> <input type="radio" id="q74d" name="q74" value="d"> <label for="q74d">D. Endorfinas y Melatonina.</label> </div>
+                <div class="explanation"></div>
+            </div>
+
+            <div class="question" data-correct-answer="a" data-explanation="La anomia (dificultad para encontrar palabras) es el síntoma más común de todas las afasias, pero está especialmente asociada a lesiones en la zona de la corteza de asociación multimodal, como la región angular y el lóbulo temporal posterior.">
+                <p>75. La anomia, definida como la dificultad o incapacidad para evocar el nombre de los objetos, es un dato semiológico más común de las afasias:</p>
+                <div class="option" data-value="a"> <input type="radio" id="q75a" name="q75" value="a"> <label for="q75a">A. En las lesiones de la región angular (corteza de asociación multimodal) o de la zona posterior de la tercera circunvolución temporal.</label> </div>
+                <div class="option" data-value="b"> <input type="radio" id="q75b" name="q75" value="b"> <label for="q75b">B. Exclusivamente en la afasia de Broca.</label> </div>
+                <div class="option" data-value="c"> <input type="radio" id="q75c" name="q75" value="c"> <label for="q75c">C. En las lesiones frontoparietales extensas.</label> </div>
+                <div class="option" data-value="d"> <input type="radio" id="q75d" name="q75" value="d"> <label for="q75d">D. Solo en la afasia global.</label> </div>
+                <div class="explanation"></div>
+            </div>
+
+            <div class="question" data-correct-answer="b" data-explanation="La Disintaxis se refiere al uso de estructuras gramaticales complejas pero de forma incorrecta o incoherente (paragramatismo), típico de las afasias fluidas como la de Wernicke.">
+                <p>76. ¿Qué trastorno del lenguaje se caracteriza por tener numerosas fórmulas gramaticales, pero utilizadas anormalmente (paragramatismo), dando la impresión de un discurso incoherente?</p>
+                <div class="option" data-value="a"> <input type="radio" id="q76a" name="q76" value="a"> <label for="q76a">A. Agramatismo.</label> </div>
+                <div class="option" data-value="b"> <input type="radio" id="q76b" name="q76" value="b"> <label for="q76b">B. Disintaxis.</label> </div>
+                <div class="option" data-value="c"> <input type="radio" id="q76c" name="q76" value="c"> <label for="q76c">C. Ecolalia.</label> </div>
+                <div class="option" data-value="d"> <input type="radio" id="q76d" name="q76" value="d"> <label for="q76d">D. Anomia.</label> </div>
+                <div class="explanation"></div>
+            </div>
+
+            <div class="question" data-correct-answer="b" data-explanation="El entrenamiento intensivo con Braille provoca una expansión de las áreas corticales somatosensoriales (el 'mapa' del dedo) en el córtex, un ejemplo claro de plasticidad adaptativa por experiencia.">
+                <p>77. ¿Qué se ha observado en el cerebro de personas ciegas que aprenden el alfabeto “Braille”?</p>
+                <div class="option" data-value="a"> <input type="radio" id="q77a" name="q77" value="a"> <label for="q77a">A. Una disminución ostensible de la sustancia gris.</label> </div>
+                <div class="option" data-value="b"> <input type="radio" id="q77b" name="q77" value="b"> <label for="q77b">B. Un aumento progresivo, en el córtex, del área encargada de la representación del “dedo de lectura”.</label> </div>
+                <div class="option" data-value="c"> <input type="radio" id="q77c" name="q77" value="c"> <label for="q77c">C. Una disminución de la secreción de dopamina.</label> </div>
+                <div class="option" data-value="d"> <input type="radio" id="q77d" name="q77" value="d"> <label for="q77d">D. Una reducción de la mielinización en el hipocampo.</label> </div>
+                <div class="explanation"></div>
+            </div>
+
+            <div class="question" data-correct-answer="b" data-explanation="La Apraxia Constructiva afecta específicamente las tareas visoespaciales de construir o dibujar, lo que la distingue de otras apraxias motoras.">
+                <p>78. La Apraxia Constructiva se define como la alteración en la capacidad de organizar la información espacial y para llevar a cabo actividades de:</p>
+                <div class="option" data-value="a"> <input type="radio" id="q78a" name="q78" value="a"> <label for="q78a">A. Lenguaje oral y escrito.</label> </div>
+                <div class="option" data-value="b"> <input type="radio" id="q78b" name="q78" value="b"> <label for="q78b">B. Visoconstrucción (dibujar un objeto o construir cubos).</label> </div>
+                <div class="option" data-value="c"> <input type="radio" id="q78c" name="q78" value="c"> <label for="q78c">C. Movimientos bucofonatorios voluntarios.</label> </div>
+                <div class="option" data-value="d"> <input type="radio" id="q78d" name="q78" value="d"> <label for="q78d">D. La marcha y el equilibrio.</label> </div>
+                <div class="explanation"></div>
+            </div>
+
+            <div class="question" data-correct-answer="b" data-explanation="La disociación automático-voluntaria significa que la vía automática (ej. reír) está intacta, pero la vía voluntaria (ej. 'reír por orden') está dañada, un signo clásico de la apraxia.">
+                <p>79. En el contexto de las apraxias, ¿a qué se refiere el fenómeno de disociación automático-voluntaria observado en la Apraxia Bucofonatoria?</p>
+                <div class="option" data-value="a"> <input type="radio" id="q79a" name="q79" value="a"> <label for="q79a">A. El paciente puede hablar, pero no puede escribir.</label> </div>
+                <div class="option" data-value="b"> <input type="radio" id="q79b" name="q79" value="b"> <label for="q79b">B. El paciente puede realizar el movimiento automáticamente (ej. reír espontáneamente) pero no por orden verbal (ej. imitar la sonrisa).</label> </div>
+                <div class="option" data-value="c"> <input type="radio" id="q79c" name="q79" value="c"> <label for="q79c">C. El paciente puede usar la herramienta, pero no puede nombrarla.</label> </div>
+                <div class="option" data-value="d"> <input type="radio" id="q79d" name="q79" value="d"> <label for="q79d">D. El paciente puede imitar un gesto, pero no realizarlo de forma espontánea.</label> </div>
+                <div class="explanation"></div>
+            </div>
+
+            <div class="question" data-correct-answer="d" data-explanation="La Apraxia Ideatoria implica un fallo en el sistema conceptual (el 'saber qué' hacer) y es considerada la forma más grave, afectando la secuenciación con objetos.">
+                <p>80. ¿Qué tipo de apraxia implica una alteración en el sistema conceptual, lo que lleva a la incapacidad para llevar a cabo secuencias de movimientos, especialmente con objetos conocidos, y suele ser más grave?</p>
+                <div class="option" data-value="a"> <input type="radio" id="q80a" name="q80" value="a"> <label for="q80a">A. Apraxia bucofacial.</label> </div>
+                <div class="option" data-value="b"> <input type="radio" id="q80b" name="q80" value="b"> <label for="q80b">B. Apraxia ideomotora.</label> </div>
+                <div class="option" data-value="c"> <input type="radio" id="q80c" name="q80" value="c"> <label for="q80c">C. Apraxia constructiva.</label> </div>
+                <div class="option" data-value="d"> <input type="radio" id="q80d" name="q80" value="d"> <label for="q80d">D. Apraxia ideatoria.</label> </div>
+                <div class="explanation"></div>
+            </div>
+
+            <div class="question" data-correct-answer="a" data-explanation="La Apraxia del Vestido es una forma de apraxia espacial, asociada a lesiones parieto-occipitales del hemisferio derecho (que es dominante para el procesamiento visoespacial).">
+                <p>81. La Apraxia del Vestido se produce por lesiones:</p>
+                <div class="option" data-value="a"> <input type="radio" id="q81a" name="q81" value="a"> <label for="q81a">A. Parieto-occipitales del hemisferio derecho.</label> </div>
+                <div class="option" data-value="b"> <input type="radio" id="q81b" name="q81" value="b"> <label for="q81b">B. Bilaterales en áreas premotoras.</label> </div>
+                <div class="option" data-value="c"> <input type="radio" id="q81c" name="q81" value="c"> <label for="q81c">C. Del córtex parietal izquierdo y opérculo temporal.</label> </div>
+                <div class="option" data-value="d"> <input type="radio" id="q81d" name="q81" value="d"> <label for="q81d">D. Del fascículo arcuato.</label> </div>
+                <div class="explanation"></div>
+            </div>
+
+            <div class="question" data-correct-answer="a" data-explanation="La Agnosia Asociativa se caracteriza por la dificultad semántica (atribuir significado), mientras que la Agnosia Aperceptiva se caracteriza por la dificultad perceptiva (ver la forma).">
+                <p>82. ¿Cuál de las siguientes agnosias visuales se caracteriza por la dificultad para atribuir un significado a los estímulos visuales, aunque la capacidad perceptiva está intacta?</p>
+                <div class="option" data-value="a"> <input type="radio" id="q82a" name="q82" value="a"> <label for="q82a">A. Agnosia asociativa.</label> </div>
+                <div class="option" data-value="b"> <input type="radio" id="q82b" name="q82" value="b"> <label for="q82b">B. Agnosia aperceptiva.</label> </div>
+                <div class="option" data-value="c"> <input type="radio" id="q82c" name="q82" value="c"> <label for="q82c">C. Prosopagnosia.</label> </div>
+                <div class="option" data-value="d"> <input type="radio" id="q82d" name="q82" value="d"> <label for="q82d">D. Simultagnosia.</label> </div>
+                <div class="explanation"></div>
+            </div>
+
+            <button type="button" onclick="calculateScore()">Finalizar Examen y Ver Resultados</button>
+
+        </div>
+
+    </form>
+</div>
+
+<script>
+    const STORAGE_KEY = 'neuropsy_leaderboard';
+    const totalQuestions = 82;
+
+    // =======================================================
+    // FUNCIÓN PRINCIPAL: CALCULAR PUNTAJE (ACTUALIZADA)
+    // =======================================================
+    function calculateScore() {
+        const questions = document.querySelectorAll('.question');
+        let score = 0;
+
+        // 1. Recorre y califica las preguntas
+        questions.forEach((question, index) => {
+            const questionNumber = index + 1;
+            const correctAnswer = question.getAttribute('data-correct-answer');
+            const explanationText = question.getAttribute('data-explanation');
+            const questionName = `q${questionNumber}`; 
+            const selectedOptionInput = document.querySelector(`input[name="${questionName}"]:checked`);
+            const options = question.querySelectorAll('.option');
+            let explanationDiv = question.querySelector('.explanation');
+            
+            // Si la explicación no existe, la crea (para asegurar la compatibilidad)
+            if (!explanationDiv) {
+                explanationDiv = document.createElement('div');
+                explanationDiv.className = 'explanation';
+                question.appendChild(explanationDiv);
+            }
+            explanationDiv.style.display = 'none';
+            question.classList.remove('not-answered');
+
+            // Limpia los estilos de feedback anteriores
+            options.forEach(opt => {
+                opt.classList.remove('highlight-correct', 'highlight-incorrect');
+                const feedbackSpan = opt.querySelector('.feedback');
+                if (feedbackSpan) { feedbackSpan.remove(); }
+                opt.querySelector('label').style.backgroundColor = ''; 
+                opt.querySelector('label').style.color = '';
+            });
+
+            // 2. Procesa la respuesta y aplica sombreado
+            if (selectedOptionInput) {
+                const userAnswer = selectedOptionInput.value;
+                const selectedOptionDiv = selectedOptionInput.closest('.option');
+
+                if (userAnswer === correctAnswer) {
+                    score++;
+                    selectedOptionDiv.classList.add('highlight-correct');
+                } else {
+                    selectedOptionDiv.classList.add('highlight-incorrect');
+                }
+            } else {
+                 question.classList.add('not-answered');
+            }
+
+            // 3. Muestra la retroalimentación, el color verde/rojo y la explicación
+            options.forEach(opt => {
+                const optionValue = opt.getAttribute('data-value');
+                let feedbackSpan = opt.querySelector('.feedback');
+                
+                if (!feedbackSpan) {
+                    feedbackSpan = document.createElement('span');
+                    feedbackSpan.classList.add('feedback');
+                    opt.querySelector('label').appendChild(feedbackSpan);
+                }
+
+                if (optionValue === correctAnswer) {
+                    // Es la respuesta correcta
+                    feedbackSpan.innerHTML = (selectedOptionInput && selectedOptionInput.value === correctAnswer) ? ' 💚 ¡Correcto!' : ' 💚 (Correcta)';
+                    opt.querySelector('label').style.backgroundColor = '#d4edda';
+                    opt.querySelector('label').style.color = '#155724';
+                    
+                    // Muestra la explicación (solo en la correcta)
+                    if (explanationDiv && explanationText) {
+                        explanationDiv.innerHTML = '<strong>Explicación:</strong> ' + explanationText;
+                        explanationDiv.style.display = 'block';
+                    }
+
+                } else if (selectedOptionInput && selectedOptionInput.value === optionValue) {
+                    // Muestra la respuesta INCORRECTA que marcó el usuario
+                    feedbackSpan.innerHTML = ' ❌ Incorrecto';
+                } else {
+                    feedbackSpan.innerHTML = ''; // Limpia el feedback de las opciones irrelevantes
+                }
+            });
+        });
+
+        // 4. Muestra resultados finales y deshabilita botones
+        document.getElementById('score').textContent = score;
+        document.getElementById('results').style.display = 'block';
+        document.querySelectorAll('button').forEach(btn => btn.disabled = true);
+        
+        // 5. Gestión del Leaderboard (Local)
+        saveScore(score, totalQuestions);
+        displayLeaderboard();
+        document.getElementById('leaderboard-section').style.display = 'block';
+        
+        window.scrollTo(0, 0); // Vuelve al inicio para ver los resultados
+    }
+
+    // =======================================================
+    // FUNCIONES DEL LEADERBOARD (LOCALSTORAGE)
+    // =======================================================
+    function saveScore(score, total) {
+        const scores = getScores();
+        const now = new Date();
+        const dateString = now.toLocaleDateString('es-ES', { 
+            year: 'numeric', month: 'short', day: 'numeric', 
+            hour: '2-digit', minute: '2-digit' 
+        });
+
+        scores.push({
+            score: score,
+            total: total,
+            date: dateString,
+            timestamp: now.getTime()
+        });
+
+        scores.sort((a, b) => b.score - a.score || a.timestamp - b.timestamp);
+        const topScores = scores.slice(0, 10);
+
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(topScores));
+    }
+
+    function getScores() {
+        const json = localStorage.getItem(STORAGE_KEY);
+        try {
+            return json ? JSON.parse(json) : [];
+        } catch (e) {
+            console.error("Error al parsear scores de localStorage:", e);
+            return [];
+        }
+    }
+
+    function displayLeaderboard() {
+        const scores = getScores();
+        const tbody = document.getElementById('leaderboard-table').querySelector('tbody');
+        tbody.innerHTML = ''; 
+
+        if (scores.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="3" style="text-align: center;">Aún no tienes puntajes. ¡Haz el examen!</td></tr>';
+            return;
+        }
+        
+        scores.sort((a, b) => b.score - a.score || a.timestamp - b.timestamp); 
+
+        scores.forEach((item, index) => {
+            const row = tbody.insertRow();
+            
+            const cellRank = row.insertCell();
+            cellRank.textContent = index + 1;
+            
+            const cellScore = row.insertCell();
+            cellScore.textContent = `${item.score} / ${item.total} aciertos`;
+            
+            const cellDate = row.insertCell();
+            cellDate.textContent = item.date;
+        });
+    }
+
+    // Inicialización al cargar
+    document.addEventListener('DOMContentLoaded', () => {
+        // Limpiar estilos si se recarga la página
+        document.querySelectorAll('.explanation').forEach(exp => exp.style.display = 'none');
+        document.querySelectorAll('.feedback').forEach(fb => fb.remove());
+        document.querySelectorAll('.question').forEach(q => q.classList.remove('not-answered'));
+        document.querySelectorAll('.option label').forEach(label => {
+            label.style.backgroundColor = '';
+            label.style.color = '';
+        });
+
+        displayLeaderboard();
+    });
+</script>
+
+</body>
+</html>
