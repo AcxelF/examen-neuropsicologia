@@ -9,7 +9,8 @@
       "d": "Moldeable, solo en función de las lesiones."
     },
     "respuestaCorrecta": "b",
-    "explicacion": "La Neuroplasticidad describe al cerebro como un sistema activo que remodela su estructura y conexiones funcionales constantemente en respuesta a la experiencia, el aprendizaje o el daño."
+    "explicacion": "La Neuroplasticidad describe al cerebro como un sistema activo que remodela su estructura y conexiones funcionales constantemente en respuesta a la experiencia, el aprendizaje o el daño.",
+    "categoria": "Neuroplasticidad y Recuperación"
   },
   {
     "id": "q2",
@@ -21,7 +22,8 @@
       "d": "Facilitar la supervivencia y reorganizar circuitos dañados."
     },
     "respuestaCorrecta": "d",
-    "explicacion": "En la adultez, la Neuroplasticidad se enfoca en la reorganización y la supervivencia neuronal, clave para la recuperación funcional tras el daño (plasticidad reconstructiva)."
+    "explicacion": "En la adultez, la Neuroplasticidad se enfoca en la reorganización y la supervivencia neuronal, clave para la recuperación funcional tras el daño (plasticidad reconstructiva).",
+    "categoria": "Neuroplasticidad y Recuperación"
   },
   {
     "id": "q3",
@@ -33,7 +35,8 @@
       "d": "Distonía focal de tarea específica o 'calambre del pianista'."
     },
     "respuestaCorrecta": "d",
-    "explicacion": "La Plasticidad no adaptativa se refiere a los cambios maladaptativos del cerebro, como el 'calambre del pianista', donde el entrenamiento intensivo lleva a una pérdida de función."
+    "explicacion": "La Plasticidad no adaptativa se refiere a los cambios maladaptativos del cerebro, como el 'calambre del pianista', donde el entrenamiento intensivo lleva a una pérdida de función.",
+    "categoria": "Neuroplasticidad y Recuperación"
   },
   {
     "id": "q4",
@@ -45,7 +48,8 @@
       "d": "Potenciación a Largo Plazo (PLP)."
     },
     "respuestaCorrecta": "d",
-    "explicacion": "La Potenciación a Largo Plazo (PLP) es el principal mecanismo sináptico que subyace al aprendizaje y se define como el aumento duradero en la fuerza de la conexión sináptica."
+    "explicacion": "La Potenciación a Largo Plazo (PLP) es el principal mecanismo sináptico que subyace al aprendizaje y se define como el aumento duradero en la fuerza de la conexión sináptica.",
+    "categoria": "Neuroplasticidad y Recuperación"
   },
   {
     "id": "q5",
@@ -57,7 +61,8 @@
       "d": "Diferenciación hemisférica."
     },
     "respuestaCorrecta": "c",
-    "explicacion": "La Dominancia Cerebral es el concepto neuropsicológico que se refiere a la superioridad de un hemisferio en una función específica (ej. lenguaje), un proceso involuntario no entrenable."
+    "explicacion": "La Dominancia Cerebral es el concepto neuropsicológico que se refiere a la superioridad de un hemisferio en una función específica (ej. lenguaje), un proceso involuntario no entrenable.",
+    "categoria": "Dominancia y Asimetría Cerebral"
   },
   {
     "id": "q6",
@@ -69,7 +74,8 @@
       "d": "La asimetría solo está determinada por factores genéticos."
     },
     "respuestaCorrecta": "c",
-    "explicacion": "La Lateralización Progresiva postula que, aunque inicialmente ambos hemisferios tienen potencial, las funciones se van especializando y 'lateralizando' a medida que el niño crece."
+    "explicacion": "La Lateralización Progresiva postula que, aunque inicialmente ambos hemisferios tienen potencial, las funciones se van especializando y 'lateralizando' a medida que el niño crece.",
+    "categoria": "Dominancia y Asimetría Cerebral"
   },
   {
     "id": "q7",
@@ -81,7 +87,8 @@
       "d": "Letras y números."
     },
     "respuestaCorrecta": "d",
-    "explicacion": "El Test Dicáptico (táctil) y el Dicotómico (auditivo) se usan para establecer la dominancia. El HI es dominante para la información verbal/simbólica, incluyendo el reconocimiento táctil de letras y números."
+    "explicacion": "El Test Dicáptico (táctil) y el Dicotómico (auditivo) se usan para establecer la dominancia. El HI es dominante para la información verbal/simbólica, incluyendo el reconocimiento táctil de letras y números.",
+    "categoria": "Dominancia y Asimetría Cerebral"
   },
   {
     "id": "q8",
@@ -93,7 +100,8 @@
       "d": "La capacidad de ser conscientes de sí mismos."
     },
     "respuestaCorrecta": "d",
-    "explicacion": "El tercer nivel de la Conciencia Transitiva es el más elevado y se refiere a la autoconciencia o conciencia de sí mismo, que integra los niveles inferiores."
+    "explicacion": "El tercer nivel de la Conciencia Transitiva es el más elevado y se refiere a la autoconciencia o conciencia de sí mismo, que integra los niveles inferiores.",
+    "categoria": "Atención y Conciencia"
   },
   {
     "id": "q9",
@@ -105,7 +113,8 @@
       "d": "Estupor."
     },
     "respuestaCorrecta": "c",
-    "explicacion": "La Obnubilación es un estado intermedio de conciencia que se caracteriza por somnolencia y una respuesta lenta y confusa, pero con el paciente aún despierto."
+    "explicacion": "La Obnubilación es un estado intermedio de conciencia que se caracteriza por somnolencia y una respuesta lenta y confusa, pero con el paciente aún despierto.",
+    "categoria": "Atención y Conciencia"
   },
   {
     "id": "q10",
@@ -117,7 +126,8 @@
       "d": "Es más sutil que la hemi inatención."
     },
     "respuestaCorrecta": "c",
-    "explicacion": "La Heminegligencia se define como el fracaso en orientar, informar o responder a estímulos presentados en el espacio opuesto a la lesión cerebral (generalmente parietal derecho)."
+    "explicacion": "La Heminegligencia se define como el fracaso en orientar, informar o responder a estímulos presentados en el espacio opuesto a la lesión cerebral (generalmente parietal derecho).",
+    "categoria": "Atención y Conciencia"
   },
   {
     "id": "q11",
@@ -129,7 +139,8 @@
       "d": "Melatonina y Adrenalina."
     },
     "respuestaCorrecta": "c",
-    "explicacion": "La Dopamina y la Noradrenalina son los neurotransmisores clave en la regulación del córtex prefrontal y los ganglios basales, circuitos implicados en la atención, la inhibición y el TDAH."
+    "explicacion": "La Dopamina y la Noradrenalina son los neurotransmisores clave en la regulación del córtex prefrontal y los ganglios basales, circuitos implicados en la atención, la inhibición y el TDAH.",
+    "categoria": "Atención y Conciencia"
   },
   {
     "id": "q12",
@@ -141,7 +152,8 @@
       "d": "El 100% de la población general."
     },
     "respuestaCorrecta": "c",
-    "explicacion": "El hemisferio izquierdo es dominante para el lenguaje en el 95% de las personas diestras y en el 70% de las zurdas (lo que indica que la dominancia manual no siempre predice la cerebral)."
+    "explicacion": "El hemisferio izquierdo es dominante para el lenguaje en el 95% de las personas diestras y en el 70% de las zurdas (lo que indica que la dominancia manual no siempre predice la cerebral).",
+    "categoria": "Lenguaje y Afasias (Teoría)"
   },
   {
     "id": "q13",
@@ -153,7 +165,8 @@
       "d": "Reconocer relaciones espacio-temporales y comprender estructuras lógico-gramaticales."
     },
     "respuestaCorrecta": "d",
-    "explicacion": "La Afasia Semántica (Luria, lesión parieto-occipital izquierda) se relaciona con la dificultad para comprender estructuras complejas como las relaciones lógico-gramaticales o las espaciales."
+    "explicacion": "La Afasia Semántica (Luria, lesión parieto-occipital izquierda) se relaciona con la dificultad para comprender estructuras complejas como las relaciones lógico-gramaticales o las espaciales.",
+    "categoria": "Lenguaje y Afasias (Teoría)"
   },
   {
     "id": "q14",
@@ -165,7 +178,8 @@
       "d": "Afasia de Broca."
     },
     "respuestaCorrecta": "b",
-    "explicacion": "La Afasia de Wernicke (Sensorial) se caracteriza por un lenguaje fluido pero incoherente, con severo déficit de comprensión y repetición."
+    "explicacion": "La Afasia de Wernicke (Sensorial) se caracteriza por un lenguaje fluido pero incoherente, con severo déficit de comprensión y repetición.",
+    "categoria": "Lenguaje y Afasias (Teoría)"
   },
   {
     "id": "q15",
@@ -177,7 +191,8 @@
       "d": "Afecta al lenguaje ya formado."
     },
     "respuestaCorrecta": "b",
-    "explicacion": "La Afasia es una pérdida del lenguaje adquirida debido a una lesión cerebral (orgánica). La Disfasia/Trastorno Específico del Lenguaje (TEL) es un trastorno primario del desarrollo sin una lesión neurológica adquirida conocida."
+    "explicacion": "La Afasia es una pérdida del lenguaje adquirida debido a una lesión cerebral (orgánica). La Disfasia/Trastorno Específico del Lenguaje (TEL) es un trastorno primario del desarrollo sin una lesión neurológica adquirida conocida.",
+    "categoria": "Lenguaje y Afasias (Teoría)"
   },
   {
     "id": "q16",
@@ -189,7 +204,8 @@
       "d": "Disociación entre movimientos voluntarios e involuntarios."
     },
     "respuestaCorrecta": "b",
-    "explicacion": "La Apraxia Ideatoria es un déficit en el 'plan' mental de la acción, resultando en la incapacidad de llevar a cabo secuencias complejas de movimientos, sobre todo al usar objetos."
+    "explicacion": "La Apraxia Ideatoria es un déficit en el 'plan' mental de la acción, resultando en la incapacidad de llevar a cabo secuencias complejas de movimientos, sobre todo al usar objetos.",
+    "categoria": "Praxias y Apraxias"
   },
   {
     "id": "q17",
@@ -201,7 +217,8 @@
       "d": "Apraxia Bucofacial."
     },
     "respuestaCorrecta": "c",
-    "explicacion": "La Apraxia Constructiva es la incapacidad para organizar espacialmente las partes de un todo (visoconstrucción), siendo evidente al dibujar o construir figuras."
+    "explicacion": "La Apraxia Constructiva es la incapacidad para organizar espacialmente las partes de un todo (visoconstrucción), siendo evidente al dibujar o construir figuras.",
+    "categoria": "Praxias y Apraxias"
   },
   {
     "id": "q18",
@@ -213,7 +230,8 @@
       "d": "Hemiapraxia que afecta a la mano izquierda por callosotomía."
     },
     "respuestaCorrecta": "b",
-    "explicacion": "La Apraxia Bucofacial se caracteriza por la disociación entre los movimientos voluntarios (pedidos por orden) e involuntarios/automáticos (espontáneos) de los órganos orofaciales."
+    "explicacion": "La Apraxia Bucofacial se caracteriza por la disociación entre los movimientos voluntarios (pedidos por orden) e involuntarios/automáticos (espontáneos) de los órganos orofaciales.",
+    "categoria": "Praxias y Apraxias"
   },
   {
     "id": "q19",
@@ -225,7 +243,8 @@
       "d": "Prosopagnosia."
     },
     "respuestaCorrecta": "c",
-    "explicacion": "La Agnosia Asociativa implica que el paciente ve el objeto y puede describirlo (percepción intacta), pero no puede reconocer su significado o función (defecto semántico)."
+    "explicacion": "La Agnosia Asociativa implica que el paciente ve el objeto y puede describirlo (percepción intacta), pero no puede reconocer su significado o función (defecto semántico).",
+    "categoria": "Agnosias"
   },
   {
     "id": "q20",
@@ -237,7 +256,8 @@
       "d": "Asomatognosia"
     },
     "respuestaCorrecta": "d",
-    "explicacion": "La Asomatognosia es la negación de una parte del cuerpo, un tipo de agnosia somatosensorial, asociada a la negligencia y lesiones del hemisferio derecho."
+    "explicacion": "La Asomatognosia es la negación de una parte del cuerpo, un tipo de agnosia somatosensorial, asociada a la negligencia y lesiones del hemisferio derecho.",
+    "categoria": "Agnosias"
   },
   {
     "id": "q21",
@@ -249,7 +269,8 @@
       "d": "La totalidad de las personas zurdas."
     },
     "respuestaCorrecta": "b",
-    "explicacion": "El 95% de las personas diestras tiene el lenguaje lateralizado en el hemisferio izquierdo, mientras que en los zurdos la lateralización es más variable."
+    "explicacion": "El 95% de las personas diestras tiene el lenguaje lateralizado en el hemisferio izquierdo, mientras que en los zurdos la lateralización es más variable.",
+    "categoria": "Lenguaje y Afasias (Teoría)"
   },
   {
     "id": "q22",
@@ -261,7 +282,8 @@
       "d": "El Fascículo Arqueado o Arcuata."
     },
     "respuestaCorrecta": "d",
-    "explicacion": "El Fascículo Arqueado (o Arcuata) es un haz de fibras de asociación que conecta el área de Wernicke (comprensión) con el área de Broca (producción), siendo crucial para la repetición."
+    "explicacion": "El Fascículo Arqueado (o Arcuata) es un haz de fibras de asociación que conecta el área de Wernicke (comprensión) con el área de Broca (producción), siendo crucial para la repetición.",
+    "categoria": "Lenguaje y Afasias (Teoría)"
   },
   {
     "id": "q23",
@@ -273,7 +295,8 @@
       "d": "1, 2 y 3."
     },
     "respuestaCorrecta": "c",
-    "explicacion": "El área de Wernicke se localiza principalmente en el Área 22 de Brodmann (córtex temporal superior), con contribuciones importantes de las Áreas 39 y 40 (giros angular y supramarginal)."
+    "explicacion": "El área de Wernicke se localiza principalmente en el Área 22 de Brodmann (córtex temporal superior), con contribuciones importantes de las Áreas 39 y 40 (giros angular y supramarginal).",
+    "categoria": "Lenguaje y Afasias (Teoría)"
   },
   {
     "id": "q24",
@@ -285,7 +308,8 @@
       "d": "Transcortical Sensorial."
     },
     "respuestaCorrecta": "b",
-    "explicacion": "La Afasia de Broca (motora) es típicamente no fluida o disfluente, caracterizada por un habla laboriosa, lenta y con interrupciones."
+    "explicacion": "La Afasia de Broca (motora) es típicamente no fluida o disfluente, caracterizada por un habla laboriosa, lenta y con interrupciones.",
+    "categoria": "Lenguaje y Afasias (Teoría)"
   },
   {
     "id": "q25",
@@ -297,7 +321,8 @@
       "d": "El habla telegráfica con fluidez normal."
     },
     "respuestaCorrecta": "c",
-    "explicacion": "El agramatismo es la característica distintiva de la Afasia de Broca: omisión de palabras gramaticales (artículos, preposiciones) resultando en un 'habla telegráfica'."
+    "explicacion": "El agramatismo es la característica distintiva de la Afasia de Broca: omisión de palabras gramaticales (artículos, preposiciones) resultando en un 'habla telegráfica'.",
+    "categoria": "Lenguaje y Afasias (Teoría)"
   },
   {
     "id": "q26",
@@ -309,7 +334,8 @@
       "d": "Anosognosia."
     },
     "respuestaCorrecta": "d",
-    "explicacion": "La Anosognosia es la falta de conciencia o negación de la propia enfermedad. Es frecuente en la Afasia de Wernicke y en la Heminegligencia."
+    "explicacion": "La Anosognosia es la falta de conciencia o negación de la propia enfermedad. Es frecuente en la Afasia de Wernicke y en la Heminegligencia.",
+    "categoria": "Lenguaje y Afasias (Teoría)"
   },
   {
     "id": "q27",
@@ -321,7 +347,8 @@
       "d": "Las vías que conectan las áreas de Broca y Wernicke."
     },
     "respuestaCorrecta": "d",
-    "explicacion": "El modelo de Lichtheim-Geschwind sitúa la Afasia de Conducción por lesión en el Fascículo Arqueado, interrumpiendo la conexión directa entre Broca y Wernicke, lo que causa el déficit de repetición."
+    "explicacion": "El modelo de Lichtheim-Geschwind sitúa la Afasia de Conducción por lesión en el Fascículo Arqueado, interrumpiendo la conexión directa entre Broca y Wernicke, lo que causa el déficit de repetición.",
+    "categoria": "Lenguaje y Afasias (Teoría)"
   },
   {
     "id": "q28",
@@ -333,7 +360,8 @@
       "d": "Los sustantivos (dificultad en encontrar la palabra correcta)."
     },
     "respuestaCorrecta": "d",
-    "explicacion": "La Afasia Anómica (o Nominal) se caracteriza por la dificultad para evocar palabras, especialmente sustantivos y nombres propios (anomia), recurriendo a circunloquios para describirlos."
+    "explicacion": "La Afasia Anómica (o Nominal) se caracteriza por la dificultad para evocar palabras, especialmente sustantivos y nombres propios (anomia), recurriendo a circunloquios para describirlos.",
+    "categoria": "Lenguaje y Afasias (Teoría)"
   },
   {
     "id": "q29",
@@ -345,7 +373,8 @@
       "d": "La Afasia es un trastorno del lenguaje secundario a una lesión cerebral adquirida, mientras que la Disfasia no tiene un origen orgánico."
     },
     "respuestaCorrecta": "d",
-    "explicacion": "La Afasia es un trastorno adquirido secundario a lesión (ACV, TEC). La Disfasia/TEL es un trastorno primario del desarrollo, sin causa orgánica adquirida conocida."
+    "explicacion": "La Afasia es un trastorno adquirido secundario a lesión (ACV, TEC). La Disfasia/TEL es un trastorno primario del desarrollo, sin causa orgánica adquirida conocida.",
+    "categoria": "Lenguaje y Afasias (Teoría)"
   },
   {
     "id": "q30",
@@ -357,7 +386,8 @@
       "d": "Disfemia."
     },
     "respuestaCorrecta": "d",
-    "explicacion": "La Disfemia, comúnmente conocida como tartamudez o espasmofemia, es un trastorno de la fluidez del habla que implica repeticiones, prolongaciones o bloqueos espasmódicos en la emisión."
+    "explicacion": "La Disfemia, comúnmente conocida como tartamudez o espasmofemia, es un trastorno de la fluidez del habla que implica repeticiones, prolongaciones o bloqueos espasmódicos en la emisión.",
+    "categoria": "Lenguaje y Afasias (Teoría)"
   },
   {
     "id": "q31",
@@ -369,7 +399,8 @@
       "d": "Complejas y no automáticas, controladas únicamente por el sistema conceptual."
     },
     "respuestaCorrecta": "c",
-    "explicacion": "Las Praxias son sistemas de movimientos coordinados y organizados para un fin, que se aprenden a través de la experiencia y se automatizan con la repetición."
+    "explicacion": "Las Praxias son sistemas de movimientos coordinados y organizados para un fin, que se aprenden a través de la experiencia y se automatizan con la repetición.",
+    "categoria": "Praxias y Apraxias"
   },
   {
     "id": "q32",
@@ -381,7 +412,8 @@
       "d": "El sistema conceptual (conocimiento sobre la función de objetos)."
     },
     "respuestaCorrecta": "d",
-    "explicacion": "La Apraxia Ideatoria es un trastorno del 'saber hacer' que afecta el sistema conceptual, es decir, el conocimiento sobre qué objeto usar y cómo debe ser la secuencia de la acción."
+    "explicacion": "La Apraxia Ideatoria es un trastorno del 'saber hacer' que afecta el sistema conceptual, es decir, el conocimiento sobre qué objeto usar y cómo debe ser la secuencia de la acción.",
+    "categoria": "Praxias y Apraxias"
   },
   {
     "id": "q33",
@@ -393,7 +425,8 @@
       "d": "La unión parieto-occipital o giro angular y supramarginal."
     },
     "respuestaCorrecta": "d",
-    "explicacion": "La Apraxia Ideomotora (déficit en la ejecución) se asocia frecuentemente con lesiones del hemisferio izquierdo en la zona que conecta los lóbulos parietal, temporal y occipital."
+    "explicacion": "La Apraxia Ideomotora (déficit en la ejecución) se asocia frecuentemente con lesiones del hemisferio izquierdo en la zona que conecta los lóbulos parietal, temporal y occipital.",
+    "categoria": "Praxias y Apraxias"
   },
   {
     "id": "q34",
@@ -405,7 +438,8 @@
       "d": "Errores Espaciales Posturales."
     },
     "respuestaCorrecta": "c",
-    "explicacion": "El uso de un objeto conocido de forma incorrecta (ej. martillar con un destornillador) es un error de Contenido (déficit conceptual/asociativo), típico de la apraxia ideatoria."
+    "explicacion": "El uso de un objeto conocido de forma incorrecta (ej. martillar con un destornillador) es un error de Contenido (déficit conceptual/asociativo), típico de la apraxia ideatoria.",
+    "categoria": "Praxias y Apraxias"
   },
   {
     "id": "q35",
@@ -417,7 +451,8 @@
       "d": "Vestirse y anudar cordones."
     },
     "respuestaCorrecta": "c",
-    "explicacion": "La Apraxia Constructiva afecta la capacidad visoespacial y la construcción de estructuras o figuras, incluyendo el dibujo."
+    "explicacion": "La Apraxia Constructiva afecta la capacidad visoespacial y la construcción de estructuras o figuras, incluyendo el dibujo.",
+    "categoria": "Praxias y Apraxias"
   },
   {
     "id": "q36",
@@ -429,7 +464,8 @@
       "d": "Apraxia de la Marcha."
     },
     "respuestaCorrecta": "c",
-    "explicacion": "La Apraxia del Vestido es una forma de apraxia que afecta las habilidades motoras y visoespaciales necesarias para ponerse o abrocharse la ropa."
+    "explicacion": "La Apraxia del Vestido es una forma de apraxia que afecta las habilidades motoras y visoespaciales necesarias para ponerse o abrocharse la ropa.",
+    "categoria": "Praxias y Apraxias"
   },
   {
     "id": "q37",
@@ -441,7 +477,8 @@
       "d": "Izquierda, por lesión en el córtex parietal izquierdo."
     },
     "respuestaCorrecta": "b",
-    "explicacion": "La Apraxia Callosa es una hemiapraxia que afecta la mano izquierda, pues al estar dañado el cuerpo calloso, la información verbal del hemisferio izquierdo no puede alcanzar el hemisferio derecho (que controla la mano izquierda)."
+    "explicacion": "La Apraxia Callosa es una hemiapraxia que afecta la mano izquierda, pues al estar dañado el cuerpo calloso, la información verbal del hemisferio izquierdo no puede alcanzar el hemisferio derecho (que controla la mano izquierda).",
+    "categoria": "Praxias y Apraxias"
   },
   {
     "id": "q38",
@@ -453,7 +490,8 @@
       "d": "Disfasia."
     },
     "respuestaCorrecta": "c",
-    "explicacion": "La Agnosia es la incapacidad para el reconocimiento de estímulos familiares (visuales, táctiles, auditivos) a pesar de tener la función sensorial básica intacta, debido a una lesión cortical asociativa."
+    "explicacion": "La Agnosia es la incapacidad para el reconocimiento de estímulos familiares (visuales, táctiles, auditivos) a pesar de tener la función sensorial básica intacta, debido a una lesión cortical asociativa.",
+    "categoria": "Agnosias"
   },
   {
     "id": "q39",
@@ -465,7 +503,8 @@
       "d": "Incapacidad para reconocer rostros (Prosopagnosia)."
     },
     "respuestaCorrecta": "c",
-    "explicacion": "La Agnosia Aperceptiva implica un fallo en la 'percepción' del objeto, el paciente no puede formar una representación coherente, aunque los ojos funcionen (Lissauer)."
+    "explicacion": "La Agnosia Aperceptiva implica un fallo en la 'percepción' del objeto, el paciente no puede formar una representación coherente, aunque los ojos funcionen (Lissauer).",
+    "categoria": "Agnosias"
   },
   {
     "id": "q40",
@@ -477,7 +516,8 @@
       "d": "Temporal izquierdo (Áreas 42 y 22)."
     },
     "respuestaCorrecta": "c",
-    "explicacion": "La Prosopagnosia se produce por lesiones bilaterales o unilaterales derechas en el giro fusiforme, que forma parte de la región occipitotemporal."
+    "explicacion": "La Prosopagnosia se produce por lesiones bilaterales o unilaterales derechas en el giro fusiforme, que forma parte de la región occipitotemporal.",
+    "categoria": "Agnosias"
   },
   {
     "id": "q41",
@@ -489,7 +529,8 @@
       "d": "Se produce por lesiones en las Áreas 5, 7 y 40 de Brodmann."
     },
     "respuestaCorrecta": "c",
-    "explicacion": "La Asteroagnosia Secundaria o Asimbolía (la 'verdadera' agnosia táctil) implica que la sensación táctil está bien, pero el significado del objeto palpado no se puede procesar a nivel cognitivo."
+    "explicacion": "La Asteroagnosia Secundaria o Asimbolía (la 'verdadera' agnosia táctil) implica que la sensación táctil está bien, pero el significado del objeto palpado no se puede procesar a nivel cognitivo.",
+    "categoria": "Agnosias"
   },
   {
     "id": "q42",
@@ -501,7 +542,8 @@
       "d": "La ausencia de conciencia o la negación de una enfermedad (neurológica)."
     },
     "respuestaCorrecta": "d",
-    "explicacion": "La Anosognosia es la falta de conciencia de un déficit o enfermedad neurológica. Es común en lesiones derechas asociadas a hemiplejias y heminegligencia."
+    "explicacion": "La Anosognosia es la falta de conciencia de un déficit o enfermedad neurológica. Es común en lesiones derechas asociadas a hemiplejias y heminegligencia.",
+    "categoria": "Agnosias"
   },
   {
     "id": "q43",
@@ -513,7 +555,8 @@
       "d": "En la incapacidad para realizar movimientos o secuencias motoras con los órganos bucofonatorios, sin parálisis asociada."
     },
     "respuestaCorrecta": "b",
-    "explicacion": "La afasia es un trastorno del lenguaje adquirido (no de nacimiento) causado por una lesión cerebral en una persona que previamente podía hablar con normalidad."
+    "explicacion": "La afasia es un trastorno del lenguaje adquirido (no de nacimiento) causado por una lesión cerebral en una persona que previamente podía hablar con normalidad.",
+    "categoria": "Lenguaje y Afasias (Teoría)"
   },
   {
     "id": "q44",
@@ -525,7 +568,8 @@
       "d": "La capacidad de cálculo."
     },
     "respuestaCorrecta": "b",
-    "explicacion": "Una afasia, al ser un trastorno central del lenguaje, afecta todas las modalidades, incluyendo la capacidad escrita (agrafía) y la lectura (alexia)."
+    "explicacion": "Una afasia, al ser un trastorno central del lenguaje, afecta todas las modalidades, incluyendo la capacidad escrita (agrafía) y la lectura (alexia).",
+    "categoria": "Lenguaje y Afasias (Teoría)"
   },
   {
     "id": "q45",
@@ -537,7 +581,8 @@
       "d": "Ecolalia."
     },
     "respuestaCorrecta": "c",
-    "explicacion": "El agramatismo (uso telegráfico) se observa en la recuperación del lenguaje proposicional (lenguaje intencional y significativo) en trastornos graves."
+    "explicacion": "El agramatismo (uso telegráfico) se observa en la recuperación del lenguaje proposicional (lenguaje intencional y significativo) en trastornos graves.",
+    "categoria": "Lenguaje y Afasias (Teoría)"
   },
   {
     "id": "q46",
@@ -549,7 +594,8 @@
       "d": "Disintaxis"
     },
     "respuestaCorrecta": "c",
-    "explicacion": "Las perseveraciones implican la repetición inapropiada y persistente de respuestas, palabras o temas que ya se han dicho o utilizado."
+    "explicacion": "Las perseveraciones implican la repetición inapropiada y persistente de respuestas, palabras o temas que ya se han dicho o utilizado.",
+    "categoria": "Lenguaje y Afasias (Teoría)"
   },
   {
     "id": "q47",
@@ -561,7 +607,8 @@
       "d": "Hemiplejía derecha."
     },
     "respuestaCorrecta": "b",
-    "explicacion": "La característica distintiva de las afasias transcorticales es que la capacidad de repetición del lenguaje está conservada, a diferencia de las afasias perisilvianas."
+    "explicacion": "La característica distintiva de las afasias transcorticales es que la capacidad de repetición del lenguaje está conservada, a diferencia de las afasias perisilvianas.",
+    "categoria": "Lenguaje y Afasias (Teoría)"
   },
   {
     "id": "q48",
@@ -573,7 +620,8 @@
       "d": "No fluente; alexia sin agrafía."
     },
     "respuestaCorrecta": "b",
-    "explicacion": "La Afasia de Broca se caracteriza por ser de fluidez no fluente (con esfuerzo) y por presentar agramatismo (habla telegráfica)."
+    "explicacion": "La Afasia de Broca se caracteriza por ser de fluidez no fluente (con esfuerzo) y por presentar agramatismo (habla telegráfica).",
+    "categoria": "Lenguaje y Afasias (Teoría)"
   },
   {
     "id": "q49",
@@ -585,7 +633,8 @@
       "d": "La región insular y el fascículo arcuato."
     },
     "respuestaCorrecta": "c",
-    "explicacion": "La Afasia de Wernicke (Sensorial) se localiza en el lóbulo temporal izquierdo, específicamente en el tercio posterior de la primera y segunda circunvolución temporal."
+    "explicacion": "La Afasia de Wernicke (Sensorial) se localiza en el lóbulo temporal izquierdo, específicamente en el tercio posterior de la primera y segunda circunvolución temporal.",
+    "categoria": "Lenguaje y Afasias (Teoría)"
   },
   {
     "id": "q50",
@@ -597,7 +646,8 @@
       "d": "Trastorno del cálculo."
     },
     "respuestaCorrecta": "b",
-    "explicacion": "La Afasia de Conducción es un trastorno FLUENTE caracterizado por un déficit severo en la repetición de palabras y frases."
+    "explicacion": "La Afasia de Conducción es un trastorno FLUENTE caracterizado por un déficit severo en la repetición de palabras y frases.",
+    "categoria": "Lenguaje y Afasias (Teoría)"
   },
   {
     "id": "q51",
@@ -609,7 +659,8 @@
       "d": "Disprosodia"
     },
     "respuestaCorrecta": "d",
-    "explicacion": "La Disprosodia es la alteración en el ritmo, la entonación y la melodía del lenguaje (prosodia). La xenoloquia es un ejemplo de disprosodia."
+    "explicacion": "La Disprosodia es la alteración en el ritmo, la entonación y la melodía del lenguaje (prosodia). La xenoloquia es un ejemplo de disprosodia.",
+    "categoria": "Lenguaje y Afasias (Teoría)"
   },
   {
     "id": "q52",
@@ -621,7 +672,8 @@
       "d": "Anomia y circunloquios como único síntoma."
     },
     "respuestaCorrecta": "b",
-    "explicacion": "La Afasia Global es el trastorno más grave, con alteración masiva de la expresión, la comprensión y la repetición."
+    "explicacion": "La Afasia Global es el trastorno más grave, con alteración masiva de la expresión, la comprensión y la repetición.",
+    "categoria": "Lenguaje y Afasias (Teoría)"
   },
   {
     "id": "q53",
@@ -633,7 +685,8 @@
       "d": "Galeno"
     },
     "respuestaCorrecta": "c",
-    "explicacion": "Alcmeón de Crotona (s. V a.C.) fue uno de los primeros en proponer que el cerebro era el asiento de la conciencia y pionero en la práctica de la disección."
+    "explicacion": "Alcmeón de Crotona (s. V a.C.) fue uno de los primeros en proponer que el cerebro era el asiento de la conciencia y pionero en la práctica de la disección.",
+    "categoria": "Bases Históricas y Teóricas"
   },
   {
     "id": "q54",
@@ -645,7 +698,8 @@
       "d": "René Descartes"
     },
     "respuestaCorrecta": "c",
-    "explicacion": "Aristóteles, en la Antigüedad, defendió la hipótesis cardial o cardiocentrista, situando la razón y la emoción en el corazón."
+    "explicacion": "Aristóteles, en la Antigüedad, defendió la hipótesis cardial o cardiocentrista, situando la razón y la emoción en el corazón.",
+    "categoria": "Bases Históricas y Teóricas"
   },
   {
     "id": "q55",
@@ -657,7 +711,8 @@
       "d": "Jerárquica"
     },
     "respuestaCorrecta": "c",
-    "explicacion": "La teoría holística (o antilocalizacionista) sostiene que las funciones cognitivas dependen del cerebro en su conjunto, y no de áreas discretas y aisladas."
+    "explicacion": "La teoría holística (o antilocalizacionista) sostiene que las funciones cognitivas dependen del cerebro en su conjunto, y no de áreas discretas y aisladas.",
+    "categoria": "Bases Históricas y Teóricas"
   },
   {
     "id": "q56",
@@ -669,7 +724,8 @@
       "d": "Reduccionismo topográfico."
     },
     "respuestaCorrecta": "d",
-    "explicacion": "El localizacionismo extremo (ej. la frenología o el localizacionismo puro) es criticado por su reduccionismo topográfico, que intenta ubicar funciones complejas en puntos muy específicos del córtex."
+    "explicacion": "El localizacionismo extremo (ej. la frenología o el localizacionismo puro) es criticado por su reduccionismo topográfico, que intenta ubicar funciones complejas en puntos muy específicos del córtex.",
+    "categoria": "Bases Históricas y Teóricas"
   },
   {
     "id": "q57",
@@ -681,7 +737,8 @@
       "d": "Donald Hebb"
     },
     "respuestaCorrecta": "c",
-    "explicacion": "Constantin von Monakow introdujo el concepto de diásquisis para describir cómo una lesión localizada produce una disfunción funcional en áreas distantes pero conectadas."
+    "explicacion": "Constantin von Monakow introdujo el concepto de diásquisis para describir cómo una lesión localizada produce una disfunción funcional en áreas distantes pero conectadas.",
+    "categoria": "Bases Históricas y Teóricas"
   },
   {
     "id": "q58",
@@ -693,7 +750,8 @@
       "d": "Norman Geschwind"
     },
     "respuestaCorrecta": "b",
-    "explicacion": "Alexander R. Luria es el padre de la neuropsicología moderna, famoso por su concepto de Sistemas Funcionales Complejos y las tres Unidades Funcionales del cerebro."
+    "explicacion": "Alexander R. Luria es el padre de la neuropsicología moderna, famoso por su concepto de Sistemas Funcionales Complejos y las tres Unidades Funcionales del cerebro.",
+    "categoria": "Bases Históricas y Teóricas"
   },
   {
     "id": "q59",
@@ -705,7 +763,8 @@
       "d": "Rayos X tradicionales."
     },
     "respuestaCorrecta": "b",
-    "explicacion": "La Tomografía Axial Computarizada (TAC o CT) fue el primer método de neuroimagen que permitió ver el cerebro 'in vivo' con alta resolución y relacionar la clínica con la localización anatómica exacta."
+    "explicacion": "La Tomografía Axial Computarizada (TAC o CT) fue el primer método de neuroimagen que permitió ver el cerebro 'in vivo' con alta resolución y relacionar la clínica con la localización anatómica exacta.",
+    "categoria": "Bases Históricas y Teóricas"
   },
   {
     "id": "q60",
@@ -717,7 +776,8 @@
       "d": "El efecto de diásquisis."
     },
     "respuestaCorrecta": "b",
-    "explicacion": "La Ley de la acción en masa de Lashley postula que la función se correlaciona mejor con la cantidad de corteza destruida, no con la localización específica (un concepto más holístico)."
+    "explicacion": "La Ley de la acción en masa de Lashley postula que la función se correlaciona mejor con la cantidad de corteza destruida, no con la localización específica (un concepto más holístico).",
+    "categoria": "Bases Históricas y Teóricas"
   },
   {
     "id": "q61",
@@ -729,7 +789,8 @@
       "d": "El estudio científico de la relación entre el lenguaje y la memoria."
     },
     "respuestaCorrecta": "c",
-    "explicacion": "La Neuropsicología, en su definición más amplia, estudia la compleja relación entre los procesos cerebrales y la manifestación conductual (o cognitiva) de los seres humanos."
+    "explicacion": "La Neuropsicología, en su definición más amplia, estudia la compleja relación entre los procesos cerebrales y la manifestación conductual (o cognitiva) de los seres humanos.",
+    "categoria": "Bases Históricas y Teóricas"
   },
   {
     "id": "q62",
@@ -741,7 +802,8 @@
       "d": "Introducir la Ley de la acción en masa."
     },
     "respuestaCorrecta": "c",
-    "explicacion": "Penfield es famoso por el mapeo cortical mediante la estimulación eléctrica durante cirugías con anestesia local, lo que le permitió dibujar los 'Homúnculos' sensorial y motor."
+    "explicacion": "Penfield es famoso por el mapeo cortical mediante la estimulación eléctrica durante cirugías con anestesia local, lo que le permitió dibujar los 'Homúnculos' sensorial y motor.",
+    "categoria": "Bases Históricas y Teóricas"
   },
   {
     "id": "q63",
@@ -753,7 +815,8 @@
       "d": "Plasticidad reactiva (estímulo transitorio)."
     },
     "respuestaCorrecta": "c",
-    "explicacion": "La Plasticidad reconstructiva (o reparadora) es la que se pone en marcha después de una lesión cerebral para intentar recuperar o compensar la función perdida."
+    "explicacion": "La Plasticidad reconstructiva (o reparadora) es la que se pone en marcha después de una lesión cerebral para intentar recuperar o compensar la función perdida.",
+    "categoria": "Neuroplasticidad y Recuperación"
   },
   {
     "id": "q64",
@@ -765,7 +828,8 @@
       "d": "Sinaptogénesis."
     },
     "respuestaCorrecta": "c",
-    "explicacion": "La Neuroplasticidad evolutiva incluye Neurogénesis, Sinaptogénesis y Poda sináptica. La degeneración retrógrada es un mecanismo de daño post-lesional."
+    "explicacion": "La Neuroplasticidad evolutiva incluye Neurogénesis, Sinaptogénesis y Poda sináptica. La degeneración retrógrada es un mecanismo de daño post-lesional.",
+    "categoria": "Neuroplasticidad y Recuperación"
   },
   {
     "id": "q65",
@@ -777,7 +841,8 @@
       "d": "En una regeneración axonal."
     },
     "respuestaCorrecta": "b",
-    "explicacion": "Según Hebb, la memoria a corto plazo está basada en la actividad eléctrica transitoria (circuitos reverberantes), que se consolida en memoria a largo plazo a través de cambios estructurales permanentes."
+    "explicacion": "Según Hebb, la memoria a corto plazo está basada en la actividad eléctrica transitoria (circuitos reverberantes), que se consolida en memoria a largo plazo a través de cambios estructurales permanentes.",
+    "categoria": "Neuroplasticidad y Recuperación"
   },
   {
     "id": "q66",
@@ -789,7 +854,8 @@
       "d": "Vicariedad de la función."
     },
     "respuestaCorrecta": "d",
-    "explicacion": "La Vicariedad de la función se refiere a la capacidad de una zona del cerebro para asumir las funciones de una zona dañada, apoyándose en la idea de que muchas áreas tienen el potencial de hacer el trabajo de otras."
+    "explicacion": "La Vicariedad de la función se refiere a la capacidad de una zona del cerebro para asumir las funciones de una zona dañada, apoyándose en la idea de que muchas áreas tienen el potencial de hacer el trabajo de otras.",
+    "categoria": "Neuroplasticidad y Recuperación"
   },
   {
     "id": "q67",
@@ -801,7 +867,8 @@
       "d": "Es un proceso exclusivo de la maduración durante la adolescencia."
     },
     "respuestaCorrecta": "b",
-    "explicacion": "La Plasticidad no adaptativa se refiere a los cambios funcionales o estructurales que ocurren, pero que no necesariamente mejoran la función (o incluso la empeoran), como ocurre en las distonías focales."
+    "explicacion": "La Plasticidad no adaptativa se refiere a los cambios funcionales o estructurales que ocurren, pero que no necesariamente mejoran la función (o incluso la empeoran), como ocurre en las distonías focales.",
+    "categoria": "Neuroplasticidad y Recuperación"
   },
   {
     "id": "q68",
@@ -813,7 +880,8 @@
       "d": "Siempre conduce al nuevo crecimiento de las neuronas dañadas."
     },
     "respuestaCorrecta": "b",
-    "explicacion": "La Degeneración anterógrada (o Walleriana) es la degeneración del axón distal, es decir, el segmento que está separado del cuerpo neuronal."
+    "explicacion": "La Degeneración anterógrada (o Walleriana) es la degeneración del axón distal, es decir, el segmento que está separado del cuerpo neuronal.",
+    "categoria": "Neuroplasticidad y Recuperación"
   },
   {
     "id": "q69",
@@ -825,7 +893,8 @@
       "d": "La diferencia en el estilo cognitivo de cada hemisferio cerebral (diferenciación)."
     },
     "respuestaCorrecta": "c",
-    "explicacion": "La Asimetría Cerebral se refiere a las diferencias biológicas (anatómicas, estructurales y funcionales) entre los hemisferios. Es el sustrato biológico de la Dominancia y la Lateralidad."
+    "explicacion": "La Asimetría Cerebral se refiere a las diferencias biológicas (anatómicas, estructurales y funcionales) entre los hemisferios. Es el sustrato biológico de la Dominancia y la Lateralidad.",
+    "categoria": "Dominancia y Asimetría Cerebral"
   },
   {
     "id": "q70",
@@ -837,7 +906,8 @@
       "d": "Hemisferio verbal."
     },
     "respuestaCorrecta": "c",
-    "explicacion": "La Dominancia Cerebral es el concepto que describe el predominio de un hemisferio para una función compleja (ej. el HI es dominante para el lenguaje en la mayoría de la población)."
+    "explicacion": "La Dominancia Cerebral es el concepto que describe el predominio de un hemisferio para una función compleja (ej. el HI es dominante para el lenguaje en la mayoría de la población).",
+    "categoria": "Dominancia y Asimetría Cerebral"
   },
   {
     "id": "q71",
@@ -849,7 +919,8 @@
       "d": "Exclusivamente en el hemisferio derecho (100%)."
     },
     "respuestaCorrecta": "b",
-    "explicacion": "En los zurdos, la lateralización es más variable: el 70% tiene dominancia izquierda, pero un 15% tiene dominancia derecha y otro 15% tiene representación bilateral."
+    "explicacion": "En los zurdos, la lateralización es más variable: el 70% tiene dominancia izquierda, pero un 15% tiene dominancia derecha y otro 15% tiene representación bilateral.",
+    "categoria": "Dominancia y Asimetría Cerebral"
   },
   {
     "id": "q72",
@@ -861,7 +932,8 @@
       "d": "No dirigir la atención a una zona del espacio opuesta a la lesión (hemi inatención)."
     },
     "respuestaCorrecta": "c",
-    "explicacion": "La Extinción Sensorial (o Simultanagnosia) es un déficit más sutil de la negligencia, donde un estímulo se percibe correctamente si está solo, pero se extingue o ignora si se presenta simultáneamente con otro en el lado no afectado."
+    "explicacion": "La Extinción Sensorial (o Simultanagnosia) es un déficit más sutil de la negligencia, donde un estímulo se percibe correctamente si está solo, pero se extingue o ignora si se presenta simultáneamente con otro en el lado no afectado.",
+    "categoria": "Atención y Conciencia"
   },
   {
     "id": "q73",
@@ -873,7 +945,8 @@
       "d": "Espacial personal (Hemisomatognosia)."
     },
     "respuestaCorrecta": "d",
-    "explicacion": "La Heminegligencia Personal (o Hemisomatognosia) es un tipo de negligencia que afecta el cuerpo del paciente, que ignora un lado de su propio cuerpo (el hemicuerpo contrario a la lesión)."
+    "explicacion": "La Heminegligencia Personal (o Hemisomatognosia) es un tipo de negligencia que afecta el cuerpo del paciente, que ignora un lado de su propio cuerpo (el hemicuerpo contrario a la lesión).",
+    "categoria": "Atención y Conciencia"
   },
   {
     "id": "q74",
@@ -885,7 +958,8 @@
       "d": "Endorfinas y Melatonina."
     },
     "respuestaCorrecta": "b",
-    "explicacion": "La Dopamina y la Noradrenalina son los neurotransmisores monoaminérgicos más implicados en la regulación del córtex prefrontal, cruciales para el control ejecutivo y la atención (afectados en el TDAH)."
+    "explicacion": "La Dopamina y la Noradrenalina son los neurotransmisores monoaminérgicos más implicados en la regulación del córtex prefrontal, cruciales para el control ejecutivo y la atención (afectados en el TDAH).",
+    "categoria": "Atención y Conciencia"
   },
   {
     "id": "q75",
@@ -897,7 +971,8 @@
       "d": "Solo en la afasia global."
     },
     "respuestaCorrecta": "a",
-    "explicacion": "La anomia (dificultad para encontrar palabras) es el síntoma más común de todas las afasias, pero está especialmente asociada a lesiones en la zona de la corteza de asociación multimodal, como la región angular y el lóbulo temporal posterior."
+    "explicacion": "La anomia (dificultad para encontrar palabras) es el síntoma más común de todas las afasias, pero está especialmente asociada a lesiones en la zona de la corteza de asociación multimodal, como la región angular y el lóbulo temporal posterior.",
+    "categoria": "Lenguaje y Afasias (Teoría)"
   },
   {
     "id": "q76",
@@ -909,7 +984,8 @@
       "d": "Anomia."
     },
     "respuestaCorrecta": "b",
-    "explicacion": "La Disintaxis se refiere al uso de estructuras gramaticales complejas pero de forma incorrecta o incoherente (paragramatismo), típico de las afasias fluidas como la de Wernicke."
+    "explicacion": "La Disintaxis se refiere al uso de estructuras gramaticales complejas pero de forma incorrecta o incoherente (paragramatismo), típico de las afasias fluidas como la de Wernicke.",
+    "categoria": "Lenguaje y Afasias (Teoría)"
   },
   {
     "id": "q77",
@@ -921,7 +997,8 @@
       "d": "Una reducción de la mielinización en el hipocampo."
     },
     "respuestaCorrecta": "b",
-    "explicacion": "El entrenamiento intensivo con Braille provoca una expansión de las áreas corticales somatosensoriales (el 'mapa' del dedo) en el córtex, un ejemplo claro de plasticidad adaptativa por experiencia."
+    "explicacion": "El entrenamiento intensivo con Braille provoca una expansión de las áreas corticales somatosensoriales (el 'mapa' del dedo) en el córtex, un ejemplo claro de plasticidad adaptativa por experiencia.",
+    "categoria": "Neuroplasticidad y Recuperación"
   },
   {
     "id": "q78",
@@ -933,7 +1010,8 @@
       "d": "La marcha y el equilibrio."
     },
     "respuestaCorrecta": "b",
-    "explicacion": "La Apraxia Constructiva afecta específicamente las tareas visoespaciales de construir o dibujar, lo que la distingue de otras apraxias motoras."
+    "explicacion": "La Apraxia Constructiva afecta específicamente las tareas visoespaciales de construir o dibujar, lo que la distingue de otras apraxias motoras.",
+    "categoria": "Praxias y Apraxias"
   },
   {
     "id": "q79",
@@ -945,7 +1023,8 @@
       "d": "El paciente puede imitar un gesto, pero no realizarlo de forma espontánea."
     },
     "respuestaCorrecta": "b",
-    "explicacion": "La disociación automático-voluntaria significa que la vía automática (ej. reír) está intacta, pero la vía voluntaria (ej. 'reír por orden') está dañada, un signo clásico de la apraxia."
+    "explicacion": "La disociación automático-voluntaria significa que la vía automática (ej. reír) está intacta, pero la vía voluntaria (ej. 'reír por orden') está dañada, un signo clásico de la apraxia.",
+    "categoria": "Praxias y Apraxias"
   },
   {
     "id": "q80",
@@ -957,7 +1036,8 @@
       "d": "Apraxia ideatoria."
     },
     "respuestaCorrecta": "d",
-    "explicacion": "La Apraxia Ideatoria implica un fallo en el sistema conceptual (el 'saber qué' hacer) y es considerada la forma más grave, afectando la secuenciación con objetos."
+    "explicacion": "La Apraxia Ideatoria implica un fallo en el sistema conceptual (el 'saber qué' hacer) y es considerada la forma más grave, afectando la secuenciación con objetos.",
+    "categoria": "Praxias y Apraxias"
   },
   {
     "id": "q81",
@@ -969,7 +1049,8 @@
       "d": "Del fascículo arcuato."
     },
     "respuestaCorrecta": "a",
-    "explicacion": "La Apraxia del Vestido es una forma de apraxia espacial, asociada a lesiones parieto-occipitales del hemisferio derecho (que es dominante para el procesamiento visoespacial)."
+    "explicacion": "La Apraxia del Vestido es una forma de apraxia espacial, asociada a lesiones parieto-occipitales del hemisferio derecho (que es dominante para el procesamiento visoespacial).",
+    "categoria": "Praxias y Apraxias"
   },
   {
     "id": "q82",
@@ -981,6 +1062,7 @@
       "d": "Simultagnosia."
     },
     "respuestaCorrecta": "a",
-    "explicacion": "La Agnosia Asociativa se caracteriza por la dificultad semántica (atribuir significado), mientras que la Agnosia Aperceptiva se caracteriza por la dificultad perceptiva (ver la forma)."
+    "explicacion": "La Agnosia Asociativa se caracteriza por la dificultad semántica (atribuir significado), mientras que la Agnosia Aperceptiva se caracteriza por la dificultad perceptiva (ver la forma).",
+    "categoria": "Agnosias"
   }
 ]
