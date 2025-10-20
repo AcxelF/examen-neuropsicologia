@@ -1,79 +1,104 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel de Práctica de Neuropsicología</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 20px; background-color: #f4f4f4; }
-        .container { max-width: 900px; margin: auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); }
-        h1 { color: #4CAF50; text-align: center; }
-        h2 { border-bottom: 2px solid #ddd; padding-bottom: 8px; margin-top: 30px; color: #007bff; }
+        /* ================================================= */
+        /* BASE Y TEMAS (MODO CLARO/OSCURO) */
+        /* ================================================= */
+        :root {
+            --bg-color: #f4f4f4;
+            --container-bg: white;
+            --text-color: #333;
+            --border-color: #ddd;
+            --header-color: #4CAF50;
+            --secondary-header-color: #007bff;
+            --card-bg: #e8f5e9;
+            --card-hover-bg: #d4edda;
+            --explanation-bg: #e3f2fd;
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #121212;
+            --container-bg: #1e1e1e;
+            --text-color: #f0f0f0;
+            --border-color: #444;
+            --header-color: #69f0ae; /* Verde más brillante */
+            --secondary-header-color: #82b1ff; /* Azul más brillante */
+            --card-bg: #2d2d2d;
+            --card-hover-bg: #3a3a3a;
+            --explanation-bg: #2a3e50;
+        }
         
-        /* Estilos específicos del Menú de Categorías */
-        #category-menu {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            padding: 20px 0;
+        body { font-family: Arial, sans-serif; margin: 20px; background-color: var(--bg-color); color: var(--text-color); transition: background-color 0.3s, color 0.3s; }
+        .container { max-width: 900px; margin: auto; background: var(--container-bg); padding: 20px; border-radius: 8px; box-shadow: 0 0 15px rgba(0, 0, 0, 0.3); }
+        h1 { color: var(--header-color); text-align: center; }
+        h2 { border-bottom: 2px solid var(--border-color); padding-bottom: 8px; margin-top: 30px; color: var(--secondary-header-color); }
+        
+        /* Tema del Leaderboard y preguntas */
+        .question { border: 1px solid var(--border-color); background-color: var(--container-bg); }
+        .question p { color: var(--text-color); }
+        #leaderboard-table th { background-color: var(--card-bg); color: var(--text-color); }
+        #leaderboard-table td { border-bottom: 1px solid var(--border-color); }
+
+        /* Estilos del Switch de Tema */
+        #theme-toggle-container {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
         }
-        #card-grid {
-             display: grid;
-             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-             gap: 20px;
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
         }
-        .category-card {
-            background-color: #e8f5e9; /* Fondo claro para las tarjetas */
-            border: 1px solid #c8e6c9;
-            border-radius: 8px;
-            padding: 20px;
-            text-align: center;
+        .switch input { opacity: 0; width: 0; height: 0; }
+        .slider {
+            position: absolute;
             cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
         }
-        .category-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            background-color: #d4edda; /* Resaltar al pasar el ratón */
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
         }
-        .category-card strong {
-            display: block;
-            font-size: 1.2em;
-            color: #155724;
-            margin-bottom: 5px;
-        }
+        input:checked + .slider { background-color: #2196F3; }
+        input:checked + .slider:before { transform: translateX(26px); }
 
         /* Estilos de Botones y Formulario de Examen */
-        button.start-button {
-            background-color: #4CAF50;
-            margin-top: 10px;
-        }
-        button.start-button:hover {
-            background-color: #45a049;
-        }
-        #quiz-content button { 
-            margin-top: 30px; 
-            background-color: #007bff; 
-        }
-
-        /* Estilos de preguntas, retroalimentación y leaderboard (mantener los del código anterior) */
-        .question { margin-bottom: 25px; padding: 15px; border: 1px solid #ddd; border-radius: 6px; background-color: #fff; transition: border 0.3s; }
-        .question p { font-weight: bold; margin-top: 0; color: #333; font-size: 1.05em; }
-        .option { margin-bottom: 8px; }
-        input[type="radio"] { margin-right: 8px; }
+        button { background-color: #007bff; color: white; border: none; padding: 12px; border-radius: 6px; cursor: pointer; transition: background-color 0.3s; }
+        #leaderboard-section .clear-button { background-color: #f44336; margin-top: 10px; padding: 8px 15px; width: auto; font-size: 14px; display: block; margin-left: auto; margin-right: auto; }
+        #leaderboard-section .clear-button:hover { background-color: #d32f2f; }
         
-        .highlight-correct label { background-color: #d4edda; color: #155724; padding: 2px 5px; border-radius: 3px; }
-        .highlight-incorrect label { background-color: #f8d7da; color: #721c24; padding: 2px 5px; border-radius: 3px; }
-        .not-answered { border: 2px solid orange !important; }
-        .explanation {
-            margin-top: 10px; padding: 10px; border-left: 5px solid #2196F3;
-            background-color: #e3f2fd; font-style: italic; font-size: 0.95em; color: #0d47a1;
-            display: none;
-        }
-        /* Estilos del Leaderboard */
-        #leaderboard-table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 0.95em; }
-        #leaderboard-table th, #leaderboard-table td { padding: 10px; text-align: left; border-bottom: 1px solid #eee; }
-        #leaderboard-table th { background-color: #f0f0f0; font-weight: bold; color: #333; }
+        /* Resto de estilos */
+        #card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+        .category-card { background-color: var(--card-bg); border: 1px solid var(--border-color); transition: transform 0.2s, box-shadow 0.2s, background-color 0.3s; }
+        .category-card:hover { transform: translateY(-3px); box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); background-color: var(--card-hover-bg); }
+        .category-card strong { color: var(--text-color); }
+        .explanation { border-left: 5px solid var(--secondary-header-color); background-color: var(--explanation-bg); color: var(--text-color); }
+        .highlight-correct label { background-color: #d4edda; color: #155724; }
+        .highlight-incorrect label { background-color: #f8d7da; color: #721c24; }
+        
+        /* Excepción para modo oscuro en retroalimentación */
+        [data-theme="dark"] .highlight-correct label { background-color: #1b5e20; color: #a5d6a7; }
+        [data-theme="dark"] .highlight-incorrect label { background-color: #b71c1c; color: #ffcdd2; }
 
         /* Ocultar secciones dinámicas al inicio */
         #results, #leaderboard-section, #quiz-content { display: none; }
@@ -81,56 +106,89 @@
 </head>
 <body>
 
-<div class="container">
-    <h1>📝 Panel de Práctica de Neuropsicología</h1>
-    <p>Selecciona una categoría para iniciar tu examen de práctica.</p>
-    
-    <div id="results">
-        🎉 ¡Examen Finalizado! 🎉<br>
-        Tu puntaje es: <span id="score">0</span> de <span id="total-q-count">0</span> aciertos.
+    <div id="theme-toggle-container" class="container">
+        <label class="switch" title="Cambiar Tema">
+            <input type="checkbox" id="theme-switch">
+            <span class="slider"></span>
+        </label>
     </div>
+    
+    <div class="container">
+        <h1>📝 Panel de Práctica de Neuropsicología</h1>
+        <p>Selecciona una categoría para iniciar tu examen de práctica.</p>
+        
+        <div id="results">
+            🎉 ¡Examen Finalizado! 🎉<br>
+            Tu puntaje es: <span id="score">0</span> de <span id="total-q-count">0</span> aciertos.
+        </div>
 
-    <div id="leaderboard-section">
-        <h2>🏆 Tus Puntajes Recientes</h2>
-        <p>Los puntajes se guardan solo en tu navegador.</p>
-        <table id="leaderboard-table">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Aciertos</th>
-                    <th>Categoría</th>
-                    <th>Fecha</th>
-                </tr>
-            </thead>
-            <tbody>
-                </tbody>
-        </table>
-        <button type="button" class="start-button" onclick="showCategoryMenu()">Volver al Menú de Categorías</button>
-    </div>
-    
-    <div id="category-menu">
-        <h2>Seleccionar Categoría de Estudio</h2>
-        <div id="card-grid">
-            <p>Cargando categorías...</p>
+        <div id="leaderboard-section">
+            <h2>🏆 Tus Puntajes Recientes</h2>
+            <p>Los puntajes se guardan solo en tu navegador.</p>
+            <button type="button" class="clear-button" onclick="confirmClearHistory()">Limpiar Historial</button>
+            <table id="leaderboard-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Aciertos</th>
+                        <th>Categoría</th>
+                        <th>Fecha</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    </tbody>
+            </table>
+            <button type="button" class="start-button" onclick="showCategoryMenu()">Volver al Menú de Categorías</button>
+        </div>
+        
+        <div id="category-menu">
+            <h2>Seleccionar Categoría de Estudio</h2>
+            <div id="card-grid">
+                <p>Cargando categorías...</p>
+            </div>
+        </div>
+
+        <div id="quiz-content">
+            <form id="quiz-form-content">
+                <h2 id="current-category-title"></h2>
+                <div id="questions-container">
+                    </div>
+                
+                <button type="button" id="finish-button" onclick="calculateScore()">Finalizar Examen y Ver Resultados</button>
+            </form>
         </div>
     </div>
 
-    <div id="quiz-content">
-        <form id="quiz-form-content">
-            <h2 id="current-category-title"></h2>
-            <div id="questions-container">
-                </div>
-            
-            <button type="button" id="finish-button" onclick="calculateScore()">Finalizar Examen y Ver Resultados</button>
-        </form>
-    </div>
-</div>
-
 <script>
     const STORAGE_KEY = 'neuropsy_leaderboard';
-    let allQuestionsData = []; // Almacenará los datos originales del JSON
-    let activeQuestions = [];  // Almacenará las preguntas de la categoría seleccionada
+    let allQuestionsData = []; 
+    let activeQuestions = [];  
+    let isQuizActive = false;
 
+    // =======================================================
+    // GESTIÓN DEL TEMA (MODO CLARO/OSCURO)
+    // =======================================================
+    document.addEventListener('DOMContentLoaded', () => {
+        // 1. Cargar el tema guardado
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        document.getElementById('theme-switch').checked = savedTheme === 'dark';
+
+        // 2. Escuchar el cambio del switch
+        document.getElementById('theme-switch').addEventListener('change', function() {
+            if (this.checked) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'light');
+                localStorage.setItem('theme', 'light');
+            }
+        });
+        
+        // 3. Iniciar la carga del quiz
+        loadQuizData();
+    });
+    
     // =======================================================
     // FUNCIÓN DE INICIALIZACIÓN Y CARGA DE DATOS
     // =======================================================
@@ -142,7 +200,7 @@
             }
             allQuestionsData = await response.json();
             showCategoryMenu();
-            displayLeaderboard(); // Carga el leaderboard al inicio
+            displayLeaderboard();
         } catch (error) {
             console.error('Fallo en la carga del examen:', error);
             document.getElementById('category-menu').innerHTML = '<p style="color:red; text-align:center;">Error: No se pudieron cargar las preguntas. Revisa la consola y el archivo JSON.</p>';
@@ -153,15 +211,18 @@
     // FUNCIÓN 1: MOSTRAR EL MENÚ DE CATEGORÍAS
     // =======================================================
     function showCategoryMenu() {
+        // Limpia la vista de resultados
         document.getElementById('quiz-content').style.display = 'none';
         document.getElementById('results').style.display = 'none';
+        
+        // Muestra el menú principal
         document.getElementById('category-menu').style.display = 'block';
-        document.getElementById('leaderboard-section').style.display = 'block'; // Mostrar Leaderboard en el menú principal
+        document.getElementById('leaderboard-section').style.display = 'block'; 
 
         const menuContainer = document.getElementById('card-grid');
         let menuHtml = '';
-
-        // Agrupa las preguntas por categoría para contarlas
+        
+        // El resto de la lógica del menú se mantiene igual:
         const categories = allQuestionsData.reduce((acc, q) => {
             const category = q.categoria || "Sin Categoría";
             if (!acc[category]) {
@@ -171,9 +232,7 @@
             return acc;
         }, {});
 
-        // Crea una tarjeta por cada categoría
         Object.keys(categories).forEach(categoryName => {
-            // Escapa comillas simples para la función JS
             const escapedCategoryName = categoryName.replace(/'/g, "\\'");
             menuHtml += `
                 <div class="category-card" onclick="startQuiz('${escapedCategoryName}')">
@@ -186,6 +245,8 @@
         
         menuContainer.innerHTML = menuHtml;
         displayLeaderboard();
+        isQuizActive = false;
+        window.scrollTo(0, 0);
     }
 
     // =======================================================
@@ -196,6 +257,8 @@
         document.getElementById('leaderboard-section').style.display = 'none';
         document.getElementById('results').style.display = 'none';
         document.getElementById('quiz-content').style.display = 'block';
+        
+        isQuizActive = true;
 
         // 1. Filtrar las preguntas
         activeQuestions = allQuestionsData.filter(q => (q.categoria || "Sin Categoría") === category);
@@ -210,14 +273,13 @@
         let html = '';
         
         activeQuestions.forEach((qData, index) => {
-            const qNum = index + 1; // La numeración comienza en 1 para la vista de la categoría
+            const qNum = index + 1; 
 
             html += `
                 <div class="question" data-correct-answer="${qData.respuestaCorrecta}" data-explanation="${qData.explicacion.replace(/"/g, "'")}">
                     <p>${qNum}. ${qData.pregunta}</p>
             `;
 
-            // Recorre las opciones (a, b, c, d)
             Object.keys(qData.opciones).forEach(optionKey => {
                 const optionText = qData.opciones[optionKey];
                 html += `
@@ -240,15 +302,17 @@
     }
 
     // =======================================================
-    // FUNCIÓN PRINCIPAL: CALCULAR PUNTAJE (Retrolimentación y Persistencia)
+    // FUNCIÓN PRINCIPAL: CALCULAR PUNTAJE (Persistencia en vista de examen)
     // =======================================================
     function calculateScore() {
+        if (!isQuizActive) return; // Evita doble cálculo
+
         const questions = document.querySelectorAll('#questions-container .question');
         const totalQuestions = activeQuestions.length;
         let score = 0;
         
-        // Oculta el botón de finalizar para que no se pueda calcular dos veces
         document.getElementById('finish-button').disabled = true; 
+        isQuizActive = false; // Desactiva el quiz después de calcular
 
         // 1. Recorre y califica las preguntas
         questions.forEach((question, index) => {
@@ -260,21 +324,8 @@
             const options = question.querySelectorAll('.option');
             let explanationDiv = question.querySelector('.explanation');
 
-            // Limpia estilos anteriores
             question.classList.remove('not-answered');
             if (explanationDiv) explanationDiv.style.display = 'none';
-
-            // Limpia los estilos de feedback anteriores
-            options.forEach(opt => {
-                opt.classList.remove('highlight-correct', 'highlight-incorrect');
-                const feedbackSpan = opt.querySelector('.feedback');
-                if (feedbackSpan) { feedbackSpan.remove(); }
-                opt.querySelector('label').style.backgroundColor = ''; 
-                opt.querySelector('label').style.color = '';
-                
-                // Deshabilita los radio buttons después de finalizar
-                opt.querySelector('input[type="radio"]').disabled = true;
-            });
 
             let isAnswered = false;
             if (selectedOptionInput) {
@@ -302,6 +353,9 @@
                     feedbackSpan.classList.add('feedback');
                     opt.querySelector('label').appendChild(feedbackSpan);
                 }
+                
+                // Deshabilita los radio buttons en la vista de resultados
+                opt.querySelector('input[type="radio"]').disabled = true;
 
                 if (optionValue === correctAnswer) {
                     feedbackSpan.innerHTML = (isAnswered && selectedOptionInput.value === correctAnswer) ? ' 💚 ¡Correcto!' : ' 💚 (Correcta)';
@@ -321,27 +375,13 @@
             });
         });
 
-        // 4. Muestra resultados finales EN LA MISMA VISTA
+        // 4. Muestra resultados finales
         document.getElementById('score').textContent = score;
         document.getElementById('total-q-count').textContent = totalQuestions;
         
-        // Mueve la vista de resultados al inicio del contenido del quiz
-        const quizContentElement = document.getElementById('quiz-content');
-        const resultsElement = document.getElementById('results');
-        const leaderboardElement = document.getElementById('leaderboard-section');
+        document.getElementById('results').style.display = 'block';
+        document.getElementById('leaderboard-section').style.display = 'block';
         
-        // Muestra la caja de resultados y leaderboard al inicio del examen
-        resultsElement.style.display = 'block';
-        leaderboardElement.style.display = 'block';
-
-        // Reubica los elementos (si no están ya al inicio del contenedor principal)
-        const container = document.querySelector('.container');
-        if (container.firstChild !== resultsElement) {
-             container.insertBefore(leaderboardElement, container.firstChild);
-             container.insertBefore(resultsElement, container.firstChild);
-        }
-
-        // Gestión del Leaderboard (Local)
         saveScore(score, totalQuestions);
         displayLeaderboard();
         
@@ -349,8 +389,19 @@
     }
 
     // =======================================================
-    // FUNCIONES DEL LEADERBOARD (LOCALSTORAGE)
+    // FUNCIONES DE GESTIÓN DEL HISTORIAL (LEADERBOARD)
     // =======================================================
+    
+    // Función de confirmación para limpiar historial
+    function confirmClearHistory() {
+        const confirmation = confirm("¿Estás seguro de que quieres borrar todo el historial de puntajes? Esta acción no se puede deshacer.");
+        if (confirmation) {
+            localStorage.removeItem(STORAGE_KEY);
+            displayLeaderboard(); // Vuelve a dibujar la tabla vacía
+            alert("Historial de puntajes borrado correctamente.");
+        }
+    }
+
     function saveScore(score, total) {
         const scores = getScores();
         const now = new Date();
@@ -400,17 +451,10 @@
         scores.forEach((item, index) => {
             const row = tbody.insertRow();
             
-            const cellRank = row.insertCell();
-            cellRank.textContent = index + 1;
-            
-            const cellScore = row.insertCell();
-            cellScore.textContent = `${item.score} / ${item.total}`;
-            
-            const cellCategory = row.insertCell();
-            cellCategory.textContent = item.category || 'Completo';
-            
-            const cellDate = row.insertCell();
-            cellDate.textContent = item.date;
+            row.insertCell().textContent = index + 1;
+            row.insertCell().textContent = `${item.score} / ${item.total}`;
+            row.insertCell().textContent = item.category || 'Completo';
+            row.insertCell().textContent = item.date;
         });
     }
 
