@@ -1,0 +1,161 @@
+/* ================================================= */
+/* BASE Y TEMAS (MODO CLARO/OSCURO) */
+/* ================================================= */
+:root {
+    --bg-color: #f4f4f4;
+    --container-bg: white;
+    --text-color: #333;
+    --secondary-text-color: #555;
+    --border-color: #ddd;
+    --header-color: #4CAF50;
+    --secondary-header-color: #007bff;
+    --card-bg: #e8f5e9;
+    --card-hover-bg: #d4edda;
+    --explanation-bg: #e3f2fd;
+    --button-primary-bg: #4CAF50;
+    --button-primary-hover: #45a049;
+}
+
+[data-theme="dark"] {
+    --bg-color: #121212;
+    --container-bg: #1e1e1e;
+    --text-color: #f0f0f0;
+    --secondary-text-color: #ccc;
+    --border-color: #444;
+    --header-color: #69f0ae; 
+    --secondary-header-color: #82b1ff; 
+    --card-bg: #2d2d2d;
+    --card-hover-bg: #3a3a3a;
+    --explanation-bg: #2a3e50;
+    --button-primary-bg: #007bff;
+    --button-primary-hover: #0056b3;
+}
+
+body { 
+    font-family: Arial, sans-serif; 
+    margin: 20px; 
+    background-color: var(--bg-color); 
+    color: var(--text-color); 
+    transition: background-color 0.3s, color 0.3s; 
+}
+.container { 
+    max-width: 900px; 
+    margin: auto; 
+    background: var(--container-bg); 
+    padding: 20px; 
+    border-radius: 8px; 
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3); 
+    position: relative; /* Necesario para el posicionamiento del switch */
+}
+h1 { color: var(--header-color); text-align: center; }
+h2 { border-bottom: 2px solid var(--border-color); padding-bottom: 8px; margin-top: 30px; color: var(--secondary-header-color); }
+
+/* ================================================= */
+/* SWITCH DE TEMA (MODO CLARO/OSCURO) */
+/* ================================================= */
+#theme-toggle-container {
+    position: fixed; /* Mantiene el switch en la misma posición al hacer scroll */
+    top: 20px;
+    right: 20px;
+    z-index: 100;
+    padding: 0;
+    background: none;
+    box-shadow: none;
+    margin: 0;
+}
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+.switch input { opacity: 0; width: 0; height: 0; }
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--secondary-text-color);
+    transition: .4s;
+    border-radius: 34px;
+}
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+input:checked + .slider { background-color: #2196F3; }
+input:checked + .slider:before { transform: translateX(26px); }
+
+/* ================================================= */
+/* ESTILOS DE MENÚ Y CARDS */
+/* ================================================= */
+#card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+.category-card { 
+    background-color: var(--card-bg); 
+    border: 1px solid var(--border-color); 
+    border-radius: 8px;
+    padding: 20px; 
+    text-align: center; 
+    cursor: pointer; 
+    transition: transform 0.2s, box-shadow 0.2s, background-color 0.3s;
+}
+.category-card:hover { 
+    transform: translateY(-3px); 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); 
+    background-color: var(--card-hover-bg); 
+}
+.category-card strong { color: var(--secondary-header-color); display: block; font-size: 1.2em; margin-bottom: 5px; }
+
+/* ================================================= */
+/* ESTILOS DE QUIZ Y RETROALIMENTACIÓN */
+/* ================================================= */
+.question { 
+    margin-bottom: 25px; 
+    padding: 15px; 
+    border: 1px solid var(--border-color); 
+    border-radius: 6px; 
+    background-color: var(--container-bg); 
+    transition: border 0.3s;
+}
+.question p { font-weight: bold; margin-top: 0; color: var(--text-color); font-size: 1.05em; }
+.option { margin-bottom: 8px; }
+input[type="radio"] { margin-right: 8px; }
+
+/* Feedback General */
+.highlight-correct label { background-color: #d4edda; color: #155724; padding: 2px 5px; border-radius: 3px; }
+.highlight-incorrect label { background-color: #f8d7da; color: #721c24; padding: 2px 5px; border-radius: 3px; }
+.not-answered { border: 2px solid orange !important; }
+
+/* Tema Oscuro para Feedback */
+[data-theme="dark"] .highlight-correct label { background-color: #1b5e20; color: #a5d6a7; }
+[data-theme="dark"] .highlight-incorrect label { background-color: #b71c1c; color: #ffcdd2; }
+
+/* Explicación */
+.explanation {
+    margin-top: 10px; padding: 10px; border-left: 5px solid var(--secondary-header-color);
+    background-color: var(--explanation-bg); font-style: italic; font-size: 0.95em; color: var(--text-color);
+    border-radius: 0 4px 4px 0;
+}
+
+/* ================================================= */
+/* ESTILOS DE BOTONES Y LEADERBOARD */
+/* ================================================= */
+#quiz-content button { background-color: #007bff; margin-top: 30px; }
+.start-button { background-color: var(--button-primary-bg); }
+
+#leaderboard-section {
+    border: 2px solid var(--header-color);
+    background-color: var(--card-bg);
+}
+#leaderboard-table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 0.95em; }
+#leaderboard-table th, #leaderboard-table td { padding: 10px; text-align: left; border-bottom: 1px solid var(--border-color); }
+#leaderboard-table th { background-color: var(--card-hover-bg); color: var(--text-color); }
