@@ -8,7 +8,7 @@
 </head>
 <body>
 
-    <div id="theme-toggle-container" class="container">
+    <div id="theme-toggle-container">
         <label class="switch" title="Cambiar Tema">
             <input type="checkbox" id="theme-switch">
             <span class="slider"></span>
@@ -16,7 +16,7 @@
     </div>
     
     <div class="container">
-        <h1>📝 Panel de Práctica de Neuropsicología</h1>
+        <h1><span class="glitch" data-text="📝 Panel de Práctica de Neuropsicología">📝 Panel de Práctica de Neuropsicología</span></h1>
         <p>Selecciona una categoría para iniciar tu examen de práctica.</p>
         
         <div id="results">
@@ -98,14 +98,15 @@
         try {
             const response = await fetch('preguntas.json');
             if (!response.ok) {
-                throw new Error('Error al cargar preguntas.json. Asegúrate de que el archivo exista en la misma carpeta.');
+                // Si el archivo no se encuentra o hay un error de CORS (al ejecutar localmente)
+                throw new Error('Error al cargar preguntas.json. (Asegúrate de usar Firefox o Live Server)');
             }
             allQuestionsData = await response.json();
             showCategoryMenu();
             displayLeaderboard(); 
         } catch (error) {
             console.error('Fallo en la carga del examen:', error);
-            document.getElementById('category-menu').innerHTML = '<p style="color:red; text-align:center;">Error: No se pudieron cargar las preguntas. Revisa la consola y el archivo JSON.</p>';
+            document.getElementById('card-grid').innerHTML = '<p style="color:red; text-align:center;">Error: No se pudieron cargar las preguntas. Revisa la consola y el archivo JSON.</p>';
         }
     }
 
@@ -113,11 +114,9 @@
     // FUNCIÓN 1: MOSTRAR EL MENÚ DE CATEGORÍAS
     // =======================================================
     function showCategoryMenu() {
-        // Limpia la vista de resultados
         document.getElementById('quiz-content').style.display = 'none';
         document.getElementById('results').style.display = 'none';
         
-        // Muestra el menú principal
         document.getElementById('category-menu').style.display = 'block';
         document.getElementById('leaderboard-section').style.display = 'block'; 
 
@@ -174,7 +173,7 @@
         let html = '';
         
         activeQuestions.forEach((qData, index) => {
-            const qNum = index + 1; // La numeración comienza en 1 para la vista de la categoría
+            const qNum = index + 1;
 
             html += `
                 <div class="question" data-correct-answer="${qData.respuestaCorrecta}" data-explanation="${qData.explicacion.replace(/"/g, "'")}">
@@ -267,8 +266,6 @@
 
                 if (optionValue === correctAnswer) {
                     feedbackSpan.innerHTML = (isAnswered && selectedOptionInput.value === correctAnswer) ? ' 💚 ¡Correcto!' : ' 💚 (Correcta)';
-                    
-                    // Solo aplicamos el color base (la clase CSS se encarga del resto)
                     opt.querySelector('label').classList.add('correct-answer-label'); 
                     
                     if (explanationDiv && explanationText) {
@@ -300,18 +297,15 @@
     // =======================================================
     // FUNCIONES DE GESTIÓN DEL HISTORIAL
     // =======================================================
-    
-    // Función de confirmación para limpiar historial
     function confirmClearHistory() {
         const confirmation = confirm("¿Estás seguro de que quieres borrar todo el historial de puntajes? Esta acción no se puede deshacer.");
         if (confirmation) {
             localStorage.removeItem(STORAGE_KEY);
-            displayLeaderboard(); // Vuelve a dibujar la tabla vacía
+            displayLeaderboard(); 
             alert("Historial de puntajes borrado correctamente.");
         }
     }
 
-    // Funciones Save, Get y Display Leaderboard (Sin cambios significativos en la lógica, solo para completar el script)
     function saveScore(score, total) {
         const scores = getScores();
         const now = new Date();
