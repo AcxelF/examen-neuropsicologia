@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panel de Práctica de Neuropsicología</title>
+    <title>Examen de Práctica de Neuropsicología</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap">
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -71,18 +71,18 @@
     let isQuizActive = false;
 
     // =======================================================
-    // NUEVO: LÓGICA DE TEMAS (DARK/LIGHT MODE)
+    // LÓGICA DE TEMAS (DARK/LIGHT MODE)
     // =======================================================
     function toggleTheme() {
         const body = document.body;
         const toggle = document.getElementById('checkbox');
         
         if (toggle.checked) {
-            // Dark Mode
+            // Dark Mode: Añadir la clase 'dark-mode' al body
             body.classList.add('dark-mode');
             localStorage.setItem('theme', 'dark');
         } else {
-            // Light Mode
+            // Light Mode: Quitar la clase 'dark-mode' del body
             body.classList.remove('dark-mode');
             localStorage.setItem('theme', 'light');
         }
@@ -93,7 +93,6 @@
         const toggle = document.getElementById('checkbox');
         const body = document.body;
         
-        // El modo CLARO es el estado base CSS, DARK mode se añade con una clase
         if (savedTheme === 'dark') {
             body.classList.add('dark-mode');
             toggle.checked = true;
@@ -121,27 +120,20 @@
         }
     }
 
-    // (El resto de funciones showCategoryMenu, startQuiz, calculateScore, etc., permanecen igual)
-
+    // Funciones de navegación y lógica del quiz (sin cambios)
     function showCategoryMenu() {
         document.getElementById('quiz-content').style.display = 'none';
         document.getElementById('results').style.display = 'none';
-        
         document.getElementById('category-menu').style.display = 'block';
         document.getElementById('leaderboard-section').style.display = 'block'; 
-
         const menuContainer = document.getElementById('card-grid');
         let menuHtml = '';
-
         const categories = allQuestionsData.reduce((acc, q) => {
             const category = q.categoria || "Sin Categoría";
-            if (!acc[category]) {
-                acc[category] = 0;
-            }
+            if (!acc[category]) acc[category] = 0;
             acc[category]++;
             return acc;
         }, {});
-
         Object.keys(categories).forEach(categoryName => {
             const escapedCategoryName = categoryName.replace(/'/g, "\\'");
             menuHtml += `
@@ -152,7 +144,6 @@
                 </div>
             `;
         });
-        
         menuContainer.innerHTML = menuHtml;
         displayLeaderboard();
         isQuizActive = false;
@@ -164,26 +155,19 @@
         document.getElementById('leaderboard-section').style.display = 'none';
         document.getElementById('results').style.display = 'none';
         document.getElementById('quiz-content').style.display = 'block';
-        
         isQuizActive = true;
-
         activeQuestions = allQuestionsData.filter(q => (q.categoria || "Sin Categoría") === category);
-        
         document.getElementById('current-category-title').textContent = `Categoría: ${category} (${activeQuestions.length} preguntas)`;
         document.getElementById('total-q-count').textContent = activeQuestions.length;
-        
         const container = document.getElementById('questions-container');
         container.innerHTML = '';
         let html = '';
-        
         activeQuestions.forEach((qData, index) => {
             const qNum = index + 1;
-
             html += `
                 <div class="question" data-correct-answer="${qData.respuestaCorrecta}" data-explanation="${qData.explicacion.replace(/"/g, "'")}">
                     <p>${qNum}. ${qData.pregunta}</p>
             `;
-
             Object.keys(qData.opciones).forEach(optionKey => {
                 const optionText = qData.opciones[optionKey];
                 html += `
@@ -193,13 +177,8 @@
                     </div>
                 `;
             });
-
-            html += `
-                    <div class="explanation"></div>
-                </div>
-            `;
+            html += `<div class="explanation"></div></div>`;
         });
-
         container.innerHTML = html;
         document.getElementById('finish-button').disabled = false;
         window.scrollTo(0, 0);
@@ -207,14 +186,11 @@
 
     function calculateScore() {
         if (!isQuizActive) return;
-
         const questions = document.querySelectorAll('#questions-container .question');
         const totalQuestions = activeQuestions.length;
         let score = 0;
-        
         document.getElementById('finish-button').disabled = true; 
         isQuizActive = false;
-
         questions.forEach((question, index) => {
             const questionNumber = index + 1;
             const correctAnswer = question.getAttribute('data-correct-answer');
@@ -223,24 +199,19 @@
             const selectedOptionInput = document.querySelector(`input[name="${questionName}"]:checked`);
             const options = question.querySelectorAll('.option');
             let explanationDiv = question.querySelector('.explanation');
-
             question.classList.remove('not-answered');
             if (explanationDiv) explanationDiv.style.display = 'none';
-
             options.forEach(opt => {
                 opt.classList.remove('highlight-correct', 'highlight-incorrect');
                 const feedbackSpan = opt.querySelector('.feedback');
                 if (feedbackSpan) { feedbackSpan.remove(); }
-                
                 opt.querySelector('input[type="radio"]').disabled = true;
             });
-
             let isAnswered = false;
             if (selectedOptionInput) {
                 isAnswered = true;
                 const userAnswer = selectedOptionInput.value;
                 const selectedOptionDiv = selectedOptionInput.closest('.option');
-
                 if (userAnswer === correctAnswer) {
                     score++;
                     selectedOptionDiv.classList.add('highlight-correct');
@@ -250,27 +221,20 @@
             } else {
                  question.classList.add('not-answered');
             }
-
-            // 3. Muestra la retroalimentación y la explicación
             options.forEach(opt => {
                 const optionValue = opt.getAttribute('data-value');
                 let feedbackSpan = opt.querySelector('.feedback');
-                
                 if (!feedbackSpan) {
                     feedbackSpan = document.createElement('span');
                     feedbackSpan.classList.add('feedback');
                     opt.querySelector('label').appendChild(feedbackSpan);
                 }
-
                 if (optionValue === correctAnswer) {
                     feedbackSpan.innerHTML = (isAnswered && selectedOptionInput.value === correctAnswer) ? ' 💚 ¡Correcto!' : ' 💚 (Correcta)';
-                    // Los colores se manejarán por CSS
-                    
                     if (explanationDiv && explanationText) {
                         explanationDiv.innerHTML = '<strong>Explicación:</strong> ' + explanationText;
                         explanationDiv.style.display = 'block';
                     }
-
                 } else if (isAnswered && selectedOptionInput.value === optionValue) {
                     feedbackSpan.innerHTML = ' ❌ Incorrecto';
                 } else {
@@ -278,16 +242,12 @@
                 }
             });
         });
-
         document.getElementById('score').textContent = score;
         document.getElementById('total-q-count').textContent = totalQuestions;
-        
         document.getElementById('results').style.display = 'block';
         document.getElementById('leaderboard-section').style.display = 'block';
-        
         saveScore(score, totalQuestions);
         displayLeaderboard();
-        
         window.scrollTo(0, 0);
     }
 
@@ -304,12 +264,10 @@
         const scores = getScores();
         const now = new Date();
         const currentCategory = document.getElementById('current-category-title').textContent.replace('Categoría: ', '').split(' (')[0]; 
-        
         const dateString = now.toLocaleDateString('es-ES', { 
             year: 'numeric', month: 'short', day: 'numeric', 
             hour: '2-digit', minute: '2-digit' 
         });
-
         scores.push({
             score: score,
             total: total,
@@ -317,10 +275,8 @@
             category: currentCategory || 'Completo',
             timestamp: now.getTime()
         });
-
         scores.sort((a, b) => b.score - a.score || a.timestamp - b.timestamp);
         const topScores = scores.slice(0, 10);
-
         localStorage.setItem(STORAGE_KEY, JSON.stringify(topScores));
     }
 
@@ -338,17 +294,13 @@
         const scores = getScores();
         const tbody = document.getElementById('leaderboard-table').querySelector('tbody');
         tbody.innerHTML = ''; 
-
         if (scores.length === 0) {
             tbody.innerHTML = '<tr><td colspan="4" style="text-align: center;">Aún no tienes puntajes. ¡Haz el examen!</td></tr>';
             return;
         }
-        
         scores.sort((a, b) => b.score - a.score || a.timestamp - b.timestamp); 
-
         scores.forEach((item, index) => {
             const row = tbody.insertRow();
-            
             row.insertCell().textContent = index + 1;
             row.insertCell().textContent = `${item.score} / ${item.total}`;
             row.insertCell().textContent = item.category || 'Completo';
