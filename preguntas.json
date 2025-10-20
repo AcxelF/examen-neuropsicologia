@@ -966,4 +966,103 @@
     "pregunta": "La anomia, definida como la dificultad o incapacidad para evocar el nombre de los objetos, es un dato semiológico más común de las afasias:",
     "opciones": {
       "a": "En las lesiones de la región angular (corteza de asociación multimodal) o de la zona posterior de la tercera circunvolución temporal.",
-      "b":
+      "b": "Exclusivamente en la afasia de Broca.",
+      "c": "En las lesiones frontoparietales extensas.",
+      "d": "Solo en la afasia global."
+    },
+    "respuestaCorrecta": "a",
+    "explicacion": "La anomia (dificultad para encontrar palabras) es el síntoma más común de todas las afasias, pero está especialmente asociada a lesiones en la zona de la corteza de asociación multimodal, como la región angular y el lóbulo temporal posterior.",
+    "categoria": "Lenguaje y Afasias (Teoría)"
+  },
+  {
+    "id": "q76",
+    "pregunta": "¿Qué trastorno del lenguaje se caracteriza por tener numerosas fórmulas gramaticales, pero utilizadas anormalmente (paragramatismo), dando la impresión de un discurso incoherente?",
+    "opciones": {
+      "a": "Agramatismo.",
+      "b": "Disintaxis.",
+      "c": "Ecolalia.",
+      "d": "Anomia."
+    },
+    "respuestaCorrecta": "b",
+    "explicacion": "La Disintaxis se refiere al uso de estructuras gramaticales complejas pero de forma incorrecta o incoherente (paragramatismo), típico de las afasias fluidas como la de Wernicke.",
+    "categoria": "Lenguaje y Afasias (Teoría)"
+  },
+  {
+    "id": "q77",
+    "pregunta": "¿Qué se ha observado en el cerebro de personas ciegas que aprenden el alfabeto “Braille”?",
+    "opciones": {
+      "a": "Una disminución ostensible de la sustancia gris.",
+      "b": "Un aumento progresivo, en el córtex, del área encargada de la representación del “dedo de lectura”.",
+      "c": "Una disminución de la secreción de dopamina.",
+      "d": "Una reducción de la mielinización en el hipocampo."
+    },
+    "respuestaCorrecta": "b",
+    "explicacion": "El entrenamiento intensivo con Braille provoca una expansión de las áreas corticales somatosensoriales (el 'mapa' del dedo) en el córtex, un ejemplo claro de plasticidad adaptativa por experiencia.",
+    "categoria": "Neuroplasticidad y Recuperación"
+  },
+  {
+    "id": "q78",
+    "pregunta": "La Apraxia Constructiva se define como la alteración en la capacidad de organizar la información espacial y para llevar a cabo actividades de:",
+    "opciones": {
+      "a": "Lenguaje oral y escrito.",
+      "b": "Visoconstrucción (dibujar un objeto o construir cubos).",
+      "c": "Movimientos bucofonatorios voluntarios.",
+      "d": "La marcha y el equilibrio."
+    },
+    "respuestaCorrecta": "b",
+    "explicacion": "La Apraxia Constructiva afecta específicamente las tareas visoespaciales de construir o dibujar, lo que la distingue de otras apraxias motoras.",
+    "categoria": "Praxias y Apraxias"
+  },
+  {
+    "id": "q79",
+    "pregunta": "En el contexto de las apraxias, ¿a qué se refiere el fenómeno de disociación automático-voluntaria observado en la Apraxia Bucofonatoria?",
+    "opciones": {
+      "a": "El paciente puede hablar, pero no puede escribir.",
+      "b": "El paciente puede realizar el movimiento automáticamente (ej. reír espontáneamente) pero no por orden verbal (ej. imitar la sonrisa).",
+      "c": "El paciente puede usar la herramienta, pero no puede nombrarla.",
+      "d": "El paciente puede imitar un gesto, pero no realizarlo de forma espontánea."
+    },
+    "respuestaCorrecta": "b",
+    "explicacion": "La disociación automático-voluntaria significa que la vía automática (ej. reír) está intacta, pero la vía voluntaria (ej. 'reír por orden') está dañada, un signo clásico de la apraxia.",
+    "categoria": "Praxias y Apraxias"
+  },
+  {
+    "id": "q80",
+    "pregunta": "¿Qué tipo de apraxia implica una alteración en el sistema conceptual, lo que lleva a la incapacidad para llevar a cabo secuencias de movimientos, especialmente con objetos conocidos, y suele ser más grave?",
+    "opciones": {
+      "a": "Apraxia bucofacial.",
+      "b": "Apraxia ideomotora.",
+      "c": "Apraxia constructiva.",
+      "d": "Apraxia ideatoria."
+    },
+    "respuestaCorrecta": "d",
+    "explicacion": "La Apraxia Ideatoria implica un fallo en el sistema conceptual (el 'saber qué' hacer) y es considerada la forma más grave, afectando la secuenciación con objetos.",
+    "categoria": "Praxias y Apraxias"
+  },
+  {
+    "id": "q81",
+    "pregunta": "La Apraxia del Vestido se produce por lesiones:",
+    "opciones": {
+      "a": "Parieto-occipitales del hemisferio derecho.",
+      "b": "Bilaterales en áreas premotoras.",
+      "c": "Del córtex parietal izquierdo y opérculo temporal.",
+      "d": "Del fascículo arcuato."
+    },
+    "respuestaCorrecta": "a",
+    "explicacion": "La Apraxia del Vestido es una forma de apraxia espacial, asociada a lesiones parieto-occipitales del hemisferio derecho (que es dominante para el procesamiento visoespacial).",
+    "categoria": "Praxias y Apraxias"
+  },
+  {
+    "id": "q82",
+    "pregunta": "¿Cuál de las siguientes agnosias visuales se caracteriza por la dificultad para atribuir un significado a los estímulos visuales, aunque la capacidad perceptiva está intacta?",
+    "opciones": {
+      "a": "Agnosia asociativa.",
+      "b": "Agnosia aperceptiva.",
+      "c": "Prosopagnosia.",
+      "d": "Simultagnosia."
+    },
+    "respuestaCorrecta": "a",
+    "explicacion": "La Agnosia Asociativa se caracteriza por la dificultad semántica (atribuir significado), mientras que la Agnosia Aperceptiva se caracteriza por la dificultad perceptiva (ver la forma).",
+    "categoria": "Agnosias"
+  }
+]
