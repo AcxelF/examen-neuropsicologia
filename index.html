@@ -3,90 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Examen de Práctica de Neuropsicología (JSON)</title>
+    <title>Panel de Práctica de Neuropsicología</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            background-color: #f4f4f4;
-        }
-        .container {
-            max-width: 900px;
-            margin: auto;
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-        }
+        body { font-family: Arial, sans-serif; margin: 20px; background-color: #f4f4f4; }
+        .container { max-width: 900px; margin: auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); }
         h1 { color: #4CAF50; text-align: center; }
-        .question {
-            margin-bottom: 25px;
-            padding: 15px;
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            background-color: #fff;
-            transition: border 0.3s;
+        h2 { border-bottom: 2px solid #ddd; padding-bottom: 8px; margin-top: 30px; color: #007bff; }
+        
+        /* Estilos específicos del Menú de Categorías */
+        #category-menu {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px 0;
         }
+        .category-card {
+            background-color: #e8f5e9; /* Fondo claro para las tarjetas */
+            border: 1px solid #c8e6c9;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .category-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            background-color: #d4edda; /* Resaltar al pasar el ratón */
+        }
+        .category-card strong {
+            display: block;
+            font-size: 1.2em;
+            color: #155724;
+            margin-bottom: 5px;
+        }
+
+        /* Estilos de Botones y Formulario de Examen */
+        button.start-button {
+            background-color: #4CAF50;
+            margin-top: 10px;
+        }
+        button.start-button:hover {
+            background-color: #45a049;
+        }
+        #quiz-content button { 
+            margin-top: 30px; 
+            background-color: #007bff; 
+        }
+
+        /* Estilos de preguntas, retroalimentación y leaderboard (mantener los del código anterior) */
+        .question { margin-bottom: 25px; padding: 15px; border: 1px solid #ddd; border-radius: 6px; background-color: #fff; transition: border 0.3s; }
         .question p { font-weight: bold; margin-top: 0; color: #333; font-size: 1.05em; }
         .option { margin-bottom: 8px; }
         input[type="radio"] { margin-right: 8px; }
-        button {
-            display: block;
-            width: 100%;
-            padding: 12px;
-            font-size: 18px;
-            cursor: pointer;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 6px;
-            margin-top: 30px;
-            transition: background-color 0.3s;
-        }
-        button:hover:not(:disabled) { background-color: #0056b3; }
-        button:disabled { background-color: #aaa; cursor: not-allowed; }
-        #results, #leaderboard-section {
-            margin-top: 20px;
-            padding: 20px;
-            border: 2px solid #4CAF50;
-            border-radius: 6px;
-            background-color: #e8f5e9;
-            font-size: 1.2em;
-            font-weight: bold;
-            text-align: center;
-        }
-        /* Estilos de retroalimentación */
+        
         .highlight-correct label { background-color: #d4edda; color: #155724; padding: 2px 5px; border-radius: 3px; }
         .highlight-incorrect label { background-color: #f8d7da; color: #721c24; padding: 2px 5px; border-radius: 3px; }
-        .not-answered { border: 2px solid orange !important; }
-        .explanation {
-            margin-top: 10px;
-            padding: 10px;
-            border-left: 5px solid #2196F3;
-            background-color: #e3f2fd;
-            font-style: italic;
-            font-size: 0.95em;
-            color: #0d47a1;
-            display: none;
-        }
-        /* Estilos del Leaderboard */
+        .explanation { margin-top: 10px; padding: 10px; border-left: 5px solid #2196F3; background-color: #e3f2fd; font-style: italic; font-size: 0.95em; color: #0d47a1; display: none; }
         #leaderboard-table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 0.95em; }
         #leaderboard-table th, #leaderboard-table td { padding: 10px; text-align: left; border-bottom: 1px solid #eee; }
         #leaderboard-table th { background-color: #f0f0f0; font-weight: bold; color: #333; }
 
-        /* Ocultar resultados y leaderboard al inicio */
-        #results, #leaderboard-section { display: none; }
+        /* Ocultar secciones dinámicas al inicio */
+        #results, #leaderboard-section, #quiz-content { display: none; }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h1>📝 Examen de Práctica de Neuropsicología</h1>
-    <p>Selecciona la respuesta correcta para cada pregunta. Al finalizar, verás tu puntaje y las explicaciones.</p>
+    <h1>📝 Panel de Práctica de Neuropsicología</h1>
+    <p>Selecciona una categoría para iniciar tu examen de práctica.</p>
     
     <div id="results">
         🎉 ¡Examen Finalizado! 🎉<br>
-        Tu puntaje es: <span id="score">0</span> de 82 aciertos.
+        Tu puntaje es: <span id="score">0</span> de <span id="total-q-count">82</span> aciertos.
     </div>
 
     <div id="leaderboard-section">
@@ -103,12 +93,18 @@
             <tbody>
                 </tbody>
         </table>
+        <button type="button" class="start-button" onclick="showCategoryMenu()">Volver al Menú Principal</button>
+    </div>
+    
+    <div id="category-menu">
+        <h2>Seleccionar Categoría de Estudio</h2>
+        <p>Cargando categorías...</p>
     </div>
 
-    <form id="quizForm">
+    <form id="quiz-content">
+        <h2 id="current-category-title"></h2>
         <div id="questions-container">
-            <p>Cargando preguntas...</p>
-        </div>
+            </div>
         
         <button type="button" onclick="calculateScore()">Finalizar Examen y Ver Resultados</button>
     </form>
@@ -116,80 +112,120 @@
 
 <script>
     const STORAGE_KEY = 'neuropsy_leaderboard';
-    let allQuestions = []; // Almacenará los datos del JSON
-    
-    // Función para obtener los datos del JSON y renderizar el examen
-    async function loadQuiz() {
+    let allQuestionsData = []; // Almacenará los datos originales del JSON
+    let activeQuestions = [];  // Almacenará las preguntas de la categoría seleccionada
+
+    // =======================================================
+    // FUNCIÓN DE INICIALIZACIÓN Y CARGA DE DATOS
+    // =======================================================
+    async function loadQuizData() {
         try {
             const response = await fetch('preguntas.json');
             if (!response.ok) {
-                throw new Error('Error al cargar preguntas.json. Asegúrate de que el archivo exista en la misma carpeta.');
+                throw new Error('Error al cargar preguntas.json. Asegúrate de que el archivo exista.');
             }
-            allQuestions = await response.json();
-            renderQuiz();
+            allQuestionsData = await response.json();
+            showCategoryMenu();
+            displayLeaderboard(); // Carga el leaderboard al inicio
         } catch (error) {
             console.error('Fallo en la carga del examen:', error);
-            document.getElementById('questions-container').innerHTML = '<p style="color:red;">Error: No se pudieron cargar las preguntas.</p>';
+            document.getElementById('category-menu').innerHTML = '<p style="color:red; text-align:center;">Error: No se pudieron cargar las preguntas. Revisa la consola y el archivo JSON.</p>';
         }
     }
 
-    // Función para dibujar el HTML del examen
-    function renderQuiz() {
-        const container = document.getElementById('questions-container');
-        container.innerHTML = ''; // Limpia el mensaje de carga
-        let html = '';
-        
-        // Determinar límites para las secciones
-        const sections = [
-            { title: "Parte 1: Neuropsicología y Atención (Preguntas 1-20)", start: 1, end: 20 },
-            { title: "Parte 2: Lenguaje, Praxias y Agnosias (Preguntas 21-42)", start: 21, end: 42 },
-            { title: "Parte 3: Afasias, Historia y Plasticidad Profunda (Preguntas 43-82)", start: 43, end: 82 }
-        ];
+    // =======================================================
+    // FUNCIÓN 1: MOSTRAR EL MENÚ DE CATEGORÍAS
+    // =======================================================
+    function showCategoryMenu() {
+        document.getElementById('quiz-content').style.display = 'none';
+        document.getElementById('results').style.display = 'none';
+        document.getElementById('category-menu').style.display = 'block';
+        document.getElementById('leaderboard-section').style.display = 'block'; // Muestra Leaderboard en el menú
 
-        let questionIndex = 0;
-        
-        sections.forEach(section => {
-            html += `<h2>${section.title}</h2>`;
-            
-            for (let i = section.start; i <= section.end; i++) {
-                const qData = allQuestions[questionIndex];
-                if (!qData) break;
+        const menuContainer = document.getElementById('category-menu');
+        let menuHtml = '<h2>Seleccionar Categoría de Estudio</h2><div id="card-grid">';
 
-                const qNum = i;
-                
-                html += `
-                    <div class="question" data-correct-answer="${qData.respuestaCorrecta}" data-explanation="${qData.explicacion}">
-                        <p>${qNum}. ${qData.pregunta}</p>
-                `;
-
-                // Recorre las opciones (a, b, c, d)
-                Object.keys(qData.opciones).forEach(optionKey => {
-                    const optionText = qData.opciones[optionKey];
-                    html += `
-                        <div class="option" data-value="${optionKey}">
-                            <input type="radio" id="q${qNum}${optionKey}" name="q${qNum}" value="${optionKey}">
-                            <label for="q${qNum}${optionKey}">${optionKey.toUpperCase()}. ${optionText}</label>
-                        </div>
-                    `;
-                });
-
-                html += `
-                        <div class="explanation"></div>
-                    </div>
-                `;
-                questionIndex++;
+        // Agrupa las preguntas por categoría para contarlas
+        const categories = allQuestionsData.reduce((acc, q) => {
+            const category = q.categoria || "Sin Categoría";
+            if (!acc[category]) {
+                acc[category] = 0;
             }
-        });
+            acc[category]++;
+            return acc;
+        }, {});
 
-        container.innerHTML = html;
+        // Crea una tarjeta por cada categoría
+        Object.keys(categories).forEach(categoryName => {
+            menuHtml += `
+                <div class="category-card" onclick="startQuiz('${categoryName.replace(/'/g, "\\'")}')">
+                    <strong>${categoryName}</strong>
+                    <span>(${categories[categoryName]} preguntas)</span>
+                    <button type="button" class="start-button">Iniciar Práctica</button>
+                </div>
+            `;
+        });
+        
+        menuHtml += '</div>';
+        menuContainer.innerHTML = menuHtml;
     }
 
     // =======================================================
-    // FUNCIÓN PRINCIPAL: CALCULAR PUNTAJE Y MOSTRAR RETROALIMENTACIÓN
+    // FUNCIÓN 2: INICIAR EL EXAMEN FILTRADO
+    // =======================================================
+    function startQuiz(category) {
+        document.getElementById('category-menu').style.display = 'none';
+        document.getElementById('leaderboard-section').style.display = 'none';
+        document.getElementById('results').style.display = 'none';
+        document.getElementById('quiz-content').style.display = 'block';
+
+        // 1. Filtrar las preguntas
+        activeQuestions = allQuestionsData.filter(q => (q.categoria || "Sin Categoría") === category);
+        
+        // 2. Actualizar el título y el contador
+        document.getElementById('current-category-title').textContent = `Categoría: ${category} (${activeQuestions.length} preguntas)`;
+        document.getElementById('total-q-count').textContent = activeQuestions.length;
+        
+        // 3. Renderizar las preguntas filtradas
+        const container = document.getElementById('questions-container');
+        let html = '';
+        
+        activeQuestions.forEach((qData, index) => {
+            const qNum = index + 1; // La numeración comienza en 1 para la vista
+
+            html += `
+                <div class="question" data-correct-answer="${qData.respuestaCorrecta}" data-explanation="${qData.explicacion}">
+                    <p>${qNum}. ${qData.pregunta}</p>
+            `;
+
+            // Recorre las opciones (a, b, c, d)
+            Object.keys(qData.opciones).forEach(optionKey => {
+                const optionText = qData.opciones[optionKey];
+                html += `
+                    <div class="option" data-value="${optionKey}">
+                        <input type="radio" id="q${qNum}${optionKey}" name="q${qNum}" value="${optionKey}">
+                        <label for="q${qNum}${optionKey}">${optionKey.toUpperCase()}. ${optionText}</label>
+                    </div>
+                `;
+            });
+
+            html += `
+                    <div class="explanation"></div>
+                </div>
+            `;
+        });
+
+        container.innerHTML = html;
+        document.querySelector('#quiz-content button').disabled = false;
+        window.scrollTo(0, 0);
+    }
+
+    // =======================================================
+    // FUNCIÓN PRINCIPAL: CALCULAR PUNTAJE (Retrolimentación)
     // =======================================================
     function calculateScore() {
-        const questions = document.querySelectorAll('.question');
-        const totalQuestions = allQuestions.length;
+        const questions = document.querySelectorAll('#questions-container .question');
+        const totalQuestions = activeQuestions.length;
         let score = 0;
 
         // 1. Recorre y califica las preguntas
@@ -202,11 +238,10 @@
             const options = question.querySelectorAll('.option');
             let explanationDiv = question.querySelector('.explanation');
 
-            // Limpiar estilos anteriores
+            // Limpia estilos anteriores
             question.classList.remove('not-answered');
             if (explanationDiv) explanationDiv.style.display = 'none';
 
-            // Limpia los estilos de feedback anteriores
             options.forEach(opt => {
                 opt.classList.remove('highlight-correct', 'highlight-incorrect');
                 const feedbackSpan = opt.querySelector('.feedback');
@@ -215,7 +250,6 @@
                 opt.querySelector('label').style.color = '';
             });
 
-            // 2. Procesa la respuesta y aplica sombreado
             let isAnswered = false;
             if (selectedOptionInput) {
                 isAnswered = true;
@@ -244,39 +278,37 @@
                 }
 
                 if (optionValue === correctAnswer) {
-                    // Es la respuesta correcta
                     feedbackSpan.innerHTML = (isAnswered && selectedOptionInput.value === correctAnswer) ? ' 💚 ¡Correcto!' : ' 💚 (Correcta)';
                     opt.querySelector('label').style.backgroundColor = '#d4edda';
                     opt.querySelector('label').style.color = '#155724';
                     
-                    // Muestra la explicación (solo en la correcta)
                     if (explanationDiv && explanationText) {
                         explanationDiv.innerHTML = '<strong>Explicación:</strong> ' + explanationText;
                         explanationDiv.style.display = 'block';
                     }
 
                 } else if (isAnswered && selectedOptionInput.value === optionValue) {
-                    // Muestra la respuesta INCORRECTA que marcó el usuario
                     feedbackSpan.innerHTML = ' ❌ Incorrecto';
                 } else {
-                    feedbackSpan.innerHTML = ''; // Limpia el feedback de las opciones irrelevantes
+                    feedbackSpan.innerHTML = '';
                 }
             });
         });
 
-        // 4. Muestra resultados finales y deshabilita botones
+        // 4. Mostrar resultados finales
         document.getElementById('score').textContent = score;
+        document.getElementById('total-q-count').textContent = totalQuestions;
+        document.getElementById('quiz-content').style.display = 'none';
+
+        // Muestra los resultados, guarda el score y vuelve a mostrar el menú de opciones
         document.getElementById('results').style.display = 'block';
-        document.querySelector('button').disabled = true;
-        
-        // 5. Gestión del Leaderboard (Local)
-        saveScore(score, totalQuestions);
-        displayLeaderboard();
         document.getElementById('leaderboard-section').style.display = 'block';
         
-        window.scrollTo(0, 0); // Vuelve al inicio para ver los resultados
+        saveScore(score, totalQuestions);
+        displayLeaderboard();
+        
+        window.scrollTo(0, 0);
     }
-
 
     // =======================================================
     // FUNCIONES DEL LEADERBOARD (LOCALSTORAGE)
@@ -284,6 +316,9 @@
     function saveScore(score, total) {
         const scores = getScores();
         const now = new Date();
+        // Muestra la categoría en el leaderboard para saber qué se practicó
+        const currentCategory = document.getElementById('current-category-title').textContent.replace('Categoría: ', '').split(' (')[0]; 
+        
         const dateString = now.toLocaleDateString('es-ES', { 
             year: 'numeric', month: 'short', day: 'numeric', 
             hour: '2-digit', minute: '2-digit' 
@@ -293,10 +328,11 @@
             score: score,
             total: total,
             date: dateString,
+            category: currentCategory, // Guarda la categoría
             timestamp: now.getTime()
         });
 
-        scores.sort((a, b) => b.score - a.score || a.timestamp - b.timestamp);
+        scores.sort((a, b) => b.score - a.score);
         const topScores = scores.slice(0, 10);
 
         localStorage.setItem(STORAGE_KEY, JSON.stringify(topScores));
@@ -318,28 +354,28 @@
         tbody.innerHTML = ''; 
 
         if (scores.length === 0) {
-            tbody.innerHTML = '<tr><td colspan="3" style="text-align: center;">Aún no tienes puntajes. ¡Haz el examen!</td></tr>';
+            tbody.innerHTML = '<tr><td colspan="4" style="text-align: center;">Aún no tienes puntajes. ¡Haz el examen!</td></tr>';
             return;
         }
         
         scores.sort((a, b) => b.score - a.score || a.timestamp - b.timestamp); 
 
+        // Actualiza el encabezado de la tabla para incluir Categoría
+        document.getElementById('leaderboard-table').querySelector('thead tr').innerHTML = 
+            '<th>#</th><th>Aciertos</th><th>Categoría</th><th>Fecha</th>';
+
         scores.forEach((item, index) => {
             const row = tbody.insertRow();
             
-            const cellRank = row.insertCell();
-            cellRank.textContent = index + 1;
-            
-            const cellScore = row.insertCell();
-            cellScore.textContent = `${item.score} / ${item.total} aciertos`;
-            
-            const cellDate = row.insertCell();
-            cellDate.textContent = item.date;
+            row.insertCell().textContent = index + 1;
+            row.insertCell().textContent = `${item.score} / ${item.total}`;
+            row.insertCell().textContent = item.category || 'Completo'; // Muestra la categoría
+            row.insertCell().textContent = item.date;
         });
     }
 
-    // Inicialización: Cargar el quiz al cargar la página
-    document.addEventListener('DOMContentLoaded', loadQuiz);
+    // Inicialización: Cargar los datos al cargar la página
+    document.addEventListener('DOMContentLoaded', loadQuizData);
 </script>
 
 </body>
