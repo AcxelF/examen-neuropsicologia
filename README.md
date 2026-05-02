@@ -1,2 +1,0 @@
-# examen-neuropsicologia
-examen uwu
